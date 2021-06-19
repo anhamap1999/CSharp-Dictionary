@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Dictionary
 {
     public partial class Dictionary : Form
@@ -15,7 +16,7 @@ namespace Dictionary
         public Dictionary()
         {
             InitializeComponent();
-            WoDMeaningLb.Text = "acvc.\n ákdk";
+            PicOfWordPb.ImageLocation = "https://cdn.britannica.com/22/206222-131-E921E1FB/Domestic-feline-tabby-cat.jpg";
         }
 
         private void SearchBox_Enter(object sender, EventArgs e)
