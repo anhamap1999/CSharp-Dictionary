@@ -8,3 +8,12 @@ C:\Users\Admin\source\repos\Dictionary\Dictionary\obj\Debug\Dictionary.csproj.Co
 C:\Users\Admin\source\repos\Dictionary\Dictionary\obj\Debug\Dictionary.exe
 C:\Users\Admin\source\repos\Dictionary\Dictionary\obj\Debug\Dictionary.pdb
 C:\Users\Admin\source\repos\Dictionary\Dictionary\obj\Debug\Dictionary.Dictionary.resources
+D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\bin\Debug\Dictionary.exe.config
+D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\bin\Debug\Dictionary.exe
+D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\bin\Debug\Dictionary.pdb
+D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\obj\Debug\Dictionary.csprojAssemblyReference.cache
+D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\obj\Debug\Dictionary.Dictionary.resources
+D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\obj\Debug\Dictionary.Properties.Resources.resources
+D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\obj\Debug\Dictionary.csproj.GenerateResource.cache
+D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\obj\Debug\Dictionary.exe
+D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\obj\Debug\Dictionary.pdb
