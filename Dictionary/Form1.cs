@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.IO;
+using System.Net;
 
 namespace Dictionary
 {
@@ -74,13 +75,13 @@ namespace Dictionary
             {
                 if (str == "")
                 {
-                    word = null;
-                    type = null;
-                    definition = null;
-                    spelling = null;
-                    synonym = null;
-                    explain = null;
-                    examples.Clear();
+                    //word = null;
+                    //type = null;
+                    //definition = null;
+                    //spelling = null;
+                    //synonym = null;
+                    //explain = null;
+                    //examples.Clear();
                 }
                 else
                 {
@@ -89,6 +90,12 @@ namespace Dictionary
                         if (word != null)
                         {
                             tableDefinition.Rows.Add(word, type, definition, synonym, explain, examples);
+                            word = null;
+                            type = null;
+                            definition = null;
+                            spelling = null;
+                            synonym = null;
+                            explain = null;
                             examples.Clear();
                         }
                         if (str.Contains(" /"))
@@ -167,6 +174,20 @@ namespace Dictionary
             WoDTypeLb.Text = "("+r[1].ToString()+")";
             WoDMeaningLb.Text = r[2].ToString();
 
+        }
+
+        private bool Check_Url_Valid(string url)
+        {
+            try
+            {
+                WebClient client = new WebClient();
+                client.DownloadString(url);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
