@@ -18,3 +18,8 @@ C:\Users\Admin\source\repos\DoAnCSharp-TuDien\Dictionary\obj\Debug\Dictionary.pd
 C:\Users\Admin\source\repos\DoAnCSharp-TuDien\Dictionary\bin\Debug\Dictionary.exe.config
 C:\Users\Admin\source\repos\DoAnCSharp-TuDien\Dictionary\bin\Debug\Dictionary.exe
 C:\Users\Admin\source\repos\DoAnCSharp-TuDien\Dictionary\bin\Debug\Dictionary.pdb
+C:\Users\Admin\source\repos\DoAnCSharp-TuDien\Dictionary\bin\Debug\Interop.WMPLib.dll
+C:\Users\Admin\source\repos\DoAnCSharp-TuDien\Dictionary\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Admin\source\repos\DoAnCSharp-TuDien\Dictionary\obj\Debug\Interop.WMPLib.dll
+C:\Users\Admin\source\repos\DoAnCSharp-TuDien\Dictionary\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Admin\source\repos\DoAnCSharp-TuDien\Dictionary\obj\Debug\Dictionary.csproj.ResolveComReference.cache

@@ -75,12 +75,17 @@ namespace Dictionary
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.WordOfDayPn = new System.Windows.Forms.Panel();
-            this.MeaningPn = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.WodMeaningPn = new System.Windows.Forms.Panel();
             this.WoDMeaningLb = new System.Windows.Forms.Label();
+            this.TUCUANGAYLb = new System.Windows.Forms.Label();
+            this.WodContainerPn = new System.Windows.Forms.Panel();
+            this.WoDSpellingLb = new System.Windows.Forms.Label();
+            this.WoDTypeLb = new System.Windows.Forms.Label();
+            this.WoDlb = new System.Windows.Forms.Label();
+            this.MeaningPn = new System.Windows.Forms.Panel();
             this.WoDWordTypeLb = new System.Windows.Forms.Label();
             this.AudioBtn = new System.Windows.Forms.Button();
-            this.WoDPhoneticLb = new System.Windows.Forms.Label();
-            this.WoDLb = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.NewWordPn = new System.Windows.Forms.Panel();
             this.NWWordTypeLb = new System.Windows.Forms.Label();
@@ -112,13 +117,15 @@ namespace Dictionary
             this.Line = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.HomePn = new System.Windows.Forms.Panel();
+            this.SoundPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.Header.SuspendLayout();
             this.Logo.SuspendLayout();
             this.SearchBoxPn.SuspendLayout();
             this.ListCharacterPn.SuspendLayout();
             this.WordListPn.SuspendLayout();
             this.WordOfDayPn.SuspendLayout();
-            this.MeaningPn.SuspendLayout();
+            this.WodMeaningPn.SuspendLayout();
+            this.WodContainerPn.SuspendLayout();
             this.NewWordPn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicOfWordPb)).BeginInit();
             this.SavedWordPn.SuspendLayout();
@@ -131,6 +138,7 @@ namespace Dictionary
             this.WordListItem.SuspendLayout();
             this.WLIPanel.SuspendLayout();
             this.HomePn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SoundPlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // Header
@@ -152,7 +160,7 @@ namespace Dictionary
             this.GameBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(0)))), ((int)(((byte)(184)))));
             this.GameBtn.FlatAppearance.BorderSize = 0;
             this.GameBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GameBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GameBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GameBtn.ForeColor = System.Drawing.Color.White;
             this.GameBtn.Location = new System.Drawing.Point(1122, 1);
             this.GameBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -167,7 +175,7 @@ namespace Dictionary
             this.WordListBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(0)))), ((int)(((byte)(184)))));
             this.WordListBtn.FlatAppearance.BorderSize = 0;
             this.WordListBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.WordListBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WordListBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WordListBtn.ForeColor = System.Drawing.Color.White;
             this.WordListBtn.Location = new System.Drawing.Point(980, 2);
             this.WordListBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -182,7 +190,7 @@ namespace Dictionary
             this.DictionaryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(0)))), ((int)(((byte)(184)))));
             this.DictionaryBtn.FlatAppearance.BorderSize = 0;
             this.DictionaryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DictionaryBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DictionaryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DictionaryBtn.ForeColor = System.Drawing.Color.White;
             this.DictionaryBtn.Location = new System.Drawing.Point(838, 1);
             this.DictionaryBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -205,12 +213,12 @@ namespace Dictionary
             // Logolb
             // 
             this.Logolb.AutoSize = true;
-            this.Logolb.Font = new System.Drawing.Font("Roboto Light", 19.75F);
+            this.Logolb.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.75F);
             this.Logolb.ForeColor = System.Drawing.Color.White;
             this.Logolb.Location = new System.Drawing.Point(10, 12);
             this.Logolb.Margin = new System.Windows.Forms.Padding(1);
             this.Logolb.Name = "Logolb";
-            this.Logolb.Size = new System.Drawing.Size(68, 33);
+            this.Logolb.Size = new System.Drawing.Size(70, 31);
             this.Logolb.TabIndex = 0;
             this.Logolb.Text = "Dict.";
             // 
@@ -241,12 +249,12 @@ namespace Dictionary
             // SearchBox
             // 
             this.SearchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SearchBox.Font = new System.Drawing.Font("Roboto", 18F);
+            this.SearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.SearchBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.SearchBox.Location = new System.Drawing.Point(9, 16);
             this.SearchBox.Margin = new System.Windows.Forms.Padding(0);
             this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(374, 29);
+            this.SearchBox.Size = new System.Drawing.Size(374, 28);
             this.SearchBox.TabIndex = 2;
             this.SearchBox.Text = "Search some word...";
             this.SearchBox.Enter += new System.EventHandler(this.SearchBox_Enter);
@@ -306,7 +314,7 @@ namespace Dictionary
             this.ZBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.ZBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.ZBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ZBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ZBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ZBtn.ForeColor = System.Drawing.Color.White;
             this.ZBtn.Location = new System.Drawing.Point(1208, 0);
             this.ZBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -322,7 +330,7 @@ namespace Dictionary
             this.YBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.YBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.YBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.YBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.YBtn.ForeColor = System.Drawing.Color.White;
             this.YBtn.Location = new System.Drawing.Point(1160, 0);
             this.YBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -338,7 +346,7 @@ namespace Dictionary
             this.XBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.XBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.XBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.XBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.XBtn.ForeColor = System.Drawing.Color.White;
             this.XBtn.Location = new System.Drawing.Point(1112, 0);
             this.XBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -354,7 +362,7 @@ namespace Dictionary
             this.WBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.WBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.WBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.WBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WBtn.ForeColor = System.Drawing.Color.White;
             this.WBtn.Location = new System.Drawing.Point(1064, 0);
             this.WBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -370,7 +378,7 @@ namespace Dictionary
             this.VBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.VBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.VBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VBtn.ForeColor = System.Drawing.Color.White;
             this.VBtn.Location = new System.Drawing.Point(1016, 0);
             this.VBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -386,7 +394,7 @@ namespace Dictionary
             this.UBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.UBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.UBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UBtn.ForeColor = System.Drawing.Color.White;
             this.UBtn.Location = new System.Drawing.Point(968, 0);
             this.UBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -402,7 +410,7 @@ namespace Dictionary
             this.TBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.TBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.TBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBtn.ForeColor = System.Drawing.Color.White;
             this.TBtn.Location = new System.Drawing.Point(920, 0);
             this.TBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -418,7 +426,7 @@ namespace Dictionary
             this.SBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.SBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.SBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SBtn.ForeColor = System.Drawing.Color.White;
             this.SBtn.Location = new System.Drawing.Point(872, 0);
             this.SBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -434,7 +442,7 @@ namespace Dictionary
             this.RBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.RBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.RBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RBtn.ForeColor = System.Drawing.Color.White;
             this.RBtn.Location = new System.Drawing.Point(824, 0);
             this.RBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -450,7 +458,7 @@ namespace Dictionary
             this.QBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.QBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.QBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.QBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QBtn.ForeColor = System.Drawing.Color.White;
             this.QBtn.Location = new System.Drawing.Point(776, 0);
             this.QBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -466,7 +474,7 @@ namespace Dictionary
             this.PBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.PBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.PBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PBtn.ForeColor = System.Drawing.Color.White;
             this.PBtn.Location = new System.Drawing.Point(728, 0);
             this.PBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -482,7 +490,7 @@ namespace Dictionary
             this.OBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.OBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.OBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OBtn.ForeColor = System.Drawing.Color.White;
             this.OBtn.Location = new System.Drawing.Point(680, 0);
             this.OBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -498,7 +506,7 @@ namespace Dictionary
             this.NBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.NBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.NBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NBtn.ForeColor = System.Drawing.Color.White;
             this.NBtn.Location = new System.Drawing.Point(632, 0);
             this.NBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -514,7 +522,7 @@ namespace Dictionary
             this.MBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.MBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.MBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MBtn.ForeColor = System.Drawing.Color.White;
             this.MBtn.Location = new System.Drawing.Point(584, 0);
             this.MBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -530,7 +538,7 @@ namespace Dictionary
             this.LBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.LBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.LBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBtn.ForeColor = System.Drawing.Color.White;
             this.LBtn.Location = new System.Drawing.Point(536, 0);
             this.LBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -546,7 +554,7 @@ namespace Dictionary
             this.KBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.KBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.KBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.KBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KBtn.ForeColor = System.Drawing.Color.White;
             this.KBtn.Location = new System.Drawing.Point(488, 0);
             this.KBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -562,7 +570,7 @@ namespace Dictionary
             this.JBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.JBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.JBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.JBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.JBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.JBtn.ForeColor = System.Drawing.Color.White;
             this.JBtn.Location = new System.Drawing.Point(440, 0);
             this.JBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -578,7 +586,7 @@ namespace Dictionary
             this.IBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.IBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.IBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.IBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IBtn.ForeColor = System.Drawing.Color.White;
             this.IBtn.Location = new System.Drawing.Point(392, 0);
             this.IBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -594,7 +602,7 @@ namespace Dictionary
             this.HBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.HBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.HBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HBtn.ForeColor = System.Drawing.Color.White;
             this.HBtn.Location = new System.Drawing.Point(344, 0);
             this.HBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -610,7 +618,7 @@ namespace Dictionary
             this.GBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.GBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.GBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GBtn.ForeColor = System.Drawing.Color.White;
             this.GBtn.Location = new System.Drawing.Point(296, 0);
             this.GBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -626,7 +634,7 @@ namespace Dictionary
             this.FBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.FBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.FBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FBtn.ForeColor = System.Drawing.Color.White;
             this.FBtn.Location = new System.Drawing.Point(248, 0);
             this.FBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -642,7 +650,7 @@ namespace Dictionary
             this.EBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.EBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.EBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EBtn.ForeColor = System.Drawing.Color.White;
             this.EBtn.Location = new System.Drawing.Point(200, 0);
             this.EBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -658,7 +666,7 @@ namespace Dictionary
             this.DBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.DBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.DBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DBtn.ForeColor = System.Drawing.Color.White;
             this.DBtn.Location = new System.Drawing.Point(152, 0);
             this.DBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -674,7 +682,7 @@ namespace Dictionary
             this.CBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.CBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.CBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBtn.ForeColor = System.Drawing.Color.White;
             this.CBtn.Location = new System.Drawing.Point(104, 0);
             this.CBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -690,7 +698,7 @@ namespace Dictionary
             this.BBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.BBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.BBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BBtn.ForeColor = System.Drawing.Color.White;
             this.BBtn.Location = new System.Drawing.Point(56, 0);
             this.BBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -706,7 +714,7 @@ namespace Dictionary
             this.ABtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.ABtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.ABtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ABtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ABtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ABtn.ForeColor = System.Drawing.Color.White;
             this.ABtn.Location = new System.Drawing.Point(8, 0);
             this.ABtn.Margin = new System.Windows.Forms.Padding(0);
@@ -742,22 +750,22 @@ namespace Dictionary
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Roboto Light", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(34, 303);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(282, 52);
+            this.label12.Size = new System.Drawing.Size(288, 51);
             this.label12.TabIndex = 4;
             this.label12.Text = "- Abbreviation";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Roboto Light", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(31, 228);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(282, 52);
+            this.label9.Size = new System.Drawing.Size(288, 51);
             this.label9.TabIndex = 3;
             this.label9.Text = "- Abbreviation";
             // 
@@ -775,118 +783,153 @@ namespace Dictionary
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Roboto Light", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(34, 78);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(282, 52);
+            this.label7.Size = new System.Drawing.Size(288, 51);
             this.label7.TabIndex = 1;
             this.label7.Text = "- Abbreviation";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto", 40F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 65);
+            this.label1.Size = new System.Drawing.Size(95, 63);
             this.label1.TabIndex = 0;
             this.label1.Text = "#A";
             // 
             // WordOfDayPn
             // 
-            this.WordOfDayPn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(199)))), ((int)(((byte)(2)))));
-            this.WordOfDayPn.Controls.Add(this.MeaningPn);
-            this.WordOfDayPn.Controls.Add(this.WoDWordTypeLb);
-            this.WordOfDayPn.Controls.Add(this.AudioBtn);
-            this.WordOfDayPn.Controls.Add(this.WoDPhoneticLb);
-            this.WordOfDayPn.Controls.Add(this.WoDLb);
-            this.WordOfDayPn.Controls.Add(this.label2);
+            this.WordOfDayPn.BackColor = System.Drawing.Color.Thistle;
+            this.WordOfDayPn.Controls.Add(this.button1);
+            this.WordOfDayPn.Controls.Add(this.WodMeaningPn);
+            this.WordOfDayPn.Controls.Add(this.TUCUANGAYLb);
+            this.WordOfDayPn.Controls.Add(this.WodContainerPn);
             this.WordOfDayPn.Location = new System.Drawing.Point(101, 9);
-            this.WordOfDayPn.Margin = new System.Windows.Forms.Padding(0);
             this.WordOfDayPn.Name = "WordOfDayPn";
-            this.WordOfDayPn.Size = new System.Drawing.Size(520, 280);
-            this.WordOfDayPn.TabIndex = 4;
+            this.WordOfDayPn.Size = new System.Drawing.Size(520, 290);
+            this.WordOfDayPn.TabIndex = 6;
             // 
-            // MeaningPn
+            // button1
             // 
-            this.MeaningPn.Controls.Add(this.WoDMeaningLb);
-            this.MeaningPn.Location = new System.Drawing.Point(21, 163);
-            this.MeaningPn.Name = "MeaningPn";
-            this.MeaningPn.Size = new System.Drawing.Size(476, 114);
-            this.MeaningPn.TabIndex = 11;
+            this.button1.BackgroundImage = global::Dictionary.Properties.Resources.audio;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(243, 135);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 30);
+            this.button1.TabIndex = 17;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // WodMeaningPn
+            // 
+            this.WodMeaningPn.Controls.Add(this.WoDMeaningLb);
+            this.WodMeaningPn.Location = new System.Drawing.Point(14, 175);
+            this.WodMeaningPn.Name = "WodMeaningPn";
+            this.WodMeaningPn.Size = new System.Drawing.Size(492, 104);
+            this.WodMeaningPn.TabIndex = 15;
             // 
             // WoDMeaningLb
             // 
             this.WoDMeaningLb.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WoDMeaningLb.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WoDMeaningLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.WoDMeaningLb.Location = new System.Drawing.Point(0, 0);
             this.WoDMeaningLb.Name = "WoDMeaningLb";
-            this.WoDMeaningLb.Size = new System.Drawing.Size(476, 114);
-            this.WoDMeaningLb.TabIndex = 10;
-            this.WoDMeaningLb.Text = resources.GetString("WoDMeaningLb.Text");
+            this.WoDMeaningLb.Size = new System.Drawing.Size(492, 104);
+            this.WoDMeaningLb.TabIndex = 0;
+            this.WoDMeaningLb.Text = "label24";
+            this.WoDMeaningLb.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // TUCUANGAYLb
+            // 
+            this.TUCUANGAYLb.AutoSize = true;
+            this.TUCUANGAYLb.Font = new System.Drawing.Font("Roboto Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TUCUANGAYLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.TUCUANGAYLb.Location = new System.Drawing.Point(2, 3);
+            this.TUCUANGAYLb.Name = "TUCUANGAYLb";
+            this.TUCUANGAYLb.Size = new System.Drawing.Size(197, 35);
+            this.TUCUANGAYLb.TabIndex = 0;
+            this.TUCUANGAYLb.Text = "TỪ CỦA NGÀY";
+            // 
+            // WodContainerPn
+            // 
+            this.WodContainerPn.Controls.Add(this.WoDSpellingLb);
+            this.WodContainerPn.Controls.Add(this.WoDTypeLb);
+            this.WodContainerPn.Controls.Add(this.WoDlb);
+            this.WodContainerPn.Location = new System.Drawing.Point(14, 38);
+            this.WodContainerPn.Name = "WodContainerPn";
+            this.WodContainerPn.Size = new System.Drawing.Size(492, 109);
+            this.WodContainerPn.TabIndex = 16;
+            // 
+            // WoDSpellingLb
+            // 
+            this.WoDSpellingLb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.WoDSpellingLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WoDSpellingLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.WoDSpellingLb.Location = new System.Drawing.Point(0, 70);
+            this.WoDSpellingLb.Name = "WoDSpellingLb";
+            this.WoDSpellingLb.Size = new System.Drawing.Size(492, 24);
+            this.WoDSpellingLb.TabIndex = 14;
+            this.WoDSpellingLb.Text = "/Phiên âm ở đây/";
+            this.WoDSpellingLb.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // WoDTypeLb
+            // 
+            this.WoDTypeLb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.WoDTypeLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WoDTypeLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.WoDTypeLb.Location = new System.Drawing.Point(0, 46);
+            this.WoDTypeLb.Name = "WoDTypeLb";
+            this.WoDTypeLb.Size = new System.Drawing.Size(492, 24);
+            this.WoDTypeLb.TabIndex = 14;
+            this.WoDTypeLb.Text = "(Loại từ)";
+            this.WoDTypeLb.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // WoDlb
+            // 
+            this.WoDlb.Dock = System.Windows.Forms.DockStyle.Top;
+            this.WoDlb.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.WoDlb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.WoDlb.Location = new System.Drawing.Point(0, 0);
+            this.WoDlb.Name = "WoDlb";
+            this.WoDlb.Size = new System.Drawing.Size(492, 46);
+            this.WoDlb.TabIndex = 14;
+            this.WoDlb.Text = "WORD";
+            this.WoDlb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // MeaningPn
+            // 
+            this.MeaningPn.Location = new System.Drawing.Point(0, 0);
+            this.MeaningPn.Name = "MeaningPn";
+            this.MeaningPn.Size = new System.Drawing.Size(200, 100);
+            this.MeaningPn.TabIndex = 0;
             // 
             // WoDWordTypeLb
             // 
-            this.WoDWordTypeLb.AutoSize = true;
-            this.WoDWordTypeLb.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WoDWordTypeLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
-            this.WoDWordTypeLb.Location = new System.Drawing.Point(215, 84);
+            this.WoDWordTypeLb.Location = new System.Drawing.Point(0, 0);
             this.WoDWordTypeLb.Name = "WoDWordTypeLb";
-            this.WoDWordTypeLb.Size = new System.Drawing.Size(79, 23);
-            this.WoDWordTypeLb.TabIndex = 9;
-            this.WoDWordTypeLb.Text = "(Loại từ)";
+            this.WoDWordTypeLb.Size = new System.Drawing.Size(100, 23);
+            this.WoDWordTypeLb.TabIndex = 0;
             // 
             // AudioBtn
             // 
-            this.AudioBtn.BackgroundImage = global::Dictionary.Properties.Resources.audio__1_;
-            this.AudioBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AudioBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.AudioBtn.FlatAppearance.BorderSize = 0;
-            this.AudioBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AudioBtn.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AudioBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
-            this.AudioBtn.Location = new System.Drawing.Point(237, 130);
-            this.AudioBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.AudioBtn.Location = new System.Drawing.Point(0, 0);
             this.AudioBtn.Name = "AudioBtn";
-            this.AudioBtn.Size = new System.Drawing.Size(30, 30);
-            this.AudioBtn.TabIndex = 8;
-            this.AudioBtn.UseVisualStyleBackColor = true;
-            // 
-            // WoDPhoneticLb
-            // 
-            this.WoDPhoneticLb.AutoSize = true;
-            this.WoDPhoneticLb.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WoDPhoneticLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
-            this.WoDPhoneticLb.Location = new System.Drawing.Point(181, 107);
-            this.WoDPhoneticLb.Name = "WoDPhoneticLb";
-            this.WoDPhoneticLb.Size = new System.Drawing.Size(155, 23);
-            this.WoDPhoneticLb.TabIndex = 2;
-            this.WoDPhoneticLb.Text = "/Phiên âm ở đây/";
-            // 
-            // WoDLb
-            // 
-            this.WoDLb.AutoSize = true;
-            this.WoDLb.Font = new System.Drawing.Font("Roboto Light", 30F);
-            this.WoDLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
-            this.WoDLb.Location = new System.Drawing.Point(193, 36);
-            this.WoDLb.Name = "WoDLb";
-            this.WoDLb.Size = new System.Drawing.Size(134, 48);
-            this.WoDLb.TabIndex = 1;
-            this.WoDLb.Text = "WORD";
+            this.AudioBtn.Size = new System.Drawing.Size(75, 23);
+            this.AudioBtn.TabIndex = 0;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
-            this.label2.Location = new System.Drawing.Point(17, 10);
+            this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 23);
+            this.label2.Size = new System.Drawing.Size(100, 23);
             this.label2.TabIndex = 0;
-            this.label2.Text = "TỪ CỦA NGÀY";
             // 
             // NewWordPn
             // 
@@ -905,44 +948,44 @@ namespace Dictionary
             // NWWordTypeLb
             // 
             this.NWWordTypeLb.AutoSize = true;
-            this.NWWordTypeLb.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NWWordTypeLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NWWordTypeLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.NWWordTypeLb.Location = new System.Drawing.Point(257, 116);
             this.NWWordTypeLb.Name = "NWWordTypeLb";
-            this.NWWordTypeLb.Size = new System.Drawing.Size(79, 23);
+            this.NWWordTypeLb.Size = new System.Drawing.Size(77, 24);
             this.NWWordTypeLb.TabIndex = 13;
             this.NWWordTypeLb.Text = "(Loại từ)";
             // 
             // NWLb
             // 
             this.NWLb.AutoSize = true;
-            this.NWLb.Font = new System.Drawing.Font("Roboto Light", 30F);
+            this.NWLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.NWLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.NWLb.Location = new System.Drawing.Point(249, 68);
             this.NWLb.Name = "NWLb";
-            this.NWLb.Size = new System.Drawing.Size(134, 48);
+            this.NWLb.Size = new System.Drawing.Size(147, 46);
             this.NWLb.TabIndex = 12;
             this.NWLb.Text = "WORD";
             // 
             // NWDPhoneticLb
             // 
             this.NWDPhoneticLb.AutoSize = true;
-            this.NWDPhoneticLb.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NWDPhoneticLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NWDPhoneticLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.NWDPhoneticLb.Location = new System.Drawing.Point(257, 149);
             this.NWDPhoneticLb.Name = "NWDPhoneticLb";
-            this.NWDPhoneticLb.Size = new System.Drawing.Size(155, 23);
+            this.NWDPhoneticLb.Size = new System.Drawing.Size(152, 24);
             this.NWDPhoneticLb.TabIndex = 12;
             this.NWDPhoneticLb.Text = "/Phiên âm ở đây/";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.label16.Location = new System.Drawing.Point(249, 10);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(73, 23);
+            this.label16.Size = new System.Drawing.Size(75, 24);
             this.label16.TabIndex = 12;
             this.label16.Text = "TỪ MỚI";
             // 
@@ -994,7 +1037,7 @@ namespace Dictionary
             // label17
             // 
             this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label17.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(0, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(1016, 57);
@@ -1004,22 +1047,22 @@ namespace Dictionary
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.label18.Location = new System.Drawing.Point(121, 18);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(35, 15);
+            this.label18.Size = new System.Drawing.Size(37, 16);
             this.label18.TabIndex = 1;
             this.label18.Text = "noun";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.label19.Location = new System.Drawing.Point(12, 12);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(103, 23);
+            this.label19.Size = new System.Drawing.Size(107, 24);
             this.label19.TabIndex = 0;
             this.label19.Text = "WordABCD";
             // 
@@ -1046,7 +1089,7 @@ namespace Dictionary
             // label13
             // 
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(0, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(1016, 57);
@@ -1056,22 +1099,22 @@ namespace Dictionary
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.label14.Location = new System.Drawing.Point(121, 18);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(35, 15);
+            this.label14.Size = new System.Drawing.Size(37, 16);
             this.label14.TabIndex = 1;
             this.label14.Text = "noun";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.label15.Location = new System.Drawing.Point(12, 12);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(103, 23);
+            this.label15.Size = new System.Drawing.Size(107, 24);
             this.label15.TabIndex = 0;
             this.label15.Text = "WordABCD";
             // 
@@ -1098,7 +1141,7 @@ namespace Dictionary
             // label6
             // 
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(0, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(1016, 57);
@@ -1108,22 +1151,22 @@ namespace Dictionary
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.label10.Location = new System.Drawing.Point(121, 18);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 15);
+            this.label10.Size = new System.Drawing.Size(37, 16);
             this.label10.TabIndex = 1;
             this.label10.Text = "noun";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.label11.Location = new System.Drawing.Point(12, 12);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(103, 23);
+            this.label11.Size = new System.Drawing.Size(107, 24);
             this.label11.TabIndex = 0;
             this.label11.Text = "WordABCD";
             // 
@@ -1150,7 +1193,7 @@ namespace Dictionary
             // WLIMeaningLb
             // 
             this.WLIMeaningLb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WLIMeaningLb.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WLIMeaningLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WLIMeaningLb.Location = new System.Drawing.Point(0, 0);
             this.WLIMeaningLb.Name = "WLIMeaningLb";
             this.WLIMeaningLb.Size = new System.Drawing.Size(1016, 57);
@@ -1160,22 +1203,22 @@ namespace Dictionary
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.label5.Location = new System.Drawing.Point(121, 18);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 15);
+            this.label5.Size = new System.Drawing.Size(37, 16);
             this.label5.TabIndex = 1;
             this.label5.Text = "noun";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.label4.Location = new System.Drawing.Point(12, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 23);
+            this.label4.Size = new System.Drawing.Size(107, 24);
             this.label4.TabIndex = 0;
             this.label4.Text = "WordABCD";
             // 
@@ -1192,11 +1235,11 @@ namespace Dictionary
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Roboto Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.label3.Location = new System.Drawing.Point(102, 47);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(305, 44);
+            this.label3.Size = new System.Drawing.Size(308, 42);
             this.label3.TabIndex = 0;
             this.label3.Text = "Danh sách từ mới";
             // 
@@ -1209,10 +1252,21 @@ namespace Dictionary
             this.HomePn.Controls.Add(this.NewWordPn);
             this.HomePn.Controls.Add(this.WordOfDayPn);
             this.HomePn.Controls.Add(this.WordListPn);
+            this.HomePn.Controls.Add(this.SoundPlayer);
             this.HomePn.Location = new System.Drawing.Point(0, 100);
             this.HomePn.Name = "HomePn";
             this.HomePn.Size = new System.Drawing.Size(1264, 580);
             this.HomePn.TabIndex = 3;
+            // 
+            // SoundPlayer
+            // 
+            this.SoundPlayer.Enabled = true;
+            this.SoundPlayer.Location = new System.Drawing.Point(3, 532);
+            this.SoundPlayer.Name = "SoundPlayer";
+            this.SoundPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("SoundPlayer.OcxState")));
+            this.SoundPlayer.Size = new System.Drawing.Size(105, 45);
+            this.SoundPlayer.TabIndex = 7;
+            this.SoundPlayer.Visible = false;
             // 
             // Dictionary
             // 
@@ -1226,6 +1280,7 @@ namespace Dictionary
             this.Controls.Add(this.SavedWordPn);
             this.Name = "Dictionary";
             this.Text = "Từ điển";
+            this.Load += new System.EventHandler(this.Dictionary_Load);
             this.Header.ResumeLayout(false);
             this.Logo.ResumeLayout(false);
             this.Logo.PerformLayout();
@@ -1236,7 +1291,8 @@ namespace Dictionary
             this.WordListPn.PerformLayout();
             this.WordOfDayPn.ResumeLayout(false);
             this.WordOfDayPn.PerformLayout();
-            this.MeaningPn.ResumeLayout(false);
+            this.WodMeaningPn.ResumeLayout(false);
+            this.WodContainerPn.ResumeLayout(false);
             this.NewWordPn.ResumeLayout(false);
             this.NewWordPn.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicOfWordPb)).EndInit();
@@ -1255,6 +1311,7 @@ namespace Dictionary
             this.WordListItem.PerformLayout();
             this.WLIPanel.ResumeLayout(false);
             this.HomePn.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SoundPlayer)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1303,12 +1360,9 @@ namespace Dictionary
         private System.Windows.Forms.Panel WordOfDayPn;
         private System.Windows.Forms.Label WoDWordTypeLb;
         private System.Windows.Forms.Button AudioBtn;
-        private System.Windows.Forms.Label WoDPhoneticLb;
-        private System.Windows.Forms.Label WoDLb;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel NewWordPn;
         private System.Windows.Forms.Panel Khonggica2;
-        private System.Windows.Forms.Label WoDMeaningLb;
         private System.Windows.Forms.Panel MeaningPn;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label9;
@@ -1343,6 +1397,15 @@ namespace Dictionary
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Panel WodMeaningPn;
+        private System.Windows.Forms.Label WoDMeaningLb;
+        private System.Windows.Forms.Label WoDSpellingLb;
+        private System.Windows.Forms.Label WoDTypeLb;
+        private System.Windows.Forms.Label WoDlb;
+        private System.Windows.Forms.Label TUCUANGAYLb;
+        private AxWMPLib.AxWindowsMediaPlayer SoundPlayer;
+        private System.Windows.Forms.Panel WodContainerPn;
+        private System.Windows.Forms.Button button1;
     }
 }
 
