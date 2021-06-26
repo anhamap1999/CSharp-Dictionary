@@ -772,11 +772,11 @@ namespace Dictionary
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Roboto Light", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(34, 150);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(282, 52);
+            this.label8.Size = new System.Drawing.Size(288, 51);
             this.label8.TabIndex = 2;
             this.label8.Text = "- Abbreviation";
             // 
@@ -838,7 +838,7 @@ namespace Dictionary
             // WoDMeaningLb
             // 
             this.WoDMeaningLb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WoDMeaningLb.Font = new System.Drawing.Font("Roboto Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WoDMeaningLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WoDMeaningLb.Location = new System.Drawing.Point(0, 0);
             this.WoDMeaningLb.Name = "WoDMeaningLb";
             this.WoDMeaningLb.Size = new System.Drawing.Size(492, 104);
@@ -849,11 +849,11 @@ namespace Dictionary
             // TUCUANGAYLb
             // 
             this.TUCUANGAYLb.AutoSize = true;
-            this.TUCUANGAYLb.Font = new System.Drawing.Font("Roboto Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TUCUANGAYLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TUCUANGAYLb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
             this.TUCUANGAYLb.Location = new System.Drawing.Point(2, 3);
             this.TUCUANGAYLb.Name = "TUCUANGAYLb";
-            this.TUCUANGAYLb.Size = new System.Drawing.Size(197, 35);
+            this.TUCUANGAYLb.Size = new System.Drawing.Size(214, 33);
             this.TUCUANGAYLb.TabIndex = 0;
             this.TUCUANGAYLb.Text = "TỪ CỦA NGÀY";
             // 
