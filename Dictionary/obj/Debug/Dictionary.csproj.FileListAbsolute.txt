@@ -37,3 +37,4 @@ D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\obj\Debug\Dictionary.Propertie
 D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\obj\Debug\Dictionary.csproj.GenerateResource.cache
 D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\obj\Debug\Dictionary.exe
 D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\obj\Debug\Dictionary.pdb
+D:\PhuongAnh\Project\DoAnCSharp-TuDien\Dictionary\obj\Debug\Dictionary.Loading.resources
