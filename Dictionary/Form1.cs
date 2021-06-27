@@ -243,7 +243,7 @@ namespace Dictionary
                 label.Text = row["word"].ToString();
                 label.ForeColor = Color.White;
                 label.BackColor = Color.FromArgb(64, 75, 113);
-                label.Font = new Font("Microsoft Sans Serif", 32);
+                label.Font = new Font("Roboto Light", 28);
                 label.Size = new Size(flow_WordsByLetter.Width - 30, 70);
                 label.Cursor = Cursors.Hand;
                 label.MouseMove += handle_Word_Mouse_Move;
@@ -393,13 +393,13 @@ namespace Dictionary
             switch (type)
             {
                 case "mouse move":
-                    label.Font = new Font("Microsoft Sans Serif", 34, FontStyle.Bold);
+                    label.Font = new Font("Roboto", 30);
                     label.BackColor = Color.FromArgb(93, 105, 145);
                     break;
 
                 case "mouse leave":
                     label.BackColor = Color.FromArgb(64, 75, 113);
-                    label.Font = new Font("Microsoft Sans Serif", 32, FontStyle.Regular);
+                    label.Font = new Font("Roboto Light", 28);
                     break;
                 case "click":
                     //
