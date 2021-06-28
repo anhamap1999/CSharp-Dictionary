@@ -49,7 +49,7 @@ namespace Dictionary
 
         string searchText = "";
 
-        List<string> savedWords = new List<string>() { "nightfall", "vaccine", "outbreak" };
+        List<string> savedWords = new List<string>() { "nightfall", "vaccine", "outbreak","happy","abnormal" };
         DataTable tableConnectWord = new DataTable();
 
         void Load_Data()
@@ -867,5 +867,54 @@ namespace Dictionary
         //        values[pos2] = tmp;
         //    }
         //}
+
+        void PnSaveWord_Load()
+        {
+            SavedWordPn.BringToFront();
+            Console.WriteLine(savedWords.Count);
+            SavedWordPn.Controls.Clear();
+            Label Title = new Label();
+            Title.Text = "Danh sách từ mới";
+            Title.ForeColor = Color.FromArgb(15, 23, 59);
+            Title.Location = new Point(102, 50);
+            Title.Font = new Font("Roboto", 28);
+            Title.AutoSize = true;
+            SavedWordPn.Controls.Add(Title);
+            Panel Seperator = new Panel();
+            Seperator.AutoSize = false;
+            Seperator.Height = 2;
+            Seperator.Width = 400;
+            Seperator.BackColor = Color.FromArgb(15, 23, 59);
+            Seperator.Location = new Point(113, 100);
+            SavedWordPn.Controls.Add(Seperator);
+            if(savedWords.Count() == 0)
+            {
+                Label Message = new Label();
+                Message.Location = new Point(110,114);
+                Message.Text = "Bạn chưa lưu từ nào cả!";
+                Message.Font = new Font("Roboto Light", 17, FontStyle.Italic);
+                Message.AutoSize = true;
+                Message.ForeColor = Color.FromArgb(15, 23, 59);
+                SavedWordPn.Controls.Add(Message);
+            }    
+            else
+            {
+                for (int j = 0; j < savedWords.Count; j++)
+                {
+                    DataRow r = (from row in tableDefinition.AsEnumerable()
+                                 where row["word"].ToString() == savedWords[j]
+                                 select row).FirstOrDefault();
+                    SaveWordItem SWitem = new SaveWordItem(r, savedWords);
+                    SWitem.Location = new Point(112, 114 + 110 * j);
+                    SWitem.WordClick += handle_Word_Click;
+                    SavedWordPn.Controls.Add(SWitem);
+                }
+            }
+        }
+
+        private void SavedWordBtn_Click(object sender, EventArgs e)
+        {
+            PnSaveWord_Load();
+        }
     }
 }
