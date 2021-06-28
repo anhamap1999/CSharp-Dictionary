@@ -142,6 +142,15 @@ namespace Dictionary
             this.label30 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.label31 = new System.Windows.Forms.Label();
+            this.PnConnectWord = new System.Windows.Forms.Panel();
+            this.PnLetterHolder = new System.Windows.Forms.Panel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.PnResult = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnExit = new System.Windows.Forms.Button();
+            this.BtnLevelSelect = new System.Windows.Forms.Button();
+            this.BtnHint = new System.Windows.Forms.Button();
             this.Header.SuspendLayout();
             this.Logo.SuspendLayout();
             this.SearchBoxPn.SuspendLayout();
@@ -172,6 +181,8 @@ namespace Dictionary
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel15.SuspendLayout();
+            this.PnConnectWord.SuspendLayout();
+            this.PnLetterHolder.SuspendLayout();
             this.SuspendLayout();
             // 
             // Header
@@ -1560,17 +1571,117 @@ namespace Dictionary
             this.label31.TabIndex = 0;
             this.label31.Text = "Danh sách từ mới";
             // 
+            // PnConnectWord
+            // 
+            this.PnConnectWord.BackColor = System.Drawing.Color.SeaShell;
+            this.PnConnectWord.Controls.Add(this.BtnHint);
+            this.PnConnectWord.Controls.Add(this.BtnLevelSelect);
+            this.PnConnectWord.Controls.Add(this.BtnExit);
+            this.PnConnectWord.Controls.Add(this.PnResult);
+            this.PnConnectWord.Controls.Add(this.PnLetterHolder);
+            this.PnConnectWord.Location = new System.Drawing.Point(0, 62);
+            this.PnConnectWord.Name = "PnConnectWord";
+            this.PnConnectWord.Size = new System.Drawing.Size(1264, 620);
+            this.PnConnectWord.TabIndex = 6;
+            // 
+            // PnLetterHolder
+            // 
+            this.PnLetterHolder.BackgroundImage = global::Dictionary.Properties.Resources.Whitecircle_02;
+            this.PnLetterHolder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PnLetterHolder.Controls.Add(this.panel18);
+            this.PnLetterHolder.Controls.Add(this.panel17);
+            this.PnLetterHolder.Controls.Add(this.panel7);
+            this.PnLetterHolder.Location = new System.Drawing.Point(153, 165);
+            this.PnLetterHolder.Name = "PnLetterHolder";
+            this.PnLetterHolder.Size = new System.Drawing.Size(344, 291);
+            this.PnLetterHolder.TabIndex = 0;
+            // 
+            // panel18
+            // 
+            this.panel18.BackgroundImage = global::Dictionary.Properties.Resources.cyan_02;
+            this.panel18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel18.Location = new System.Drawing.Point(191, 163);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(90, 81);
+            this.panel18.TabIndex = 4;
+            // 
+            // panel17
+            // 
+            this.panel17.BackgroundImage = global::Dictionary.Properties.Resources.cyan_02;
+            this.panel17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel17.Location = new System.Drawing.Point(47, 163);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(90, 81);
+            this.panel17.TabIndex = 3;
+            // 
+            // panel7
+            // 
+            this.panel7.BackgroundImage = global::Dictionary.Properties.Resources.cyan_02;
+            this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel7.Location = new System.Drawing.Point(123, 17);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(90, 81);
+            this.panel7.TabIndex = 2;
+            // 
+            // PnResult
+            // 
+            this.PnResult.ColumnCount = 4;
+            this.PnResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.PnResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.PnResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.PnResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.PnResult.Location = new System.Drawing.Point(776, 38);
+            this.PnResult.Name = "PnResult";
+            this.PnResult.RowCount = 7;
+            this.PnResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.PnResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.PnResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.PnResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.PnResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.PnResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.PnResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.PnResult.Size = new System.Drawing.Size(400, 560);
+            this.PnResult.TabIndex = 1;
+            // 
+            // BtnExit
+            // 
+            this.BtnExit.Location = new System.Drawing.Point(12, 28);
+            this.BtnExit.Name = "BtnExit";
+            this.BtnExit.Size = new System.Drawing.Size(83, 29);
+            this.BtnExit.TabIndex = 2;
+            this.BtnExit.Text = "Exit";
+            this.BtnExit.UseVisualStyleBackColor = true;
+            // 
+            // BtnLevelSelect
+            // 
+            this.BtnLevelSelect.Location = new System.Drawing.Point(597, 28);
+            this.BtnLevelSelect.Name = "BtnLevelSelect";
+            this.BtnLevelSelect.Size = new System.Drawing.Size(83, 29);
+            this.BtnLevelSelect.TabIndex = 3;
+            this.BtnLevelSelect.Text = "Level Select";
+            this.BtnLevelSelect.UseVisualStyleBackColor = true;
+            // 
+            // BtnHint
+            // 
+            this.BtnHint.Location = new System.Drawing.Point(494, 28);
+            this.BtnHint.Name = "BtnHint";
+            this.BtnHint.Size = new System.Drawing.Size(83, 29);
+            this.BtnHint.TabIndex = 4;
+            this.BtnHint.Text = "Hint";
+            this.BtnHint.UseVisualStyleBackColor = true;
+            // 
             // Dictionary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.HomePn);
-            this.Controls.Add(this.panel_WordDefinition);
+            this.Controls.Add(this.PnConnectWord);
             this.Controls.Add(this.ListCharacterPn);
             this.Controls.Add(this.Header);
             this.Controls.Add(this.SavedWordPn);
+            this.Controls.Add(this.HomePn);
+            this.Controls.Add(this.panel_WordDefinition);
             this.Name = "Dictionary";
             this.Text = "Từ điển";
             this.Load += new System.EventHandler(this.Dictionary_Load);
@@ -1619,6 +1730,8 @@ namespace Dictionary
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
             this.panel15.ResumeLayout(false);
+            this.PnConnectWord.ResumeLayout(false);
+            this.PnLetterHolder.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1737,6 +1850,15 @@ namespace Dictionary
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Panel PnConnectWord;
+        private System.Windows.Forms.Panel PnLetterHolder;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.TableLayoutPanel PnResult;
+        private System.Windows.Forms.Button BtnHint;
+        private System.Windows.Forms.Button BtnLevelSelect;
+        private System.Windows.Forms.Button BtnExit;
     }
 }
 

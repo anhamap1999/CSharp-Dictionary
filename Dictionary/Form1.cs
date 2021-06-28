@@ -35,10 +35,12 @@ namespace Dictionary
             Load_Data();
             Load_Dictionary();
             Generate_Letter_Buttons();
+            WordConnet_load();
         }
 
         DataTable tableWord = new DataTable();
         DataTable tableDefinition = new DataTable();
+        DataTable tableConnectWord = new DataTable();
 
         Dictionary<char, Button> letterButtons = new Dictionary<char, Button>();
         char selectedChar = Char.Parse("a");
@@ -46,7 +48,7 @@ namespace Dictionary
         string searchText = "";
 
         void Load_Data()
-        {
+        {       
             tableWord.Columns.Add("word", typeof(string));
             tableWord.Columns.Add("spelling", typeof(string));
             StreamReader sr = new StreamReader("D:\\Dictionary\\anhviet109K.txt");
@@ -423,5 +425,118 @@ namespace Dictionary
         {
             handle_Word_Event(sender, "click");
         }
+
+        int level = 1;
+        void WordConnet_load(int level)
+        {
+            //string[] vowel = { "A", "E", "I", "O", "U" };
+            //string[] consonant = { "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T","Y", "V", "W", "X", "Z" };
+            //Random rnd = new Random();
+            //string[] letters = new string[3];   
+            //for(int i = 0; i<3; i++)
+            //{
+            //    if (i == 0)
+            //    {
+            //        letters[i] = vowel[rnd.Next(0, 4)];
+            //        continue;
+            //    }
+            //    else letters[i] = consonant[rnd.Next(0, 20)];
+            //    if (letters[i] == letters[i-1])
+            //    {
+            //        letters[i] = consonant[rnd.Next(0, 20)];
+            //    }
+            //}
+            //Console.WriteLine(letters[0]);
+            //Console.WriteLine(letters[1]);
+            //Console.WriteLine(letters[2]);
+            ////foreach (var v in Permutations(letters))
+            ////    Console.WriteLine(string.Join(",", v)); // Print values separated by comma
+            ////var combinations = Combinations(0, 2, letters);
+
+            ////foreach (var item in combinations)
+            ////    Console.WriteLine(item);
+
+            //string[] randomArr = new string[] { "O", "E", "B", "R" };
+            //List<string[]> combinations = new List<string[]>();
+
+            //var combinations2 = Combinations(0, 2, randomArr);
+            //var combinations3 = Combinations(0, 3, randomArr);
+
+            //foreach (string item in combinations2)
+            //{
+            //    combinations.Add(item.Split(' '));
+            //}
+            //foreach (string item in combinations3)
+            //{
+            //    combinations.Add(item.Split(' '));
+            //}
+            //combinations.Add(randomArr);
+            //List<string> permutationsResult = new List<string>();
+            //foreach (string[] i in combinations)
+            //    foreach (var v in Permutations(i))
+            //        permutationsResult.Add(string.Join("", v));
+            //foreach(string w in permutationsResult)
+            //{
+            //    DataRow row = tableConnectWord.Select("word ='" + w + "'").FirstOrDefault();
+            //    if(row != null)
+            //        Console.WriteLine(row[0].ToString());
+            //}
+            tableConnectWord.Columns.Add("letters", typeof(string));
+            tableConnectWord.Columns.Add("answer", typeof(string));
+            string[] lines = System.IO.File.ReadAllLines("D:\\Dictionary\\ConnectWord.txt");
+            foreach (string line in lines)
+            {
+                string[] str = line.Split(':');
+                tableConnectWord.Rows.Add(str[0], str[1]);
+            }
+            foreach (DataRow dataRow in tableConnectWord.Rows)
+            {
+                foreach (var item in dataRow.ItemArray)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+ 
+        }
+
+
+        //private static IEnumerable<string> Combinations(int start, int level, string[] array)
+        //{
+        //    for (int i = start; i < array.Length; i++)
+        //        if (level == 1)
+        //            yield return array[i];
+        //        else
+        //            foreach (string combination in Combinations(i + 1, level - 1, array))
+        //                yield return String.Format("{0} {1}", array[i], combination);
+        //}
+
+        //public static IEnumerable<T[]> Permutations<T>(T[] values, int fromInd = 0)
+        //{
+        //    if (fromInd + 1 == values.Length)
+        //        yield return values;
+        //    else
+        //    {
+        //        foreach (var v in Permutations(values, fromInd + 1))
+        //            yield return v;
+
+        //        for (var i = fromInd + 1; i < values.Length; i++)
+        //        {
+        //            SwapValues(values, fromInd, i);
+        //            foreach (var v in Permutations(values, fromInd + 1))
+        //                yield return v;
+        //            SwapValues(values, fromInd, i);
+        //        }
+        //    }
+        //}
+
+        //private static void SwapValues<T>(T[] values, int pos1, int pos2)
+        //{
+        //    if (pos1 != pos2)
+        //    {
+        //        T tmp = values[pos1];
+        //        values[pos1] = values[pos2];
+        //        values[pos2] = tmp;
+        //    }
+        //}
     }
 }
