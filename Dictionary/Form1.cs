@@ -871,7 +871,6 @@ namespace Dictionary
         void PnSaveWord_Load()
         {
             SavedWordPn.BringToFront();
-            Console.WriteLine(savedWords.Count);
             SavedWordPn.Controls.Clear();
             Label Title = new Label();
             Title.Text = "Danh sách từ mới";
