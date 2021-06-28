@@ -83,6 +83,16 @@ namespace Dictionary.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cyan_02 {
+            get {
+                object obj = ResourceManager.GetObject("cyan-02", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dot {
             get {
                 object obj = ResourceManager.GetObject("dot", resourceCulture);
@@ -136,6 +146,16 @@ namespace Dictionary.Properties {
         internal static System.Drawing.Bitmap unsaved {
             get {
                 object obj = ResourceManager.GetObject("unsaved", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Whitecircle_02 {
+            get {
+                object obj = ResourceManager.GetObject("Whitecircle-02", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
