@@ -60,6 +60,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WordDefinition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WordDefinition.Designer.cs">
+      <DependentUpon>WordDefinition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WordExample.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WordExample.Designer.cs">
+      <DependentUpon>WordExample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WordType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WordType.Designer.cs">
+      <DependentUpon>WordType.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -76,6 +94,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WordDefinition.resx">
+      <DependentUpon>WordDefinition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WordExample.resx">
+      <DependentUpon>WordExample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WordType.resx">
+      <DependentUpon>WordType.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -125,6 +152,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\output-onlinegiftools %281%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unsaved.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saved.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

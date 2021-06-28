@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using System.IO;
 using System.Net;
+using System.Text.RegularExpressions;
 
 namespace Dictionary
 {
@@ -35,15 +36,19 @@ namespace Dictionary
             Load_Data();
             Load_Dictionary();
             Generate_Letter_Buttons();
+            HomePn.BringToFront();
         }
 
         DataTable tableWord = new DataTable();
         DataTable tableDefinition = new DataTable();
 
         Dictionary<char, Button> letterButtons = new Dictionary<char, Button>();
+        Dictionary<char, DataRow[]> letterWordList = new Dictionary<char, DataRow[]>();
         char selectedChar = Char.Parse("a");
 
         string searchText = "";
+
+        List<string> savedWords = new List<string>() { "nightfall", "vaccine", "outbreak" };
 
         void Load_Data()
         {
@@ -83,9 +88,10 @@ namespace Dictionary
                 {
                     if (str.StartsWith("@"))
                     {
-                        if (word != null)
+                        if (!string.IsNullOrWhiteSpace(word))
                         {
-                            tableDefinition.Rows.Add(word, type, definition, synonym, explain, examples);
+                            List<Dictionary<string, string>> cloneArray = new List<Dictionary<string, string>>(examples);
+                            tableDefinition.Rows.Add(word, type, definition, synonym, explain, cloneArray);
                             word = null;
                             type = null;
                             definition = null;
@@ -111,24 +117,50 @@ namespace Dictionary
                             spelling = "";
                         }
                         tableWord.Rows.Add(word, spelling);
+                        //if (!string.IsNullOrWhiteSpace(word))
+                        //{
+                        //        if (!letterWordList.ContainsKey(word.ToLower()[0]))
+                        //    {
+                        //        List<DataRow> rows = new List<DataRow>();
+                        //        rows.Add(tableWord.Rows[tableWord.Rows.Count - 1]);
+                        //        List<DataRow> cloneArr = new List<DataRow>(rows);
+                        //        letterWordList.Add(word.ToLower()[0], cloneArr.ToArray());
+                        //    }
+                        //    else
+                        //    {
+                        //        List<DataRow> rows = letterWordList[word.ToLower()[0]].ToList();
+                        //        rows.Add(tableWord.Rows[tableWord.Rows.Count - 1]);
+                        //        List<DataRow> cloneArr = new List<DataRow>(rows);
+                        //        letterWordList[word.ToLower()[0]] = cloneArr.ToArray();
+                        //    }
+                        //}
+
+                        type = null;
                     }
                     else if (str.StartsWith("*"))
                     {
                         if (type != null)
                         {
-                            tableDefinition.Rows.Add(word, type, definition, synonym, explain, examples);
+                            List<Dictionary<string, string>> cloneArray = new List<Dictionary<string, string>>(examples);
+                            tableDefinition.Rows.Add(word, type, definition, synonym, explain, cloneArray);
                             examples.Clear();
                         }
                         type = str.Remove(0, 1).Trim();
+                        definition = null;
+                        synonym = null;
+                        explain = null;
                     }
                     else if (str.StartsWith("-"))
                     {
                         if (definition != null)
                         {
-                            tableDefinition.Rows.Add(word, type, definition, synonym, explain, examples);
+                            List<Dictionary<string, string>> cloneArray = new List<Dictionary<string, string>>(examples);
+                            tableDefinition.Rows.Add(word, type, definition, synonym, explain, cloneArray);
                             examples.Clear();
                         }
                         definition = str.Remove(0, 1).Trim();
+                        synonym = null;
+                        explain = null;
                     }
                     else if (str.StartsWith("!"))
                     {
@@ -150,7 +182,8 @@ namespace Dictionary
                             example["example"] = str.Remove(0, 1).Trim();
                             example["explain"] = "";
                         }
-                        examples.Add(example);
+                        Dictionary<string, string> cloneExample = new Dictionary<string, string>(example);
+                        examples.Add(cloneExample);
                     }
                 }
             }
@@ -162,13 +195,13 @@ namespace Dictionary
             Random rnd = new Random();
             int _rnd = rnd.Next(tableWord.Rows.Count);
             string word = tableWord.Rows[_rnd][0].ToString();
-            while (!Check_Url_Valid("https://ssl.gstatic.com/dictionary/static/sounds/oxford/" + word + "--_gb_1.mp3"))
-            {
-                _rnd = rnd.Next(tableWord.Rows.Count);
-                word = tableWord.Rows[_rnd][0].ToString();
-            }
-            WoDlb.Text = word;
-            WoDSpellingLb.Text = tableWord.Rows[_rnd][1].ToString();
+            //while (!Check_Url_Valid("https://ssl.gstatic.com/dictionary/static/sounds/oxford/" + word + "--_gb_1.mp3"))
+            //{
+            //    _rnd = rnd.Next(tableWord.Rows.Count);
+            //    word = tableWord.Rows[_rnd][0].ToString();
+            //}
+            NWLb.Text = word;
+            NWDPhoneticLb.Text = tableWord.Rows[_rnd][1].ToString();
             DataRow r = tableDefinition.Select("word = '" + word + "'").FirstOrDefault();
             //DataRow[] r = tableDefinition.Select("word LIKE 'alumna'");
             //foreach (DataRow row in r)
@@ -177,9 +210,21 @@ namespace Dictionary
 
             //}
             Console.WriteLine(r[0].ToString());
-            WoDTypeLb.Text = "(" + r[1].ToString() + ")";
-            WoDMeaningLb.Text = r[2].ToString();
+            NWWordTypeLb.Text = "(" + r[1].ToString() + ")";
+            string url = Search_Google(word);
+            PicOfWordPb.ImageLocation = url;
 
+            _rnd = rnd.Next(savedWords.Count);
+            while (!Check_Url_Valid("https://ssl.gstatic.com/dictionary/static/sounds/oxford/" + savedWords[_rnd] + "--_gb_1.mp3"))
+            {
+                _rnd = rnd.Next(savedWords.Count);
+            }
+            DataRow wordRow = tableWord.Select("word = '" + savedWords[_rnd] + "'").FirstOrDefault();
+            DataRow row = tableDefinition.Select("word = '" + savedWords[_rnd] + "'").FirstOrDefault();
+            WoDTypeLb.Text = "(" + row["type"].ToString() + ")";
+            WoDSpellingLb.Text = tableWord.Rows[_rnd]["spelling"].ToString();
+            WoDlb.Text = savedWords[_rnd];
+            WoDMeaningLb.Text = row["definition"].ToString();
         }
 
         void Generate_Letter_Buttons()
@@ -227,13 +272,23 @@ namespace Dictionary
             //loading.Location = new Point((this.Width - loading.Width) / 2, (this.Height - loading.Height) / 2);
             //loading.Show();
             char c = s[0];
-            if (letterButtons.FirstOrDefault(x => x.Key == c).Value == null)
+            if (letterButtons.FirstOrDefault(x => x.Key == c).Value != null)
             {
-                return;
+                //flow_WordsByLetter.Controls.Clear();
+                //return;
             }
             selectedChar = c;
             lb_SelectedLetter.Text = "#" + c.ToString().ToUpper();
 
+            //DataTable table = letterWordList[c].CopyToDataTable();
+            //List<DataRow> rows = new List<DataRow>();
+            //if (s.Length == 1)
+            //{
+            //    rows = table.Select().ToList();
+            //} else
+            //{
+            //    rows = table.Select("word LIKE '" + s + "%'").ToList();
+            //}
             DataRow[] wordList = tableWord.Select("word LIKE '" + s + "%'");
             int count = 0;
             flow_WordsByLetter.Controls.Clear();
@@ -249,6 +304,7 @@ namespace Dictionary
                 label.MouseMove += handle_Word_Mouse_Move;
                 label.MouseLeave += handle_Word_Mouse_Leave;
                 label.Click += handle_Word_Click;
+                label.TextAlign = ContentAlignment.MiddleLeft;
                 flow_WordsByLetter.Controls.Add(label);
                 count++;
                 if (count > 300)
@@ -301,9 +357,13 @@ namespace Dictionary
                 case "click":
                     if (c != selectedChar)
                     {
-                        letterButtons[selectedChar].BackColor = ColorTranslator.FromHtml("#303A63");
+                        if (letterButtons.FirstOrDefault(x => x.Key == selectedChar).Value != null)
+                        {
+                            letterButtons[selectedChar].BackColor = ColorTranslator.FromHtml("#303A63");
+                        }
                         letterButtons[c].BackColor = ColorTranslator.FromHtml("#8E83A6");
 
+                        HomePn.BringToFront();
                         Render_Word_List_By_Letter(c.ToString());
                         selectedChar = c;
                     }
@@ -332,15 +392,32 @@ namespace Dictionary
             async Task<bool> UserKeepsTyping()
             {
                 string txt = SearchBox.Text;
-                await Task.Delay(300);
+                if (!string.IsNullOrWhiteSpace(txt))
+                {
+                    await Task.Delay(500);
+                } else
+                {
+                    await Task.Delay(0);
+                }
                 return txt != SearchBox.Text;
             }
             if (await UserKeepsTyping()) return;
-            if (searchText != SearchBox.Text && searchText != "Search some word...")
+            if (searchText != SearchBox.Text && SearchBox.Text != "Search some word...")
             {
                 if (!string.IsNullOrWhiteSpace(SearchBox.Text))
                 {
-                    Render_Word_List_By_Letter(SearchBox.Text);
+                    if (letterButtons.FirstOrDefault(x => x.Key == selectedChar).Value != null)
+                    {
+                        letterButtons[selectedChar].BackColor = ColorTranslator.FromHtml("#303A63");
+                    }
+                    if (letterButtons.FirstOrDefault(x => x.Key == SearchBox.Text.ToLower()[0]).Value != null)
+                    {
+                        letterButtons[SearchBox.Text.ToLower()[0]].BackColor = ColorTranslator.FromHtml("#8E83A6");
+                    }
+
+                    HomePn.BringToFront();
+                    Render_Word_List_By_Letter(SearchBox.Text.ToLower());
+                    //selectedChar = SearchBox.Text.ToLower()[0];
                 }
                 else
                 {
@@ -352,11 +429,27 @@ namespace Dictionary
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-            if (searchText != SearchBox.Text && searchText != "Search some word...")
+            if (SearchBox.Text != "Search some word...")
             {
                 if (!string.IsNullOrWhiteSpace(SearchBox.Text))
                 {
-                    Render_Word_List_By_Letter(SearchBox.Text);
+                    if (selectedChar != SearchBox.Text.ToLower()[0])
+                    {
+                        if (letterButtons.FirstOrDefault(x => x.Key == selectedChar).Value != null)
+                        {
+                            letterButtons[selectedChar].BackColor = ColorTranslator.FromHtml("#303A63");
+                        }
+                        if (letterButtons.FirstOrDefault(x => x.Key == SearchBox.Text.ToLower()[0]).Value != null)
+                        {
+                            letterButtons[SearchBox.Text.ToLower()[0]].BackColor = ColorTranslator.FromHtml("#8E83A6");
+                        }
+
+                        Render_Word_List_By_Letter(SearchBox.Text.ToLower());
+                        //selectedChar = SearchBox.Text.ToLower()[0];
+                    }
+
+                    panel_WordDefinition.BringToFront();
+                    Render_Word_Click(SearchBox.Text.ToLower());
                 }
                 else
                 {
@@ -368,16 +461,33 @@ namespace Dictionary
 
         private void SearchBox_Enter(object sender, EventArgs e)
         {
-            if (SearchBox.Text == "Search some word...")
-            {
-                SearchBox.Text = "";
-                SearchBox.ForeColor = Color.Black;
-            }
-            if (searchText != SearchBox.Text && searchText != "Search some word...")
+            //if (SearchBox.Text == "Search some word...")
+            //{
+            //    searchText = "";
+            //    SearchBox.Text = "";
+            //    SearchBox.ForeColor = Color.Black;
+            //}
+            if (SearchBox.Text != "Search some word...")
             {
                 if (!string.IsNullOrWhiteSpace(SearchBox.Text))
                 {
-                    Render_Word_List_By_Letter(SearchBox.Text);
+                    if (selectedChar != SearchBox.Text.ToLower()[0])
+                    {
+                        if (letterButtons.FirstOrDefault(x => x.Key == selectedChar).Value != null)
+                        {
+                            letterButtons[selectedChar].BackColor = ColorTranslator.FromHtml("#303A63");
+                        }
+                        if (letterButtons.FirstOrDefault(x => x.Key == SearchBox.Text.ToLower()[0]).Value != null)
+                        {
+                            letterButtons[SearchBox.Text.ToLower()[0]].BackColor = ColorTranslator.FromHtml("#8E83A6");
+                        }
+
+                        Render_Word_List_By_Letter(SearchBox.Text.ToLower());
+                        //selectedChar = SearchBox.Text.ToLower()[0];
+                    }
+
+                    panel_WordDefinition.BringToFront();
+                    Render_Word_Click(SearchBox.Text.ToLower());
                 }
                 else
                 {
@@ -404,6 +514,8 @@ namespace Dictionary
                 case "click":
                     //
                     //
+                    panel_WordDefinition.BringToFront();
+                    Render_Word_Click(label.Text);
 
                     break;
                 default:
@@ -422,6 +534,221 @@ namespace Dictionary
         void handle_Word_Click(object sender, EventArgs e)
         {
             handle_Word_Event(sender, "click");
+        }
+
+        void Render_Word_Click(string word)
+        {
+            label_ViewWord.Text = "";
+            label_WordSpelling.Text = "";
+            DataRow[] rows = (from row in tableWord.AsEnumerable()
+                             where row["word"].ToString() == word
+                             select row).ToArray();
+            if (rows.Length == 0)
+            {
+                panel_WordNotFound.BringToFront();
+                return;
+            } else
+            {
+                panel_WordNotFound.SendToBack();
+            }
+
+            label_ViewWord.Text = word;
+            label_WordSpelling.Text = rows[0]["spelling"].ToString();
+
+            if (savedWords.FindIndex(x => x == word) >= 0)
+            {
+                pic_WordSave.BackgroundImage = global::Dictionary.Properties.Resources.saved;
+            } else
+            {
+                pic_WordSave.BackgroundImage = global::Dictionary.Properties.Resources.unsaved;
+            }
+
+            pic_WordAudio.Location = new Point(label_WordSpelling.Location.X + label_WordSpelling.Width + 40, pic_WordAudio.Location.Y);
+            var data = from row in tableDefinition.AsEnumerable()
+                       where row["word"].ToString() == word
+                       group row by new { type = row["type"].ToString() } into newRow
+                       select newRow;
+
+            flow_WordType.Height = 0;
+            flow_WordType.Controls.Clear();
+            foreach (var item in data.ToList())
+            {
+                string type = item.Key.type;
+                WordType wordType = new WordType(type, item.ToList(), flow_WordType.Width);
+                wordType.WordClick += Handle_Word_Click;
+                flow_WordType.Controls.Add(wordType);
+                flow_WordType.Height += wordType.Height + 5;
+            }
+        }
+
+        private void pic_WordAudio_Click(object sender, EventArgs e)
+        {
+            SoundPlayer.URL = "https://ssl.gstatic.com/dictionary/static/sounds/oxford/" + label_ViewWord.Text + "--_gb_1.mp3";
+        }
+
+        private void pic_WordSave_Click(object sender, EventArgs e)
+        {
+            int index = savedWords.FindIndex(x => x == label_ViewWord.Text);
+            if (index >= 0)
+            {
+                savedWords.RemoveAt(index);
+                pic_WordSave.BackgroundImage = global::Dictionary.Properties.Resources.unsaved;
+            }
+            else
+            {
+                savedWords.Add(label_ViewWord.Text);
+                pic_WordSave.BackgroundImage = global::Dictionary.Properties.Resources.saved;
+            }
+        }
+
+        private void SearchBox_Click(object sender, EventArgs e)
+        {
+            if (SearchBox.Text == "Search some word...")
+            {
+                searchText = "";
+                SearchBox.Text = "";
+                SearchBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void SearchBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (SearchBox.Text != "Search some word...")
+                {
+                    if (!string.IsNullOrWhiteSpace(SearchBox.Text))
+                    {
+                        if (selectedChar != SearchBox.Text.ToLower()[0])
+                        {
+                            if (letterButtons.FirstOrDefault(x => x.Key == selectedChar).Value != null)
+                            {
+                                letterButtons[selectedChar].BackColor = ColorTranslator.FromHtml("#303A63");
+                            }
+                            if (letterButtons.FirstOrDefault(x => x.Key == SearchBox.Text.ToLower()[0]).Value != null)
+                            {
+                                letterButtons[SearchBox.Text.ToLower()[0]].BackColor = ColorTranslator.FromHtml("#8E83A6");
+                            }
+
+                            Render_Word_List_By_Letter(SearchBox.Text.ToLower());
+                            //selectedChar = SearchBox.Text.ToLower()[0];
+                        }
+
+                        panel_WordDefinition.BringToFront();
+                        Render_Word_Click(SearchBox.Text.ToLower());
+                    }
+                    else
+                    {
+                        Render_Word_List_By_Letter(selectedChar.ToString());
+                    }
+                }
+                searchText = SearchBox.Text;
+            }
+        }
+
+        void Handle_Word_Click(object sender, EventArgs e)
+        {
+            Label label = (Label)sender;
+            string word = label.Text;
+            word = Regex.Replace(word, @"(?<=[\.!\?])\s+", "");
+            if (!string.IsNullOrWhiteSpace(word))
+            {
+                //if (selectedChar != word.ToLower()[0])
+                //{
+                //    if (letterButtons.FirstOrDefault(x => x.Key == selectedChar).Value != null)
+                //    {
+                //        letterButtons[selectedChar].BackColor = ColorTranslator.FromHtml("#303A63");
+                //    }
+                //    if (letterButtons.FirstOrDefault(x => x.Key == word.ToLower()[0]).Value != null)
+                //    {
+                //        letterButtons[word.ToLower()[0]].BackColor = ColorTranslator.FromHtml("#8E83A6");
+                //    }
+
+                //    //Render_Word_List_By_Letter(word.ToLower()[0].ToString());
+                //    //selectedChar = SearchBox.Text.ToLower()[0];
+                //}
+
+                panel_WordDefinition.BringToFront();
+                Render_Word_Click(word.ToLower());
+            }
+        }
+
+        private void pic_WordSave_MouseMove(object sender, MouseEventArgs e)
+        {
+            int index = savedWords.FindIndex(x => x == label_ViewWord.Text);
+            if (index < 0)
+            {
+                pic_WordSave.BackgroundImage = global::Dictionary.Properties.Resources.saved;
+            }
+        }
+
+        private void pic_WordSave_MouseLeave(object sender, EventArgs e)
+        {
+            int index = savedWords.FindIndex(x => x == label_ViewWord.Text);
+            if (index < 0)
+            {
+                pic_WordSave.BackgroundImage = global::Dictionary.Properties.Resources.unsaved;
+            }
+        }
+
+        private void Logolb_Click(object sender, EventArgs e)
+        {
+            HomePn.BringToFront();
+        }
+
+        string Search_Google(string word)
+        {
+            WebRequest request = WebRequest.Create("https://www.google.com/search?tbm=isch&q=" + word);
+            // If required by the server, set the credentials.
+            request.Credentials = CredentialCache.DefaultCredentials;
+            // Get the response.
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            // Display the status.
+            Console.WriteLine(response.StatusDescription);
+            // Get the stream containing content returned by the server.
+            Stream dataStream = response.GetResponseStream();
+            // Open the stream using a StreamReader for easy access.
+            StreamReader reader = new StreamReader(dataStream);
+            // Read the content.
+            string responseFromServer = reader.ReadToEnd();
+            // Display the content.
+            Console.WriteLine(responseFromServer);
+            // Cleanup the streams and the response.
+            reader.Close();
+            dataStream.Close();
+            response.Close();
+
+            int firstIndex = responseFromServer.IndexOf("<img");
+            int nextIndex = responseFromServer.IndexOf("<img", firstIndex + 1);
+            int startIndex = responseFromServer.IndexOf("src=\"", nextIndex + 1);
+            DateTime time = DateTime.Now;
+            if (startIndex >= 0)
+            {
+                int endIndex = responseFromServer.IndexOf("\"", startIndex + 5);
+
+                string url = responseFromServer.Substring(startIndex + 5, endIndex - startIndex - 5);
+                return url;
+                //using (WebClient client = new WebClient())
+                //{
+                //    //client.DownloadFile(new Uri(url), @"D:\Dictionary\" + word + "-" + time.ToString() + ".png");
+                //    //client.DownloadFile(new Uri(url), "D:\\Dictionary\\" + word + ".png");
+                //    // OR 
+                //    client.DownloadFileAsync(new Uri(url), "D:\\Dictionary\\" + word + ".png");
+
+                //    //var image = Directory.GetFiles("D:\\Dictionary\\" + word + ".png");
+                //}
+            }
+            return "";
+        }
+
+        private void WoDlb_Click(object sender, EventArgs e)
+        {
+            Handle_Word_Click(sender, e);
+        }
+
+        private void NWLb_Click(object sender, EventArgs e)
+        {
+            Handle_Word_Click(sender, e);
         }
     }
 }

@@ -83,6 +83,16 @@ namespace Dictionary.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dot {
+            get {
+                object obj = ResourceManager.GetObject("dot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap loupe {
             get {
                 object obj = ResourceManager.GetObject("loupe", resourceCulture);
@@ -106,6 +116,26 @@ namespace Dictionary.Properties {
         internal static System.Drawing.Bitmap output_onlinegiftools__1_ {
             get {
                 object obj = ResourceManager.GetObject("output-onlinegiftools (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap saved {
+            get {
+                object obj = ResourceManager.GetObject("saved", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unsaved {
+            get {
+                object obj = ResourceManager.GetObject("unsaved", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
