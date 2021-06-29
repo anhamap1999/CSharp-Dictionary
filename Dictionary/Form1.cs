@@ -37,6 +37,8 @@ namespace Dictionary
             Load_Dictionary();
             Generate_Letter_Buttons();
             HomePn.BringToFront();
+            PnToeicWords_Load();
+
             //WordConnet_load();
         }
 
@@ -50,6 +52,7 @@ namespace Dictionary
         string searchText = "";
 
         List<string> savedWords = new List<string>() { "nightfall", "vaccine", "outbreak","happy","abnormal" };
+        List<string> ToeicWordsList = new List<string>();
         DataTable tableConnectWord = new DataTable();
 
         void Load_Data()
@@ -190,6 +193,8 @@ namespace Dictionary
                 }
             }
             sr.Close();
+            string contents = File.ReadAllText(@"D:\Dictionary\toeic_words.txt");
+            ToeicWordsList = contents.Split(' ').OrderBy(q => q).ToList();
         }
 
         void Load_Dictionary()
@@ -915,5 +920,52 @@ namespace Dictionary
         {
             PnSaveWord_Load();
         }
+        private void WordListBtn_Click(object sender, EventArgs e)
+        {
+            PnToeicWords.BringToFront();
+        }
+
+        void PnToeicWords_Load()
+        {
+            
+            flowToeicWords.Controls.Clear();
+            for (char letter = 'a'; letter <= 'z'; letter++)
+            {
+                Panel Container = new Panel();
+                Container.AutoSize = true;
+                flowToeicWords.Controls.Add(Container);
+                Label Title = new Label();
+                Title.AutoSize = true;
+                Title.Text = letter.ToString().ToUpper();
+                Title.Margin = new Padding(3);
+                Title.Font = new Font("Roboto", 22);
+                Title.ForeColor = Color.FromArgb(15, 23, 59);
+                Title.Location = new Point(3, 1);
+                Container.Controls.Add(Title);
+                FlowLayoutPanel WordsContainer = new FlowLayoutPanel();
+                WordsContainer.AutoSize = true;
+                //WordsContainer.Size = new Size(990, 100);
+                WordsContainer.MaximumSize = new Size(996, int.MaxValue);
+                WordsContainer.Location = new Point(2, 38);
+                Container.Controls.Add(WordsContainer);
+                foreach(string w in ToeicWordsList)
+                {
+                    if (w.StartsWith(letter.ToString()))
+                    {
+                        Label TWords = new Label();
+                        TWords.AutoSize = true;
+                        TWords.Cursor = Cursors.Hand;
+                        TWords.Text = w;
+                        TWords.Click += Handle_Word_Click;
+                        TWords.Margin = new Padding(5);
+                        TWords.Font = new Font("Roboto Light", 16);
+                        TWords.ForeColor = Color.FromArgb(15, 23, 59);
+                        WordsContainer.Controls.Add(TWords);
+                    }                 
+                }
+            }
+        }
+
+
     }
 }

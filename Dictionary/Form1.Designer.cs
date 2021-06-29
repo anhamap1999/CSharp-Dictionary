@@ -38,6 +38,7 @@ namespace Dictionary
             this.Logo = new System.Windows.Forms.Panel();
             this.Logolb = new System.Windows.Forms.Label();
             this.SearchBoxPn = new System.Windows.Forms.Panel();
+            this.SearchBtn = new System.Windows.Forms.Button();
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.ListCharacterPn = new System.Windows.Forms.Panel();
             this.Khonggica2 = new System.Windows.Forms.Panel();
@@ -76,6 +77,7 @@ namespace Dictionary
             this.label7 = new System.Windows.Forms.Label();
             this.lb_SelectedLetter = new System.Windows.Forms.Label();
             this.WordOfDayPn = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.WodMeaningPn = new System.Windows.Forms.Panel();
             this.WoDMeaningLb = new System.Windows.Forms.Label();
             this.TUCUANGAYLb = new System.Windows.Forms.Label();
@@ -92,11 +94,15 @@ namespace Dictionary
             this.NWLb = new System.Windows.Forms.Label();
             this.NWDPhoneticLb = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.PicOfWordPb = new System.Windows.Forms.PictureBox();
             this.SavedWordPn = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.HomePn = new System.Windows.Forms.Panel();
             this.SoundPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel_WordDefinition = new System.Windows.Forms.Panel();
+            this.pic_WordSave = new System.Windows.Forms.PictureBox();
+            this.pic_WordAudio = new System.Windows.Forms.PictureBox();
             this.label_WordSpelling = new System.Windows.Forms.Label();
             this.label_ViewWord = new System.Windows.Forms.Label();
             this.flow_WordType = new System.Windows.Forms.FlowLayoutPanel();
@@ -108,15 +114,14 @@ namespace Dictionary
             this.BtnExit = new System.Windows.Forms.Button();
             this.PnResult = new System.Windows.Forms.TableLayoutPanel();
             this.PnLetterHolder = new System.Windows.Forms.Panel();
-            this.SearchBtn = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.PicOfWordPb = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pic_WordSave = new System.Windows.Forms.PictureBox();
-            this.pic_WordAudio = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.PnToeicWords = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.LbSeperatorToeic = new System.Windows.Forms.Label();
+            this.LbToeicWords = new System.Windows.Forms.Label();
+            this.flowToeicWords = new System.Windows.Forms.FlowLayoutPanel();
             this.Header.SuspendLayout();
             this.Logo.SuspendLayout();
             this.SearchBoxPn.SuspendLayout();
@@ -126,16 +131,17 @@ namespace Dictionary
             this.WodMeaningPn.SuspendLayout();
             this.WodContainerPn.SuspendLayout();
             this.NewWordPn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicOfWordPb)).BeginInit();
             this.SavedWordPn.SuspendLayout();
             this.HomePn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SoundPlayer)).BeginInit();
             this.panel_WordDefinition.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_WordSave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_WordAudio)).BeginInit();
             this.panel_WordNotFound.SuspendLayout();
             this.PnConnectWord.SuspendLayout();
             this.PnLetterHolder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicOfWordPb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_WordSave)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_WordAudio)).BeginInit();
+            this.PnToeicWords.SuspendLayout();
             this.SuspendLayout();
             // 
             // Header
@@ -197,6 +203,7 @@ namespace Dictionary
             this.WordListBtn.TabIndex = 5;
             this.WordListBtn.Text = "Từ vựng";
             this.WordListBtn.UseVisualStyleBackColor = false;
+            this.WordListBtn.Click += new System.EventHandler(this.WordListBtn_Click);
             // 
             // SavedWordBtn
             // 
@@ -248,6 +255,20 @@ namespace Dictionary
             this.SearchBoxPn.Name = "SearchBoxPn";
             this.SearchBoxPn.Size = new System.Drawing.Size(442, 62);
             this.SearchBoxPn.TabIndex = 3;
+            // 
+            // SearchBtn
+            // 
+            this.SearchBtn.BackColor = System.Drawing.Color.White;
+            this.SearchBtn.BackgroundImage = global::Dictionary.Properties.Resources.loupe;
+            this.SearchBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchBtn.Location = new System.Drawing.Point(383, -1);
+            this.SearchBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(60, 64);
+            this.SearchBtn.TabIndex = 3;
+            this.SearchBtn.UseVisualStyleBackColor = false;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // SearchBox
             // 
@@ -832,6 +853,19 @@ namespace Dictionary
             this.WordOfDayPn.Size = new System.Drawing.Size(520, 290);
             this.WordOfDayPn.TabIndex = 6;
             // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::Dictionary.Properties.Resources.audio;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(243, 135);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 30);
+            this.button1.TabIndex = 17;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // WodMeaningPn
             // 
             this.WodMeaningPn.Controls.Add(this.WoDMeaningLb);
@@ -998,6 +1032,16 @@ namespace Dictionary
             this.label16.TabIndex = 12;
             this.label16.Text = "TỪ CỦA NGÀY";
             // 
+            // PicOfWordPb
+            // 
+            this.PicOfWordPb.Location = new System.Drawing.Point(8, 10);
+            this.PicOfWordPb.Margin = new System.Windows.Forms.Padding(0);
+            this.PicOfWordPb.Name = "PicOfWordPb";
+            this.PicOfWordPb.Size = new System.Drawing.Size(238, 252);
+            this.PicOfWordPb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicOfWordPb.TabIndex = 0;
+            this.PicOfWordPb.TabStop = false;
+            // 
             // SavedWordPn
             // 
             this.SavedWordPn.AutoScroll = true;
@@ -1009,6 +1053,17 @@ namespace Dictionary
             this.SavedWordPn.Name = "SavedWordPn";
             this.SavedWordPn.Size = new System.Drawing.Size(1264, 580);
             this.SavedWordPn.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.label1.Location = new System.Drawing.Point(113, 94);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(393, 2);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "label1";
             // 
             // label3
             // 
@@ -1062,6 +1117,34 @@ namespace Dictionary
             this.panel_WordDefinition.Size = new System.Drawing.Size(1264, 580);
             this.panel_WordDefinition.TabIndex = 7;
             // 
+            // pic_WordSave
+            // 
+            this.pic_WordSave.BackColor = System.Drawing.Color.Transparent;
+            this.pic_WordSave.BackgroundImage = global::Dictionary.Properties.Resources.unsaved;
+            this.pic_WordSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pic_WordSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pic_WordSave.Location = new System.Drawing.Point(21, 13);
+            this.pic_WordSave.Name = "pic_WordSave";
+            this.pic_WordSave.Size = new System.Drawing.Size(25, 25);
+            this.pic_WordSave.TabIndex = 4;
+            this.pic_WordSave.TabStop = false;
+            this.pic_WordSave.Click += new System.EventHandler(this.pic_WordSave_Click);
+            this.pic_WordSave.MouseLeave += new System.EventHandler(this.pic_WordSave_MouseLeave);
+            this.pic_WordSave.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pic_WordSave_MouseMove);
+            // 
+            // pic_WordAudio
+            // 
+            this.pic_WordAudio.BackColor = System.Drawing.Color.Transparent;
+            this.pic_WordAudio.BackgroundImage = global::Dictionary.Properties.Resources.audio;
+            this.pic_WordAudio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pic_WordAudio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pic_WordAudio.Location = new System.Drawing.Point(152, 48);
+            this.pic_WordAudio.Name = "pic_WordAudio";
+            this.pic_WordAudio.Size = new System.Drawing.Size(25, 25);
+            this.pic_WordAudio.TabIndex = 3;
+            this.pic_WordAudio.TabStop = false;
+            this.pic_WordAudio.Click += new System.EventHandler(this.pic_WordAudio_Click);
+            // 
             // label_WordSpelling
             // 
             this.label_WordSpelling.AutoSize = true;
@@ -1100,6 +1183,7 @@ namespace Dictionary
             // 
             this.panel_WordNotFound.AutoScroll = true;
             this.panel_WordNotFound.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel_WordNotFound.Controls.Add(this.label4);
             this.panel_WordNotFound.Controls.Add(this.label_WordNotFound);
             this.panel_WordNotFound.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel_WordNotFound.Location = new System.Drawing.Point(0, 100);
@@ -1112,12 +1196,12 @@ namespace Dictionary
             // 
             this.label_WordNotFound.AutoSize = true;
             this.label_WordNotFound.BackColor = System.Drawing.Color.Transparent;
-            this.label_WordNotFound.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_WordNotFound.Font = new System.Drawing.Font("Roboto", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_WordNotFound.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(40)))), ((int)(((byte)(85)))));
-            this.label_WordNotFound.Location = new System.Drawing.Point(50, 9);
+            this.label_WordNotFound.Location = new System.Drawing.Point(95, 40);
             this.label_WordNotFound.Margin = new System.Windows.Forms.Padding(1);
             this.label_WordNotFound.Name = "label_WordNotFound";
-            this.label_WordNotFound.Size = new System.Drawing.Size(223, 33);
+            this.label_WordNotFound.Size = new System.Drawing.Size(208, 35);
             this.label_WordNotFound.TabIndex = 1;
             this.label_WordNotFound.Text = "Không tìm thấy";
             // 
@@ -1192,20 +1276,6 @@ namespace Dictionary
             this.PnLetterHolder.Size = new System.Drawing.Size(344, 291);
             this.PnLetterHolder.TabIndex = 0;
             // 
-            // SearchBtn
-            // 
-            this.SearchBtn.BackColor = System.Drawing.Color.White;
-            this.SearchBtn.BackgroundImage = global::Dictionary.Properties.Resources.loupe;
-            this.SearchBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchBtn.Location = new System.Drawing.Point(383, -1);
-            this.SearchBtn.Margin = new System.Windows.Forms.Padding(0);
-            this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(60, 64);
-            this.SearchBtn.TabIndex = 3;
-            this.SearchBtn.UseVisualStyleBackColor = false;
-            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
-            // 
             // panel18
             // 
             this.panel18.BackgroundImage = global::Dictionary.Properties.Resources.cyan_02;
@@ -1233,67 +1303,61 @@ namespace Dictionary
             this.panel7.Size = new System.Drawing.Size(90, 81);
             this.panel7.TabIndex = 2;
             // 
-            // PicOfWordPb
+            // PnToeicWords
             // 
-            this.PicOfWordPb.Location = new System.Drawing.Point(8, 10);
-            this.PicOfWordPb.Margin = new System.Windows.Forms.Padding(0);
-            this.PicOfWordPb.Name = "PicOfWordPb";
-            this.PicOfWordPb.Size = new System.Drawing.Size(238, 252);
-            this.PicOfWordPb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicOfWordPb.TabIndex = 0;
-            this.PicOfWordPb.TabStop = false;
+            this.PnToeicWords.AutoScroll = true;
+            this.PnToeicWords.Controls.Add(this.flowToeicWords);
+            this.PnToeicWords.Controls.Add(this.LbSeperatorToeic);
+            this.PnToeicWords.Controls.Add(this.LbToeicWords);
+            this.PnToeicWords.Location = new System.Drawing.Point(0, 100);
+            this.PnToeicWords.Name = "PnToeicWords";
+            this.PnToeicWords.Size = new System.Drawing.Size(1264, 580);
+            this.PnToeicWords.TabIndex = 3;
             // 
-            // button1
+            // label4
             // 
-            this.button1.BackgroundImage = global::Dictionary.Properties.Resources.audio;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(243, 135);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 17;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(40)))), ((int)(((byte)(85)))));
+            this.label4.Location = new System.Drawing.Point(119, 87);
+            this.label4.Margin = new System.Windows.Forms.Padding(1);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(159, 19);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Tìm từ khác thử xem!";
             // 
-            // pic_WordSave
+            // LbSeperatorToeic
             // 
-            this.pic_WordSave.BackColor = System.Drawing.Color.Transparent;
-            this.pic_WordSave.BackgroundImage = global::Dictionary.Properties.Resources.unsaved;
-            this.pic_WordSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pic_WordSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic_WordSave.Location = new System.Drawing.Point(21, 13);
-            this.pic_WordSave.Name = "pic_WordSave";
-            this.pic_WordSave.Size = new System.Drawing.Size(25, 25);
-            this.pic_WordSave.TabIndex = 4;
-            this.pic_WordSave.TabStop = false;
-            this.pic_WordSave.Click += new System.EventHandler(this.pic_WordSave_Click);
-            this.pic_WordSave.MouseLeave += new System.EventHandler(this.pic_WordSave_MouseLeave);
-            this.pic_WordSave.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pic_WordSave_MouseMove);
+            this.LbSeperatorToeic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.LbSeperatorToeic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LbSeperatorToeic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.LbSeperatorToeic.Location = new System.Drawing.Point(113, 94);
+            this.LbSeperatorToeic.Name = "LbSeperatorToeic";
+            this.LbSeperatorToeic.Size = new System.Drawing.Size(393, 2);
+            this.LbSeperatorToeic.TabIndex = 4;
+            this.LbSeperatorToeic.Text = "label5";
             // 
-            // pic_WordAudio
+            // LbToeicWords
             // 
-            this.pic_WordAudio.BackColor = System.Drawing.Color.Transparent;
-            this.pic_WordAudio.BackgroundImage = global::Dictionary.Properties.Resources.audio;
-            this.pic_WordAudio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pic_WordAudio.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic_WordAudio.Location = new System.Drawing.Point(152, 48);
-            this.pic_WordAudio.Name = "pic_WordAudio";
-            this.pic_WordAudio.Size = new System.Drawing.Size(25, 25);
-            this.pic_WordAudio.TabIndex = 3;
-            this.pic_WordAudio.TabStop = false;
-            this.pic_WordAudio.Click += new System.EventHandler(this.pic_WordAudio_Click);
+            this.LbToeicWords.AutoSize = true;
+            this.LbToeicWords.Font = new System.Drawing.Font("Roboto", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbToeicWords.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.LbToeicWords.Location = new System.Drawing.Point(102, 50);
+            this.LbToeicWords.Name = "LbToeicWords";
+            this.LbToeicWords.Size = new System.Drawing.Size(251, 44);
+            this.LbToeicWords.TabIndex = 3;
+            this.LbToeicWords.Text = "Từ vựng Toeic";
             // 
-            // label1
+            // flowToeicWords
             // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
-            this.label1.Location = new System.Drawing.Point(113, 94);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(393, 2);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.flowToeicWords.AutoSize = true;
+            this.flowToeicWords.Cursor = System.Windows.Forms.Cursors.Default;
+            this.flowToeicWords.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowToeicWords.Location = new System.Drawing.Point(113, 110);
+            this.flowToeicWords.Name = "flowToeicWords";
+            this.flowToeicWords.Size = new System.Drawing.Size(999, 463);
+            this.flowToeicWords.TabIndex = 5;
             // 
             // Dictionary
             // 
@@ -1303,6 +1367,7 @@ namespace Dictionary
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.ListCharacterPn);
             this.Controls.Add(this.Header);
+            this.Controls.Add(this.PnToeicWords);
             this.Controls.Add(this.SavedWordPn);
             this.Controls.Add(this.PnConnectWord);
             this.Controls.Add(this.HomePn);
@@ -1327,19 +1392,21 @@ namespace Dictionary
             this.WodContainerPn.ResumeLayout(false);
             this.NewWordPn.ResumeLayout(false);
             this.NewWordPn.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicOfWordPb)).EndInit();
             this.SavedWordPn.ResumeLayout(false);
             this.SavedWordPn.PerformLayout();
             this.HomePn.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SoundPlayer)).EndInit();
             this.panel_WordDefinition.ResumeLayout(false);
             this.panel_WordDefinition.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_WordSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_WordAudio)).EndInit();
             this.panel_WordNotFound.ResumeLayout(false);
             this.panel_WordNotFound.PerformLayout();
             this.PnConnectWord.ResumeLayout(false);
             this.PnLetterHolder.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PicOfWordPb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_WordSave)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_WordAudio)).EndInit();
+            this.PnToeicWords.ResumeLayout(false);
+            this.PnToeicWords.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1433,6 +1500,11 @@ namespace Dictionary
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel PnToeicWords;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label LbSeperatorToeic;
+        private System.Windows.Forms.Label LbToeicWords;
+        private System.Windows.Forms.FlowLayoutPanel flowToeicWords;
     }
 }
 
