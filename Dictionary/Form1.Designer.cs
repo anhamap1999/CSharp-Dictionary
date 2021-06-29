@@ -1274,11 +1274,11 @@ namespace Dictionary
             // PnToeicWords
             // 
             this.PnToeicWords.AutoScroll = true;
-            this.PnToeicWords.Controls.Add(this.PnToeicGame);
             this.PnToeicWords.Controls.Add(this.BtnToeicGame);
             this.PnToeicWords.Controls.Add(this.LbSeperatorToeic);
             this.PnToeicWords.Controls.Add(this.flowToeicWords);
             this.PnToeicWords.Controls.Add(this.LbToeicWords);
+            this.PnToeicWords.Controls.Add(this.PnToeicGame);
             this.PnToeicWords.Location = new System.Drawing.Point(0, 100);
             this.PnToeicWords.Name = "PnToeicWords";
             this.PnToeicWords.Size = new System.Drawing.Size(1264, 580);
@@ -1294,7 +1294,7 @@ namespace Dictionary
             this.BtnToeicGame.Name = "BtnToeicGame";
             this.BtnToeicGame.Size = new System.Drawing.Size(163, 45);
             this.BtnToeicGame.TabIndex = 6;
-            this.BtnToeicGame.Text = "Học Từ";
+            this.BtnToeicGame.Text = "Game Học Từ";
             this.BtnToeicGame.UseVisualStyleBackColor = false;
             this.BtnToeicGame.Click += new System.EventHandler(this.BtnToeicGame_Click);
             // 
