@@ -966,6 +966,9 @@ namespace Dictionary
             }
         }
 
-
+        private void DictionaryBtn_Click(object sender, EventArgs e)
+        {
+            HomePn.BringToFront();
+        }
     }
 }

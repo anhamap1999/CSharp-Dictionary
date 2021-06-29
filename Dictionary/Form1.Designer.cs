@@ -173,6 +173,7 @@ namespace Dictionary
             this.DictionaryBtn.TabIndex = 7;
             this.DictionaryBtn.Text = "Từ điển";
             this.DictionaryBtn.UseVisualStyleBackColor = false;
+            this.DictionaryBtn.Click += new System.EventHandler(this.DictionaryBtn_Click);
             // 
             // GameBtn
             // 
