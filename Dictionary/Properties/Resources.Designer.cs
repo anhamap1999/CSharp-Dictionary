@@ -91,12 +91,30 @@ namespace Dictionary.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Ding_Sound_Effect {
+            get {
+                return ResourceManager.GetStream("Ding_Sound_Effect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap dot {
             get {
                 object obj = ResourceManager.GetObject("dot", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream incorrect_sound_effect {
+            get {
+                return ResourceManager.GetStream("incorrect_sound_effect", resourceCulture);
             }
         }
         
@@ -136,6 +154,16 @@ namespace Dictionary.Properties {
         internal static System.Drawing.Bitmap saved {
             get {
                 object obj = ResourceManager.GetObject("saved", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Stage1 {
+            get {
+                object obj = ResourceManager.GetObject("Stage1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

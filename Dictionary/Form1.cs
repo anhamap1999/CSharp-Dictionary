@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Media;
 using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -19,7 +19,6 @@ namespace Dictionary
         public Dictionary()
         {
             InitializeComponent();
-            PicOfWordPb.ImageLocation = "https://cdn.britannica.com/22/206222-131-E921E1FB/Domestic-feline-tabby-cat.jpg";
         }
 
         private void SearchBox_Leave(object sender, EventArgs e)
@@ -339,7 +338,7 @@ namespace Dictionary
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SoundPlayer.URL = "https://ssl.gstatic.com/dictionary/static/sounds/oxford/" + WoDlb.Text + "--_gb_1.mp3";
+            AudioPlayer.URL = "https://ssl.gstatic.com/dictionary/static/sounds/oxford/" + WoDlb.Text + "--_gb_1.mp3";
         }
 
         void handle_Letter_Event(object sender, string type)
@@ -590,7 +589,7 @@ namespace Dictionary
 
         private void pic_WordAudio_Click(object sender, EventArgs e)
         {
-            SoundPlayer.URL = "https://ssl.gstatic.com/dictionary/static/sounds/oxford/" + label_ViewWord.Text + "--_gb_1.mp3";
+            AudioPlayer.URL = "https://ssl.gstatic.com/dictionary/static/sounds/oxford/" + label_ViewWord.Text + "--_gb_1.mp3";
         }
 
         private void pic_WordSave_Click(object sender, EventArgs e)
@@ -923,6 +922,8 @@ namespace Dictionary
         private void WordListBtn_Click(object sender, EventArgs e)
         {
             PnToeicWords.BringToFront();
+            PnToeicGame.Visible = false;
+            PnToeicWords.AutoScroll = true;
         }
 
         void PnToeicWords_Load()
@@ -969,6 +970,123 @@ namespace Dictionary
         private void DictionaryBtn_Click(object sender, EventArgs e)
         {
             HomePn.BringToFront();
+        }
+
+        private void BtnToeicGame_Click(object sender, EventArgs e)
+        {
+            PnToeicGame.Visible = true;
+            PnToeicGame.BringToFront();
+            PnToeicWords.AutoScroll = false;
+            ToeicGame_CreateQuestion();
+        }
+
+        void ToeicGame_CreateQuestion()
+        {
+            Random rnd = new Random();
+            string[] words = new string[4];
+            for (int j = 0; j < 4; j++)
+            {
+                int v;
+                do
+                {
+                    v = rnd.Next(ToeicWordsList.Count);
+                } while (ToeicWordsList[v] == words[j]);
+                words[j] = ToeicWordsList[v];
+            }
+            PnToeicQuest.Controls.Clear();
+            FlowAnswerContainer.Controls.Clear();
+            Label QuestWord = new Label();
+            QuestWord.Text = words[0].ToUpper();
+            QuestWord.Font = new Font("Roboto Condensed", 30);
+            QuestWord.AutoSize = false;
+            QuestWord.Dock = DockStyle.Fill;
+            QuestWord.TextAlign = ContentAlignment.MiddleCenter;
+            PnToeicQuest.Controls.Add(QuestWord);
+            words = words.OrderBy(x => rnd.Next()).ToArray();
+            int CorrectAnswer = Array.FindIndex(words, x => x.Contains(QuestWord.Text.ToLower()));
+            for (int j = 0; j < 4; j++)
+            {
+                DataRow row = tableDefinition.Select("word ='" + words[j] + "'").FirstOrDefault();
+                if(row == null)
+                {
+                    ToeicGame_CreateQuestion();
+                    return;
+                }
+                Panel PnAnswer = new Panel();
+                PnAnswer.Margin = new Padding(0, 3, 0, 10);
+                PnAnswer.BackColor = Color.PowderBlue;
+                PnAnswer.Size = new Size(720, 85);
+                if(j == CorrectAnswer)
+                {
+                    PnAnswer.Tag = "true";
+                }
+                else PnAnswer.Tag = "false";
+                FlowAnswerContainer.Controls.Add(PnAnswer);
+                Label AnswerText = new Label();
+                char OrderLetter = (char)(j + 65);
+                AnswerText.Text = OrderLetter+".   " + row["definition"].ToString();
+                AnswerText.AutoSize = false;
+                AnswerText.Dock = DockStyle.Fill;
+                AnswerText.Font = new Font("Roboto Light", 18);
+                AnswerText.ForeColor = Color.FromArgb(15, 23, 59);
+                AnswerText.TextAlign = ContentAlignment.MiddleLeft;
+                AnswerText.Padding = new Padding(30, 5, 5, 5);
+                if (j == CorrectAnswer)
+                {
+                    AnswerText.Tag = "true";
+                }
+                else AnswerText.Tag = "false";
+                AnswerText.Click += Handle_Answer_Click;
+                PnAnswer.Controls.Add(AnswerText);
+            }
+        }
+        void Handle_Answer_Click(object sender, EventArgs e)
+        {
+            Label label = (Label)sender;
+            if(label.Tag.ToString() == "true")
+            {
+                Stream str = global::Dictionary.Properties.Resources.Ding_Sound_Effect;
+                SoundPlayer snd = new SoundPlayer(str);
+                snd.Play();
+                label.Parent.BackColor = Color.FromArgb(0, 139, 41);
+                label.ForeColor = Color.White;
+               
+                foreach (Panel c in FlowAnswerContainer.Controls.OfType<Panel>())
+                {                  
+                    Label L = c.Controls.OfType<Label>().First();
+                    L.Click -= Handle_Answer_Click;
+                }
+            }
+            else
+            {
+                label.Parent.BackColor = Color.FromArgb(209, 26, 42);
+                label.ForeColor = Color.White;
+                Stream str = global::Dictionary.Properties.Resources.incorrect_sound_effect;
+                SoundPlayer snd = new SoundPlayer(str);
+                snd.Play();
+                foreach (Panel c in FlowAnswerContainer.Controls.OfType<Panel>())
+                {
+                    if(c.Tag.ToString() == "true")
+                    {
+                        c.BackColor = Color.FromArgb(0, 139, 41);
+                        Label lb = c.Controls.OfType<Label>().First();
+                        lb.ForeColor = Color.White;
+                    }
+                    Label L = c.Controls.OfType<Label>().First();
+                    L.Click -= Handle_Answer_Click;
+                }
+            }
+        }
+        private void BtnNextQuest_Click(object sender, EventArgs e)
+        {
+            ToeicGame_CreateQuestion();
+        }
+
+        private void BtnToeicExit_Click(object sender, EventArgs e)
+        {
+            PnToeicGame.Visible = false;
+            PnToeicWords.BringToFront();
+            PnToeicWords.AutoScroll = true;
         }
     }
 }
