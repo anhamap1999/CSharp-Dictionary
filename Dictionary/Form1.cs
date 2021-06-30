@@ -11,6 +11,10 @@ using System.Windows.Forms;
 using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
+using AxWMPLib;
+using System.Drawing;
+using System.Media;
+
 
 namespace Dictionary
 {
@@ -38,6 +42,8 @@ namespace Dictionary
             Generate_Letter_Buttons();
             HomePn.BringToFront();
             //WordConnet_load();
+            Initialize_Game_Screen();
+            PnToeicWords_Load();
         }
 
         DataTable tableWord = new DataTable();
@@ -51,6 +57,14 @@ namespace Dictionary
 
         List<string> savedWords = new List<string>() { "nightfall", "vaccine", "outbreak" };
         DataTable tableConnectWord = new DataTable();
+
+        DataTable tableLevel = new DataTable();
+        int currentLevel = -1;
+        List<string> crossedWords = new List<string>();
+        bool crossing = false;
+        Panel startLetter = new Panel();
+
+        List<string> ToeicWordsList = new List<string>();
 
         void Load_Data()
         {
@@ -190,6 +204,8 @@ namespace Dictionary
                 }
             }
             sr.Close();
+            string contents = File.ReadAllText(@"D:\Dictionary\toeic_words.txt");
+            ToeicWordsList = contents.Split(' ').OrderBy(q => q).ToList();
         }
 
         void Load_Dictionary()
@@ -828,6 +844,362 @@ namespace Dictionary
 
         }
 
+        private void GameBtn_Click(object sender, EventArgs e)
+        {
+            PnConnectWord.BringToFront();
+
+            //Timer levelTimer = new Timer();
+            //levelTimer.Interval = 10;
+            //levelTimer.Tick += levelTimer_Tick;
+            //levelTimer.Start();
+        }
+
+        void Game_Update_Score()
+        {
+            if (currentLevel >= 0 && crossedWords.Count > 0)
+            {
+                int score = 0;
+                foreach (string word in crossedWords)
+                {
+                    score += word.Length;
+                }
+                float rate = (float)score / (int)tableLevel.Rows[currentLevel - 1]["maxScore"];
+                if (rate == 1)
+                {
+                    score = 3;
+                } else if (rate >= 0.6666)
+                {
+                    score = 2;
+                } else if (rate >= 0.3333)
+                {
+                    score = 1;
+                } else
+                {
+                    score = 0;
+                }
+
+                tableLevel.Rows[currentLevel - 1]["score"] = score;
+            }
+
+
+            currentLevel = -1;
+            crossedWords.Clear();
+
+            foreach (object item in panel_Level.Controls)
+            {
+                if (item is Panel)
+                {
+                    Panel panel = (Panel)item;
+                    if (panel.Name.Contains("star_Level"))
+                    {
+                        int level = Convert.ToInt32(panel.Name.Replace("star_Level", ""));
+
+                        switch ((int)tableLevel.Rows[level - 1]["score"])
+                        {
+                            case 0:
+                                panel.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
+                                break;
+                            case 1:
+                                panel.BackgroundImage = global::Dictionary.Properties.Resources.star_1;
+                                break;
+                            case 2:
+                                panel.BackgroundImage = global::Dictionary.Properties.Resources.star_2;
+                                break;
+                            case 3:
+                                panel.BackgroundImage = global::Dictionary.Properties.Resources.star_3;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+        void Initialize_Game_Screen()
+        {
+            this.KeyPreview = true;
+            tableLevel.Columns.Add("level", typeof(string));
+            tableLevel.Columns.Add("letters", typeof(string));
+            tableLevel.Columns.Add("words", typeof(string[]));
+            tableLevel.Columns.Add("score", typeof(int));
+            tableLevel.Columns.Add("maxScore", typeof(int));
+            StreamReader sr = new StreamReader("D:\\Dictionary\\ConnectWord.txt");
+            string str;
+            int level = 1;
+            while ((str = sr.ReadLine()) != null)
+            {
+                string letters = str.Substring(0, str.IndexOf(":"));
+                string[] words = str.Substring(str.IndexOf(":") + 1).Split(',');
+                int maxScore = 0;
+                foreach (string word in words)
+                {
+                    maxScore += word.Length;
+                }
+                tableLevel.Rows.Add(level, letters, words, 0, maxScore);
+                level++;
+            }
+            sr.Close();
+
+            foreach (object item in panel_Level.Controls)
+            {
+                if (item is Panel)
+                {
+                    Panel panel = (Panel)item;
+                    if (panel.Name.Contains("btn_Level"))
+                    {
+                        panel.MouseMove += handle_Level_Mouse_Move;
+                        panel.MouseLeave += handle_Level_Mouse_Leave;
+                        panel.Click += handle_Level_Click;
+                        Label label = (Label)panel.Controls[0];
+                        if (label.Name.Contains("label_Level"))
+                        {
+                            label.MouseMove += handle_Level_Mouse_Move;
+                            label.MouseLeave += handle_Level_Mouse_Leave;
+                            label.Click += handle_Level_Click;
+                        }
+                    }
+                }
+            }
+
+            foreach (object item in PnLetterHolder.Controls)
+            {
+                if (item is Panel)
+                {
+                    Panel panel = (Panel)item;
+                    Label label = (Label)panel.Controls[0];
+                    label.MouseMove += handle_Letter_Cross_Mouse_Move;
+                    label.MouseLeave += handle_Letter_Cross_Mouse_Leave;
+                    //label.MouseDown += handle_Letter_Cross_Mouse_Down;
+                    //label.MouseUp += handle_Letter_Cross_Mouse_Up;
+                }                
+            }
+
+            BtnExit.MouseMove += delegate
+            {
+                if (BtnExit.Width == 55)
+                {
+                    BtnExit.Width = 63;
+                    BtnExit.Height = 63;
+                    BtnExit.Location = new Point(BtnExit.Location.X - 4, BtnExit.Location.Y - 4);
+                }
+            };
+            BtnExit.MouseLeave += delegate
+            {
+                if (BtnExit.Width == 63)
+                {
+                    BtnExit.Width = 55;
+                    BtnExit.Height = 55;
+                    BtnExit.Location = new Point(BtnExit.Location.X + 4, BtnExit.Location.Y + 4);
+                }
+            };
+            BtnHint.MouseMove += delegate
+            {
+                if (BtnHint.Width == 55)
+                {
+                    BtnHint.Width = 63;
+                    BtnHint.Height = 63;
+                    BtnHint.Location = new Point(BtnHint.Location.X - 4, BtnHint.Location.Y - 4);
+                }
+            };
+            BtnHint.MouseLeave += delegate
+            {
+                if (BtnHint.Width == 63)
+                {
+                    BtnHint.Width = 55;
+                    BtnHint.Height = 55;
+                    BtnHint.Location = new Point(BtnHint.Location.X + 4, BtnHint.Location.Y + 4);
+                }
+            };
+
+            PnLetterHolder.Visible = false;
+            BtnExit.Visible = false;
+            BtnHint.Visible = false;
+            panel_WordResult.Visible = false;
+            panel_LevelTitle.Visible = false;
+            panel_CrossingWord.Visible = false;
+            label_GameScore.Visible = false;
+            panel_LevelSuccess.Visible = false;
+            panel_ScoreCoin.Visible = false;
+
+            panel_Level.Visible = true;
+        }
+
+        void handle_Level_Event(object sender, string type)
+        {
+            Label label = null;
+            Panel panel = null;
+            int level = 0;
+            if (sender is Label)
+            {
+                label = (Label)sender;
+                level = Convert.ToInt32(label.Text);
+                panel = (Panel)panel_Level.Controls.Find("btn_Level" + level, true)[0];
+            } else
+            {
+                panel = (Panel)sender;
+                level = Convert.ToInt32(panel.Name.Replace("btn_Level", ""));
+                label = (Label)panel_Level.Controls.Find("label_Level" + level, true)[0];
+            }
+            switch (type)
+            {
+                case "mouse move":
+                    {
+                        if (panel.Width == 70)
+                        {
+                            panel.Width = 78;
+                            panel.Height = 78;
+                            label.Width = 78;
+                            label.Height = 78;
+                            panel.Location = new Point(panel.Location.X - 4, panel.Location.Y - 4);
+                        }
+                        //label.Font = new Font("Roboto", 30);
+                        //label.BackColor = Color.FromArgb(93, 105, 145);
+
+                        break;
+
+                    }
+
+                case "mouse leave":
+                    if (panel.Width == 78)
+                    {
+                        panel.Width = 70;
+                        panel.Height = 70;
+                        label.Width = 70;
+                        label.Height = 70;
+                        panel.Location = new Point(panel.Location.X + 4, panel.Location.Y + 4);
+                    }
+                    //label.BackColor = Color.FromArgb(64, 75, 113);
+                    //label.Font = new Font("Roboto Light", 28);
+                    break;
+                case "click":
+                    {
+                        Stream str = global::Dictionary.Properties.Resources.sound_button_click;
+                        SoundPlayer snd = new SoundPlayer(str);
+                        snd.Play();
+                        Render_Game_Level(level);
+
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
+
+        void Render_Game_Level(int level)
+        {
+            panel_Level.Visible = false;
+
+            PnLetterHolder.Visible = true;
+            PnLetterHolder.Visible = true;
+            BtnExit.Visible = true;
+            BtnHint.Visible = true;
+            panel_WordResult.Visible = true;
+            panel_LevelTitle.Visible = true;
+            panel_CrossingWord.Visible = true;
+            label_GameScore.Visible = true;
+            panel_ScoreCoin.Visible = true;
+
+            Game_Update_Score();
+
+            List<Panel> removePanel = new List<Panel>();
+            foreach (object item in panel_WordResult.Controls)
+            {
+                if (item is Panel)
+                {
+                    Panel panel = (Panel)item;
+                    if (panel.Name.Contains("btn_RightLetter"))
+                    {
+                        removePanel.Add(panel);
+                    }
+                }
+            }
+            foreach (Panel item in removePanel)
+            {
+                panel_WordResult.Controls.Remove(item);
+            }
+
+            star_1.BackgroundImage = global::Dictionary.Properties.Resources.sao_nhat_2;
+            star_2.BackgroundImage = global::Dictionary.Properties.Resources.sao_nhat_2;
+            star_3.BackgroundImage = global::Dictionary.Properties.Resources.sao_nhat_2;
+
+            DataRow row = tableLevel.Rows[level - 1];
+            string letters = row["letters"].ToString();
+            string[] words = (string[])row["words"];
+            if (letters.Length == 3)
+            {
+                panel_Letter4.Visible = false;
+                panel_Letter3.Location = new Point((panel_Letter1.Location.X + panel_Letter2.Location.X) / 2, panel_Letter3.Location.Y);
+            }
+            else
+            {
+                panel_Letter4.Visible = true;
+                panel_Letter3.Location = new Point(panel_Letter1.Location.X, panel_Letter3.Location.Y);
+            }
+
+            label_LevelTitle.Text = "LEVEL " + level.ToString();
+            label_GameScore.Text = "0";
+            label_CrossingWord.Text = "";
+
+            currentLevel = level;
+            crossedWords.Clear();
+
+            label_Letter1.Text = letters.ToUpper()[0].ToString();
+            label_Letter2.Text = letters.ToUpper()[1].ToString();
+            label_Letter3.Text = letters.ToUpper()[2].ToString();
+            if (letters.Length == 4)
+            {
+                label_Letter4.Text = letters.ToUpper()[3].ToString();
+            }
+
+            foreach (object item in panel_WordResult.Controls)
+            {
+                if (item is Panel)
+                {
+                    Panel letterPanel = (Panel)item;
+                    if (letterPanel.Name.Contains("btn_Letter"))
+                    {
+                        string indexString = letterPanel.Name.Replace("btn_Letter", "");
+                        int rIndex = Convert.ToInt32(indexString[0].ToString());
+                        int cIndex = Convert.ToInt32(indexString[2].ToString());
+                        if (rIndex <= words.Length && cIndex <= words[rIndex - 1].Length)
+                        {
+                            letterPanel.Visible = true;
+                        }
+                        else
+                        {
+                            letterPanel.Visible = false;
+                        }
+                    }
+                }
+            }
+            panel_WordResult.Height = 17 + 75 * words.Length;
+            panel_WordResult.Location = new Point(panel_WordResult.Location.X, (PnConnectWord.Height - panel_WordResult.Height) / 2);
+        }
+
+        void handle_Level_Mouse_Move(object sender, MouseEventArgs e)
+        {
+            handle_Level_Event(sender, "mouse move");
+        }
+        void handle_Level_Mouse_Leave(object sender, EventArgs e)
+        {
+            handle_Level_Event(sender, "mouse leave");
+        }
+        void handle_Level_Click(object sender, EventArgs e)
+        {
+            handle_Level_Event(sender, "click");
+        }
+
+        private void levelTimer_Tick(object sender, EventArgs e)
+        {
+            //panel_Level.Location = new Point(panel_Level.Location.X, panel_Level.Location.Y - 2);
+            //if (panel_Level.Location.Y <= 100)
+            //{
+            //    Timer timer = (Timer)sender;
+            //    timer.Stop();
+            //}
+        }
+
 
         //private static IEnumerable<string> Combinations(int start, int level, string[] array)
         //{
@@ -867,5 +1239,833 @@ namespace Dictionary
         //        values[pos2] = tmp;
         //    }
         //}
+
+        void PnSaveWord_Load()
+        {
+            SavedWordPn.BringToFront();
+            SavedWordPn.Controls.Clear();
+            Label Title = new Label();
+            Title.Text = "Danh sách từ mới";
+            Title.ForeColor = Color.FromArgb(15, 23, 59);
+            Title.Location = new Point(102, 50);
+            Title.Font = new Font("Roboto", 28);
+            Title.AutoSize = true;
+            SavedWordPn.Controls.Add(Title);
+            Panel Seperator = new Panel();
+            Seperator.AutoSize = false;
+            Seperator.Height = 2;
+            Seperator.Width = 400;
+            Seperator.BackColor = Color.FromArgb(15, 23, 59);
+            Seperator.Location = new Point(113, 100);
+            SavedWordPn.Controls.Add(Seperator);
+            if (savedWords.Count() == 0)
+            {
+                Label Message = new Label();
+                Message.Location = new Point(110, 114);
+                Message.Text = "Bạn chưa lưu từ nào cả!";
+                Message.Font = new Font("Roboto Light", 17, FontStyle.Italic);
+                Message.AutoSize = true;
+                Message.ForeColor = Color.FromArgb(15, 23, 59);
+                SavedWordPn.Controls.Add(Message);
+            }
+            else
+            {
+                for (int j = 0; j < savedWords.Count; j++)
+                {
+                    DataRow r = (from row in tableDefinition.AsEnumerable()
+                                 where row["word"].ToString() == savedWords[j]
+                                 select row).FirstOrDefault();
+                    SaveWordItem SWitem = new SaveWordItem(r, savedWords);
+                    SWitem.Location = new Point(112, 114 + 110 * j);
+                    SWitem.WordClick += handle_Word_Click;
+                    SavedWordPn.Controls.Add(SWitem);
+                }
+            }
+        }
+
+        private void SavedWordBtn_Click(object sender, EventArgs e)
+        {
+            PnSaveWord_Load();
+        }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            Stream str = global::Dictionary.Properties.Resources.sound_button_click;
+            SoundPlayer snd = new SoundPlayer(str);
+            snd.Play();
+            Render_Game_Home();
+        }
+
+        void Render_Game_Home()
+        {
+            //PnConnectWord.BringToFront();
+            PnLetterHolder.Visible = false;
+            BtnExit.Visible = false;
+            BtnHint.Visible = false;
+            panel_WordResult.Visible = false;
+            panel_LevelTitle.Visible = false;
+            panel_CrossingWord.Visible = false;
+            label_GameScore.Visible = false;
+            panel_LevelSuccess.Visible = false;
+            panel_ScoreCoin.Visible = false;
+
+            panel_Level.Visible = true;
+
+            Game_Update_Score();
+
+            List<Panel> removePanel = new List<Panel>();
+            foreach (object item in panel_WordResult.Controls)
+            {
+                if (item is Panel)
+                {
+                    Panel panel = (Panel)item;
+                    if (panel.Name.Contains("btn_RightLetter"))
+                    {
+                        removePanel.Add(panel);
+                    }
+                }
+            }
+            foreach (Panel item in removePanel)
+            {
+                panel_WordResult.Controls.Remove(item);
+            }
+
+            star_1.BackgroundImage = global::Dictionary.Properties.Resources.sao_nhat_2;
+            star_2.BackgroundImage = global::Dictionary.Properties.Resources.sao_nhat_2;
+            star_3.BackgroundImage = global::Dictionary.Properties.Resources.sao_nhat_2;
+        }
+
+        int getXByLineAndAngle(int x, int angle, int dist)
+        {
+            return Convert.ToInt32(x + dist * Math.Cos((Math.PI / 180) * angle));
+        }
+        int getYByLineAndAngle(int x, int angle, int dist)
+        {
+            return Convert.ToInt32(x + dist * Math.Sin((Math.PI / 180) * angle));
+        }
+
+        void handle_Letter_Cross_Event(object sender, string type, MouseEventArgs e = null)
+        {
+            Label label = (Label)sender;
+            string indexString = label.Name.Replace("label_Letter", "");
+            Panel panel = null;
+            foreach (object item in PnLetterHolder.Controls)
+            {
+                if (item is Panel)
+                {
+                    Panel p = (Panel)item;
+                    if (p.Name == ("panel_Letter" + indexString))
+                    {
+                        panel = p;
+                        break;
+                    }
+                }
+            }
+            switch (type)
+            {
+                case "mouse move":
+                case "mouse enter":
+                    {
+                        //if (panel.Width == 90)
+                        //{
+                        //    panel.Width = 98;
+                        //    panel.Height = 98;
+                        //    label.Width = 98;
+                        //    label.Height = 88;
+                        //    panel.Location = new Point(panel.Location.X - 4, panel.Location.Y - 4);
+                        //}
+                        if (crossing)
+                        {
+                            if (label_CrossingWord.Text.Contains(label.Text))
+                            {
+                                //if (label_CrossingWord.Text.EndsWith(label.Text))
+                                //{
+                                //    label_CrossingWord.Text = label_CrossingWord.Text.Substring(0, label_CrossingWord.Text.Length - 1);
+                                //    if (panel.Name == "panel_Letter4" || panel_Letter4.Name == "panel_Letter3")
+                                //    {
+                                //        panel.BackgroundImage = global::Dictionary.Properties.Resources.tron_cam_dam;
+                                //    } else
+                                //    {
+                                //        panel.BackgroundImage = global::Dictionary.Properties.Resources.tron_cam_nhat;
+                                //    }
+                                //}
+                            }
+                            else
+                            {
+                                Graphics g = PnLetterHolder.CreateGraphics();
+                                Pen pen = new Pen(Color.Black, 5);
+                                Stream str = global::Dictionary.Properties.Resources.sound_cross;
+                                SoundPlayer snd = new SoundPlayer(str);
+                                snd.Play();
+                                TextureBrush brush = new TextureBrush(global::Dictionary.Properties.Resources.texture_cross_2, System.Drawing.Drawing2D.WrapMode.TileFlipY);
+
+                                if (startLetter != null && startLetter != panel)
+                                {
+                                    int aX = startLetter.Location.X + 45;
+                                    int aY = startLetter.Location.Y + 40;
+                                    int bX = panel.Location.X + 45;
+                                    int bY = panel.Location.Y + 40;
+                                    if (aX == bX) {
+                                        g.FillPolygon(brush, new Point[] { new Point(aX - 5, aY), new Point(aX + 5, aY), new Point(bX + 5, bY), new Point(bX - 5, bY), new Point(aX - 5, aY) });
+                                    } else if (aY == bY)
+                                    {
+                                        g.FillPolygon(brush, new Point[] { new Point(aX, aY - 5), new Point(aX, aY + 5), new Point(bX, bY + 5), new Point(bX, bY - 5), new Point(aX, aY - 5) });
+                                    } else if (aX < bX) 
+                                    { 
+                                        g.FillPolygon(brush, new Point[] { new Point(getXByLineAndAngle(aX, 270, 10), getYByLineAndAngle(aY, 270, 10)), new Point(getXByLineAndAngle(aX, 90, 10), getYByLineAndAngle(aY, 90, 10)), new Point(getXByLineAndAngle(bX, 90, 10), getYByLineAndAngle(bY, 90, 10)), new Point(getXByLineAndAngle(bX, 270, 10), getYByLineAndAngle(bY, 270, 10)), new Point(getXByLineAndAngle(aX, 270, 10), getYByLineAndAngle(aY, 270, 10)) });
+                                    } else if (aX > bX)
+                                    {
+                                        g.FillPolygon(brush, new Point[] { new Point(getXByLineAndAngle(aX, 90, 10), getYByLineAndAngle(aY, 90, 10)), new Point(getXByLineAndAngle(aX, 270, 10), getYByLineAndAngle(aY, 270, 10)), new Point(getXByLineAndAngle(bX, 270, 10), getYByLineAndAngle(bY, 270, 10)), new Point(getXByLineAndAngle(bX, 90, 10), getYByLineAndAngle(bY, 90, 10)), new Point(getXByLineAndAngle(aX, 90, 10), getYByLineAndAngle(aY, 90, 10)) });
+                                    }
+                                }
+                                //g.FillPolygon(brush, new Point[] { new Point(0, 10), new Point(10, 0), new Point(100,100), new Point(90, 110), new Point(0, 10) });
+                                //System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath()
+                                //g.FillPath()
+                                //g.DrawImage()
+                                //g.DrawImage(global::Dictionary.Properties.Resources.cross_line, new Point[] { new Point(0, 1), new Point(1, 0), new Point(50, 50), new Point(49, 51) });
+
+                                startLetter = panel;
+                                label_CrossingWord.Text += label.Text;
+                                panel.BackgroundImage = global::Dictionary.Properties.Resources.tron_xanh_dam;
+                            }
+                        }
+                        break;
+
+                    }
+
+                case "mouse up":
+                    {
+                        crossing = false;
+                        DataRow row = tableLevel.Rows[currentLevel - 1];
+                        string[] words = (string[])row["words"];
+                        int foundIndex = words.ToList().FindIndex(x => x == label_CrossingWord.Text);
+                        if (foundIndex >= 0)
+                        {
+                            crossedWords.Add(label_CrossingWord.Text);
+                            int score = Convert.ToInt32(label_GameScore.Text);
+                            int range = score + label_CrossingWord.Text.Length * 10;
+                            Timer timer = new Timer();
+                            timer.Interval = 1;
+                            timer.Tick += delegate
+                            {
+                                if (score < range)
+                                {
+                                    score += 2;
+                                } else
+                                {
+                                    timer.Stop();
+                                }
+                            };
+                            timer.Start();
+                        }
+                        panel_Letter3.BackgroundImage = global::Dictionary.Properties.Resources.tron_cam_dam;
+                        panel_Letter4.BackgroundImage = global::Dictionary.Properties.Resources.tron_cam_dam;
+                        panel_Letter1.BackgroundImage = global::Dictionary.Properties.Resources.tron_cam_nhat;
+                        panel_Letter2.BackgroundImage = global::Dictionary.Properties.Resources.tron_cam_nhat;
+
+
+
+                        label_CrossingWord.Text = "";
+                        break;
+                    }
+                case "mouse down":
+                    {
+                        crossing = true;
+                        startLetter = panel;
+                        label_CrossingWord.Text += label.Text;
+                        panel.BackgroundImage = global::Dictionary.Properties.Resources.tron_xanh_dam;
+                        break;
+                    }
+                case "mouse leave":
+                    {
+                        //if (panel.Width == 98)
+                        //{
+                        //    panel.Width = 90;
+                        //    panel.Height = 90;
+                        //    label.Width = 90;
+                        //    label.Height = 80;
+                        //    panel.Location = new Point(panel.Location.X + 4, panel.Location.Y + 4);
+                        //}
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
+
+        void handle_Letter_Cross_Mouse_Move(object sender, MouseEventArgs e)
+        {
+            handle_Letter_Cross_Event(sender, "mouse move", e);
+        }
+        void handle_Letter_Cross_Mouse_Leave(object sender, EventArgs e)
+        {
+            handle_Letter_Cross_Event(sender, "mouse leave");
+        }
+        void handle_Letter_Cross_Mouse_Down(object sender, EventArgs e)
+        {
+            handle_Letter_Cross_Event(sender, "mouse down");
+        }
+        void handle_Letter_Cross_Mouse_Up(object sender, EventArgs e)
+        {
+            handle_Letter_Cross_Event(sender, "mouse up");
+        }
+
+        private void Dictionary_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Space && currentLevel > 0)
+            {
+                crossing = true;
+            }
+        }
+
+        private void Dictionary_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Space && currentLevel > 0)
+            {
+                crossing = false;
+                startLetter = null;
+                PnLetterHolder.Invalidate();
+                DataRow row = tableLevel.Rows[currentLevel - 1];
+                string[] words = (string[])row["words"];
+                int foundIndex = words.ToList().FindIndex(x => x == label_CrossingWord.Text);
+                int found = crossedWords.FindIndex(x => x == label_CrossingWord.Text);
+                if (foundIndex >= 0)
+                {
+                    if (found < 0)
+                    {
+                        crossedWords.Add(label_CrossingWord.Text);
+                        int score = Convert.ToInt32(label_GameScore.Text);
+                        int range = score + label_CrossingWord.Text.Length * 10;
+                        Timer timer = new Timer();
+                        timer.Interval = 100;
+                        timer.Start();
+                        timer.Tick += delegate
+                        {
+                            if (score < range)
+                            {
+                                score += 2;
+                                label_GameScore.Text = score.ToString();
+                            }
+                            else
+                            {
+                                timer.Stop();
+                            }
+                        };
+
+                        List<Panel> newPanels = new List<Panel>();
+                        foreach (object item in panel_WordResult.Controls)
+                        {
+                            if (item is Panel)
+                            {
+                                Panel letterPanel = (Panel)item;
+                                if (letterPanel.Name.Contains("btn_Letter"))
+                                {
+                                    string indexString = letterPanel.Name.Replace("btn_Letter", "");
+                                    int rIndex = Convert.ToInt32(indexString[0].ToString());
+                                    int cIndex = Convert.ToInt32(indexString[2].ToString());
+                                    if (rIndex == foundIndex + 1 && cIndex <= label_CrossingWord.Text.Length)
+                                    {
+                                        Panel panel = new Panel();
+                                        panel.BackColor = Color.Transparent;
+                                        panel.BackgroundImageLayout = ImageLayout.Zoom;
+                                        panel.Size = new Size(70, 70);
+                                        panel.Name = "btn_RightLetter" + rIndex + "x" + cIndex;
+                                        if (rIndex % 2 == 0)
+                                        {
+                                            panel.BackgroundImage = global::Dictionary.Properties.Resources.vuong_xanh_dam;
+                                        }
+                                        else
+                                        {
+                                            panel.BackgroundImage = global::Dictionary.Properties.Resources.vuong_xanh_nhat;
+                                        }
+                                        panel.Location = new Point(letterPanel.Location.X + 15, letterPanel.Location.Y + 15);
+
+                                        Label label = new Label();
+                                        label.BackColor = Color.Transparent;
+                                        label.AutoSize = false;
+                                        label.Size = new Size(70, 60);
+                                        label.Location = new Point(0, 0);
+                                        label.ForeColor = Color.White;
+                                        label.Font = new Font("Somatic Rounded", 32, FontStyle.Bold);
+                                        label.Text = label_CrossingWord.Text[cIndex - 1].ToString();
+                                        label.TextAlign = ContentAlignment.MiddleCenter;
+                                        panel.Controls.Add(label);
+                                        label.BringToFront();
+                                        newPanels.Add(panel);
+                                    }
+
+                                }
+                            }
+                        }
+                        foreach (Panel item in newPanels)
+                        {
+                            panel_WordResult.Controls.Add(item);
+                            item.BringToFront();
+                        }
+                        newPanels.Sort((x, y) => x.Name.CompareTo(y.Name));
+                        int i = 0;
+                        Timer flyTimer = new Timer();
+                        flyTimer.Interval = 50;
+                        int delay = 0;
+                        int loopCount = 0;
+                        Stream str = global::Dictionary.Properties.Resources.sound_score_plus;
+                        SoundPlayer snd = new SoundPlayer(str);
+                        snd.Play();
+                        Stream strFly = global::Dictionary.Properties.Resources.sound_word_fly;
+                        SoundPlayer sndFly = new SoundPlayer(strFly);
+                        flyTimer.Tick += delegate
+                        {
+                            if (delay >= 10)
+                            {
+                                if (i<newPanels.Count)
+                                {
+                                    if (loopCount < 5)
+                                    {
+                                        newPanels[i].Location = new Point(newPanels[i].Location.X - 3, newPanels[i].Location.Y - 3);
+                                        loopCount++;
+                                    } else
+                                    {
+                                        //sndFly.Play();
+                                        loopCount = 0;
+                                        i++;
+                                    }
+                                    //newPanels[i].Location = new Point(newPanels[i].Location.X, newPanels[i].Location.Y - 15);
+                                } else
+                                {
+                                    flyTimer.Stop();
+
+                                    if (words.Length == crossedWords.Count)
+                                    {
+                                        panel_LevelSuccess.Visible = true;
+                                        //label_LevelSuccessScore.Text = row["maxScore"].ToString();
+                                        Timer starTimer = new Timer();
+                                        starTimer.Interval = 300;
+                                        int stars = 1;
+                                        int starDelay = 0;
+                                        Stream strFinish = global::Dictionary.Properties.Resources.sound_level_finish;
+                                        SoundPlayer sndFinish = new SoundPlayer(strFinish);
+                                        sndFinish.Play();
+                                        starTimer.Tick += delegate
+                                        {
+                                            if (starDelay < 3)
+                                            {
+                                                if (stars == 1)
+                                                {
+                                                    star_1.BackgroundImage = global::Dictionary.Properties.Resources.sao_dam_2;
+                                                }
+                                                else if (stars == 2)
+                                                {
+                                                    star_2.BackgroundImage = global::Dictionary.Properties.Resources.sao_dam_2;
+                                                }
+                                                else if (stars == 3)
+                                                {
+                                                    star_3.BackgroundImage = global::Dictionary.Properties.Resources.sao_dam_2;
+                                                }
+                                                else
+                                                {
+                                                    starTimer.Stop();
+                                                }
+                                                stars++;
+                                            }
+                                            starDelay++;
+                                        };
+                                        starTimer.Start();
+
+                                        Timer scoreTimer = new Timer();
+                                        scoreTimer.Interval = 100;
+                                        int maxScore = 0;
+                                        scoreTimer.Tick += delegate
+                                        {
+                                            if (maxScore <= (int)row["maxScore"])
+                                            {
+                                                label_LevelSuccessScore.Text = (maxScore * 10).ToString();
+                                                maxScore++;
+                                            }
+                                            else
+                                            {
+                                                scoreTimer.Stop();
+                                            }
+                                        };
+                                        scoreTimer.Start();
+                                    }
+                                }
+                                //i++;
+
+                            }
+                            delay++;
+                        };
+                        flyTimer.Start();
+                    }
+
+                    label_CrossingWord.Text = "";
+
+                    
+                } else
+                {
+                    Timer timer = new Timer();
+                    timer.Interval = 100;
+                    int count = 3;
+                    bool isRed = false;
+                    Stream str = global::Dictionary.Properties.Resources.incorrect_sound_effect;
+                    SoundPlayer snd = new SoundPlayer(str);
+                    snd.Play();
+                    timer.Tick += delegate
+                    {
+                        if (count > 0)
+                        {
+                            if (isRed)
+                            {
+                                label_CrossingWord.ForeColor = Color.White;
+                                isRed = false;
+                                count--;
+                            } else
+                            {
+                                label_CrossingWord.ForeColor = Color.Red;
+                                isRed = true;
+                            }
+                        } else
+                        {
+                            timer.Stop();
+                            label_CrossingWord.Text = "";
+                            label_CrossingWord.ForeColor = Color.FromArgb(191, 35, 57);
+                        }
+                    };
+                    timer.Start();
+                }
+                panel_Letter3.BackgroundImage = global::Dictionary.Properties.Resources.tron_cam_dam;
+                panel_Letter4.BackgroundImage = global::Dictionary.Properties.Resources.tron_cam_dam;
+                panel_Letter1.BackgroundImage = global::Dictionary.Properties.Resources.tron_cam_nhat;
+                panel_Letter2.BackgroundImage = global::Dictionary.Properties.Resources.tron_cam_nhat;
+
+
+
+            }
+        }
+
+        private void BtnHint_Click(object sender, EventArgs e)
+        {
+            Stream str = global::Dictionary.Properties.Resources.sound_button_click;
+            SoundPlayer snd = new SoundPlayer(str);
+            snd.Play();
+            DataRow row = tableLevel.Rows[currentLevel - 1];
+            string[] words = (string[])row["words"];
+            if (words.Length > crossedWords.Count)
+            {
+                Random rnd = new Random();
+                string word = words[rnd.Next(words.Length)];
+                while (crossedWords.FindIndex(x => x == word) >= 0)
+                {
+                    word = words[rnd.Next(words.Length)];
+                }
+
+                int foundIndex = words.ToList().FindIndex(x => x == word);
+
+                List<Panel> newPanels = new List<Panel>();
+                foreach (object item in panel_WordResult.Controls)
+                {
+                    if (item is Panel)
+                    {
+                        Panel letterPanel = (Panel)item;
+                        if (letterPanel.Name.Contains("btn_Letter"))
+                        {
+                            string indexString = letterPanel.Name.Replace("btn_Letter", "");
+                            int rIndex = Convert.ToInt32(indexString[0].ToString());
+                            int cIndex = Convert.ToInt32(indexString[2].ToString());
+                            if (rIndex == foundIndex + 1 && cIndex <= word.Length)
+                            {
+                                Panel panel = new Panel();
+                                panel.BackColor = Color.Transparent;
+                                panel.BackgroundImageLayout = ImageLayout.Zoom;
+                                panel.Size = new Size(70, 70);
+                                panel.Name = "btn_HintLetter" + rIndex + "x" + cIndex;
+                                if (rIndex % 2 == 0)
+                                {
+                                    panel.BackgroundImage = global::Dictionary.Properties.Resources.vuong_xanh_dam;
+                                }
+                                else
+                                {
+                                    panel.BackgroundImage = global::Dictionary.Properties.Resources.vuong_xanh_nhat;
+                                }
+                                panel.Location = new Point(letterPanel.Location.X, letterPanel.Location.Y);
+
+                                Label label = new Label();
+                                label.BackColor = Color.Transparent;
+                                label.AutoSize = false;
+                                label.Size = new Size(70, 60);
+                                label.Location = new Point(0, 0);
+                                label.ForeColor = Color.White;
+                                label.Font = new Font("Vinhan", 28, FontStyle.Bold);
+                                label.Text = word[cIndex - 1].ToString();
+                                label.TextAlign = ContentAlignment.MiddleCenter;
+                                panel.Controls.Add(label);
+                                label.BringToFront();
+                                newPanels.Add(panel);
+                            }
+
+                        }
+                    }
+                }
+                foreach (Panel item in newPanels)
+                {
+                    panel_WordResult.Controls.Add(item);
+                    item.BringToFront();
+                }
+                newPanels.Sort((x, y) => x.Name.CompareTo(y.Name));
+                int i = 0;
+                Timer timer = new Timer();
+                timer.Interval = 100;
+                int count = 3;
+                bool isShow = false;
+                timer.Tick += delegate
+                {
+                    if (count > 0)
+                    {
+                        if (isShow)
+                        {
+                            foreach (Panel item in newPanels)
+                            {
+                                item.Visible = false;
+                            }
+                            isShow = false;
+                            count--;
+                        }
+                        else
+                        {
+                            foreach (Panel item in newPanels)
+                            {
+                                item.Visible = true;
+                            }
+                            isShow = true;
+                        }
+                    }
+                    else
+                    {
+                        timer.Stop();
+                        List<Panel> removePanel = new List<Panel>();
+                        foreach (object item in panel_WordResult.Controls)
+                        {
+                            if (item is Panel)
+                            {
+                                Panel panel = (Panel)item;
+                                if (panel.Name.Contains("btn_HintLetter"))
+                                {
+                                    removePanel.Add(panel);
+                                }
+                            }
+                        }
+                        foreach (Panel item in removePanel)
+                        {
+                            panel_WordResult.Controls.Remove(item);
+                        }
+                    }
+                };
+                timer.Start();
+            }
+        }
+
+        private void btn_LevelHome_Click(object sender, EventArgs e)
+        {
+            Stream str = global::Dictionary.Properties.Resources.sound_button_click;
+            SoundPlayer snd = new SoundPlayer(str);
+            snd.Play();
+            Render_Game_Home();
+        }
+
+        private void btn_LevelAgain_Click(object sender, EventArgs e)
+        {
+            Stream str = global::Dictionary.Properties.Resources.sound_button_click;
+            SoundPlayer snd = new SoundPlayer(str);
+            snd.Play();
+            Render_Game_Level(currentLevel);
+            panel_LevelSuccess.Visible = false;
+        }
+
+        private void btn_LevelNext_Click(object sender, EventArgs e)
+        {
+            Stream str = global::Dictionary.Properties.Resources.sound_button_click;
+            SoundPlayer snd = new SoundPlayer(str);
+            snd.Play();
+            if (currentLevel == 11)
+            {
+                Render_Game_Home();
+            }
+            else
+            {
+                Render_Game_Level(currentLevel + 1);
+                panel_LevelSuccess.Visible = false;
+            }
+        }
+
+
+
+        private void WordListBtn_Click(object sender, EventArgs e)
+        {
+            PnToeicWords.BringToFront();
+            PnToeicGame.Visible = false;
+            PnToeicWords.AutoScroll = true;
+        }
+
+        void PnToeicWords_Load()
+        {
+
+            flowToeicWords.Controls.Clear();
+            for (char letter = 'a'; letter <= 'z'; letter++)
+            {
+                Panel Container = new Panel();
+                Container.AutoSize = true;
+                flowToeicWords.Controls.Add(Container);
+                Label Title = new Label();
+                Title.AutoSize = true;
+                Title.Text = letter.ToString().ToUpper();
+                Title.Margin = new Padding(3);
+                Title.Font = new Font("Roboto", 22);
+                Title.ForeColor = Color.FromArgb(15, 23, 59);
+                Title.Location = new Point(3, 1);
+                Container.Controls.Add(Title);
+                FlowLayoutPanel WordsContainer = new FlowLayoutPanel();
+                WordsContainer.AutoSize = true;
+                //WordsContainer.Size = new Size(990, 100);
+                WordsContainer.MaximumSize = new Size(996, int.MaxValue);
+                WordsContainer.Location = new Point(2, 38);
+                Container.Controls.Add(WordsContainer);
+                foreach (string w in ToeicWordsList)
+                {
+                    if (w.StartsWith(letter.ToString()))
+                    {
+                        Label TWords = new Label();
+                        TWords.AutoSize = true;
+                        TWords.Cursor = Cursors.Hand;
+                        TWords.Text = w;
+                        TWords.Click += Handle_Word_Click;
+                        TWords.Margin = new Padding(5);
+                        TWords.Font = new Font("Roboto Light", 16);
+                        TWords.ForeColor = Color.FromArgb(15, 23, 59);
+                        WordsContainer.Controls.Add(TWords);
+                    }
+                }
+            }
+        }
+
+        private void DictionaryBtn_Click(object sender, EventArgs e)
+        {
+            HomePn.BringToFront();
+        }
+
+        private void BtnToeicGame_Click(object sender, EventArgs e)
+        {
+            PnToeicGame.Visible = true;
+            PnToeicGame.BringToFront();
+            PnToeicWords.AutoScroll = false;
+            ToeicGame_CreateQuestion();
+        }
+
+        void ToeicGame_CreateQuestion()
+        {
+            Random rnd = new Random();
+            string[] words = new string[4];
+            for (int j = 0; j < 4; j++)
+            {
+                int v;
+                do
+                {
+                    v = rnd.Next(ToeicWordsList.Count);
+                } while (ToeicWordsList[v] == words[j]);
+                words[j] = ToeicWordsList[v];
+            }
+            PnToeicQuest.Controls.Clear();
+            FlowAnswerContainer.Controls.Clear();
+            Label QuestWord = new Label();
+            QuestWord.Text = words[0].ToUpper();
+            QuestWord.Font = new Font("Roboto Condensed", 30);
+            QuestWord.AutoSize = false;
+            QuestWord.Dock = DockStyle.Fill;
+            QuestWord.TextAlign = ContentAlignment.MiddleCenter;
+            PnToeicQuest.Controls.Add(QuestWord);
+            words = words.OrderBy(x => rnd.Next()).ToArray();
+            int CorrectAnswer = Array.FindIndex(words, x => x.Contains(QuestWord.Text.ToLower()));
+            for (int j = 0; j < 4; j++)
+            {
+                DataRow row = tableDefinition.Select("word ='" + words[j] + "'").FirstOrDefault();
+                if (row == null)
+                {
+                    ToeicGame_CreateQuestion();
+                    return;
+                }
+                Panel PnAnswer = new Panel();
+                PnAnswer.Margin = new Padding(0, 3, 0, 10);
+                PnAnswer.BackColor = Color.PowderBlue;
+                PnAnswer.Size = new Size(720, 85);
+                if (j == CorrectAnswer)
+                {
+                    PnAnswer.Tag = "true";
+                }
+                else PnAnswer.Tag = "false";
+                FlowAnswerContainer.Controls.Add(PnAnswer);
+                Label AnswerText = new Label();
+                char OrderLetter = (char)(j + 65);
+                AnswerText.Text = OrderLetter + ".   " + row["definition"].ToString();
+                AnswerText.AutoSize = false;
+                AnswerText.Dock = DockStyle.Fill;
+                AnswerText.Font = new Font("Roboto Light", 18);
+                AnswerText.ForeColor = Color.FromArgb(15, 23, 59);
+                AnswerText.TextAlign = ContentAlignment.MiddleLeft;
+                AnswerText.Padding = new Padding(30, 5, 5, 5);
+                if (j == CorrectAnswer)
+                {
+                    AnswerText.Tag = "true";
+                }
+                else AnswerText.Tag = "false";
+                AnswerText.Click += Handle_Answer_Click;
+                PnAnswer.Controls.Add(AnswerText);
+            }
+        }
+        void Handle_Answer_Click(object sender, EventArgs e)
+        {
+            Label label = (Label)sender;
+            if (label.Tag.ToString() == "true")
+            {
+                Stream str = global::Dictionary.Properties.Resources.Ding_Sound_Effect;
+                SoundPlayer snd = new SoundPlayer(str);
+                snd.Play();
+                label.Parent.BackColor = Color.FromArgb(0, 139, 41);
+                label.ForeColor = Color.White;
+
+                foreach (Panel c in FlowAnswerContainer.Controls.OfType<Panel>())
+                {
+                    Label L = c.Controls.OfType<Label>().First();
+                    L.Click -= Handle_Answer_Click;
+                }
+            }
+            else
+            {
+                label.Parent.BackColor = Color.FromArgb(209, 26, 42);
+                label.ForeColor = Color.White;
+                Stream str = global::Dictionary.Properties.Resources.incorrect_sound_effect;
+                SoundPlayer snd = new SoundPlayer(str);
+                snd.Play();
+                foreach (Panel c in FlowAnswerContainer.Controls.OfType<Panel>())
+                {
+                    if (c.Tag.ToString() == "true")
+                    {
+                        c.BackColor = Color.FromArgb(0, 139, 41);
+                        Label lb = c.Controls.OfType<Label>().First();
+                        lb.ForeColor = Color.White;
+                    }
+                    Label L = c.Controls.OfType<Label>().First();
+                    L.Click -= Handle_Answer_Click;
+                }
+            }
+        }
+        private void BtnNextQuest_Click(object sender, EventArgs e)
+        {
+            ToeicGame_CreateQuestion();
+        }
+
+        private void BtnToeicExit_Click(object sender, EventArgs e)
+        {
+            PnToeicGame.Visible = false;
+            PnToeicWords.BringToFront();
+            PnToeicWords.AutoScroll = true;
+        }
     }
 }

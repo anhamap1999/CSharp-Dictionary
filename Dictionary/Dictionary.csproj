@@ -60,6 +60,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveWordItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SaveWordItem.Designer.cs">
+      <DependentUpon>SaveWordItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="WordDefinition.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,6 +100,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SaveWordItem.resx">
+      <DependentUpon>SaveWordItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WordDefinition.resx">
       <DependentUpon>WordDefinition.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +176,132 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Whitecircle-02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\199213192_577447200304372_7287916462138171827_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tron-cam-dam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tron-cam-nhat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nen-vuong-trang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vuong-cam-nhat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star-0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\select-level.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_box_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hint-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vuong-trang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crossing-bagde.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cloud-left.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cloud-right.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tron-xanh-dam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vuong-xanh-dam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vuong-xanh-nhat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\select-level-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popup-level-success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sao-nhat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button-home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button-next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button-repeat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\banner-scroll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sao-dam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sao-nhat-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sao-dam-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross-badge-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ding Sound Effect.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\incorrect sound effect.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sound-button-click.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sound-score-plus.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sound-level-finish.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sound-cross.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sound-word-fly.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\texture-cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\texture-cross-2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
