@@ -1318,11 +1318,12 @@ namespace Dictionary
             // PnConnectWord
             // 
             this.PnConnectWord.BackColor = System.Drawing.Color.Transparent;
+            this.PnConnectWord.BackgroundImage = global::Dictionary.Properties.Resources._199213192_577447200304372_7287916462138171827_n;
             this.PnConnectWord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PnConnectWord.Controls.Add(this.panel_LevelSuccess);
             this.PnConnectWord.Controls.Add(this.PnLetterHolder);
             this.PnConnectWord.Controls.Add(this.panel_ScoreCoin);
             this.PnConnectWord.Controls.Add(this.panel_Level);
-            this.PnConnectWord.Controls.Add(this.panel_LevelSuccess);
             this.PnConnectWord.Controls.Add(this.panel_LevelTitle);
             this.PnConnectWord.Controls.Add(this.label_GameScore);
             this.PnConnectWord.Controls.Add(this.panel_CrossingWord);

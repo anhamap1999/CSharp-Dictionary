@@ -23,7 +23,7 @@ namespace Dictionary
         public Dictionary()
         {
             InitializeComponent();
-            PicOfWordPb.ImageLocation = "https://cdn.britannica.com/22/206222-131-E921E1FB/Domestic-feline-tabby-cat.jpg";
+            //PicOfWordPb.ImageLocation = "https://cdn.britannica.com/22/206222-131-E921E1FB/Domestic-feline-tabby-cat.jpg";
         }
 
         private void SearchBox_Leave(object sender, EventArgs e)
@@ -213,6 +213,14 @@ namespace Dictionary
             Random rnd = new Random();
             int _rnd = rnd.Next(tableWord.Rows.Count);
             string word = tableWord.Rows[_rnd][0].ToString();
+            DataRow r = tableDefinition.Select("word = '" + word + "'").FirstOrDefault();
+
+            while (r[1].ToString() == "" || (tableWord.Rows[_rnd]["spelling"].ToString() == ""))
+            {
+                _rnd = rnd.Next(tableWord.Rows.Count);
+                word = tableWord.Rows[_rnd][0].ToString();
+                r = tableDefinition.Select("word = '" + word + "'").FirstOrDefault();
+            }
             //while (!Check_Url_Valid("https://ssl.gstatic.com/dictionary/static/sounds/oxford/" + word + "--_gb_1.mp3"))
             //{
             //    _rnd = rnd.Next(tableWord.Rows.Count);
@@ -220,7 +228,6 @@ namespace Dictionary
             //}
             NWLb.Text = word;
             NWDPhoneticLb.Text = tableWord.Rows[_rnd][1].ToString();
-            DataRow r = tableDefinition.Select("word = '" + word + "'").FirstOrDefault();
             //DataRow[] r = tableDefinition.Select("word LIKE 'alumna'");
             //foreach (DataRow row in r)
             //{
@@ -232,13 +239,17 @@ namespace Dictionary
             string url = Search_Google(word);
             PicOfWordPb.ImageLocation = url;
 
+
+
             _rnd = rnd.Next(savedWords.Count);
-            while (!Check_Url_Valid("https://ssl.gstatic.com/dictionary/static/sounds/oxford/" + savedWords[_rnd] + "--_gb_1.mp3"))
-            {
-                _rnd = rnd.Next(savedWords.Count);
-            }
             DataRow wordRow = tableWord.Select("word = '" + savedWords[_rnd] + "'").FirstOrDefault();
             DataRow row = tableDefinition.Select("word = '" + savedWords[_rnd] + "'").FirstOrDefault();
+            while (!Check_Url_Valid("https://ssl.gstatic.com/dictionary/static/sounds/oxford/" + savedWords[_rnd] + "--_gb_1.mp3") || row[1].ToString() == "" || (wordRow["spelling"].ToString() == ""))
+            {
+                _rnd = rnd.Next(savedWords.Count);
+                wordRow = tableWord.Select("word = '" + savedWords[_rnd] + "'").FirstOrDefault();
+                row = tableDefinition.Select("word = '" + savedWords[_rnd] + "'").FirstOrDefault();
+            }
             WoDTypeLb.Text = "(" + row["type"].ToString() + ")";
             WoDSpellingLb.Text = tableWord.Rows[_rnd]["spelling"].ToString();
             WoDlb.Text = savedWords[_rnd];
@@ -1393,30 +1404,30 @@ namespace Dictionary
                             else
                             {
                                 Graphics g = PnLetterHolder.CreateGraphics();
-                                Pen pen = new Pen(Color.Black, 5);
                                 Stream str = global::Dictionary.Properties.Resources.sound_cross;
                                 SoundPlayer snd = new SoundPlayer(str);
                                 snd.Play();
-                                TextureBrush brush = new TextureBrush(global::Dictionary.Properties.Resources.texture_cross_2, System.Drawing.Drawing2D.WrapMode.TileFlipY);
-
+                                //TextureBrush texttureBrush = new TextureBrush(global::Dictionary.Properties.Resources.texture_cross_2, System.Drawing.Drawing2D.WrapMode.TileFlipY);
+                                Pen pen = new Pen(Color.FromArgb(0, 115, 100), 10);
                                 if (startLetter != null && startLetter != panel)
                                 {
                                     int aX = startLetter.Location.X + 45;
                                     int aY = startLetter.Location.Y + 40;
                                     int bX = panel.Location.X + 45;
                                     int bY = panel.Location.Y + 40;
-                                    if (aX == bX) {
-                                        g.FillPolygon(brush, new Point[] { new Point(aX - 5, aY), new Point(aX + 5, aY), new Point(bX + 5, bY), new Point(bX - 5, bY), new Point(aX - 5, aY) });
-                                    } else if (aY == bY)
-                                    {
-                                        g.FillPolygon(brush, new Point[] { new Point(aX, aY - 5), new Point(aX, aY + 5), new Point(bX, bY + 5), new Point(bX, bY - 5), new Point(aX, aY - 5) });
-                                    } else if (aX < bX) 
-                                    { 
-                                        g.FillPolygon(brush, new Point[] { new Point(getXByLineAndAngle(aX, 270, 10), getYByLineAndAngle(aY, 270, 10)), new Point(getXByLineAndAngle(aX, 90, 10), getYByLineAndAngle(aY, 90, 10)), new Point(getXByLineAndAngle(bX, 90, 10), getYByLineAndAngle(bY, 90, 10)), new Point(getXByLineAndAngle(bX, 270, 10), getYByLineAndAngle(bY, 270, 10)), new Point(getXByLineAndAngle(aX, 270, 10), getYByLineAndAngle(aY, 270, 10)) });
-                                    } else if (aX > bX)
-                                    {
-                                        g.FillPolygon(brush, new Point[] { new Point(getXByLineAndAngle(aX, 90, 10), getYByLineAndAngle(aY, 90, 10)), new Point(getXByLineAndAngle(aX, 270, 10), getYByLineAndAngle(aY, 270, 10)), new Point(getXByLineAndAngle(bX, 270, 10), getYByLineAndAngle(bY, 270, 10)), new Point(getXByLineAndAngle(bX, 90, 10), getYByLineAndAngle(bY, 90, 10)), new Point(getXByLineAndAngle(aX, 90, 10), getYByLineAndAngle(aY, 90, 10)) });
-                                    }
+                                    g.DrawLine(pen, aX, aY, bX, bY);
+                                    //if (aX == bX) {
+                                    //    g.FillPolygon(texttureBrush, new Point[] { new Point(aX - 5, aY), new Point(aX + 5, aY), new Point(bX + 5, bY), new Point(bX - 5, bY), new Point(aX - 5, aY) });
+                                    //} else if (aY == bY)
+                                    //{
+                                    //    g.FillPolygon(texttureBrush, new Point[] { new Point(aX, aY - 5), new Point(aX, aY + 5), new Point(bX, bY + 5), new Point(bX, bY - 5), new Point(aX, aY - 5) });
+                                    //} else if (aX < bX) 
+                                    //{ 
+                                    //    g.FillPolygon(texttureBrush, new Point[] { new Point(getXByLineAndAngle(aX, 270, 10), getYByLineAndAngle(aY, 270, 10)), new Point(getXByLineAndAngle(aX, 90, 10), getYByLineAndAngle(aY, 90, 10)), new Point(getXByLineAndAngle(bX, 90, 10), getYByLineAndAngle(bY, 90, 10)), new Point(getXByLineAndAngle(bX, 270, 10), getYByLineAndAngle(bY, 270, 10)), new Point(getXByLineAndAngle(aX, 270, 10), getYByLineAndAngle(aY, 270, 10)) });
+                                    //} else if (aX > bX)
+                                    //{
+                                    //    g.FillPolygon(texttureBrush, new Point[] { new Point(getXByLineAndAngle(aX, 90, 10), getYByLineAndAngle(aY, 90, 10)), new Point(getXByLineAndAngle(aX, 270, 10), getYByLineAndAngle(aY, 270, 10)), new Point(getXByLineAndAngle(bX, 270, 10), getYByLineAndAngle(bY, 270, 10)), new Point(getXByLineAndAngle(bX, 90, 10), getYByLineAndAngle(bY, 90, 10)), new Point(getXByLineAndAngle(aX, 90, 10), getYByLineAndAngle(aY, 90, 10)) });
+                                    //}
                                 }
                                 //g.FillPolygon(brush, new Point[] { new Point(0, 10), new Point(10, 0), new Point(100,100), new Point(90, 110), new Point(0, 10) });
                                 //System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath()
@@ -1937,6 +1948,14 @@ namespace Dictionary
                         TWords.Cursor = Cursors.Hand;
                         TWords.Text = w;
                         TWords.Click += Handle_Word_Click;
+                        TWords.MouseMove += delegate
+                        {
+                            TWords.Font = new Font("Roboto Light", 16, FontStyle.Underline);
+                        };
+                        TWords.MouseLeave += delegate
+                        {
+                            TWords.Font = new Font("Roboto Light", 16, FontStyle.Regular);
+                        };
                         TWords.Margin = new Padding(5);
                         TWords.Font = new Font("Roboto Light", 16);
                         TWords.ForeColor = Color.FromArgb(15, 23, 59);
