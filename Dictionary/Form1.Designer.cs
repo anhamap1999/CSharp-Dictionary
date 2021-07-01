@@ -38,7 +38,6 @@ namespace Dictionary
             this.Logo = new System.Windows.Forms.Panel();
             this.Logolb = new System.Windows.Forms.Label();
             this.SearchBoxPn = new System.Windows.Forms.Panel();
-            this.SearchBtn = new System.Windows.Forms.Button();
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.ListCharacterPn = new System.Windows.Forms.Panel();
             this.Khonggica2 = new System.Windows.Forms.Panel();
@@ -77,7 +76,6 @@ namespace Dictionary
             this.label7 = new System.Windows.Forms.Label();
             this.lb_SelectedLetter = new System.Windows.Forms.Label();
             this.WordOfDayPn = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.WodMeaningPn = new System.Windows.Forms.Panel();
             this.WoDMeaningLb = new System.Windows.Forms.Label();
             this.TUCUANGAYLb = new System.Windows.Forms.Label();
@@ -94,12 +92,9 @@ namespace Dictionary
             this.NWLb = new System.Windows.Forms.Label();
             this.NWDPhoneticLb = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.PicOfWordPb = new System.Windows.Forms.PictureBox();
             this.HomePn = new System.Windows.Forms.Panel();
             this.SoundPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel_WordDefinition = new System.Windows.Forms.Panel();
-            this.pic_WordSave = new System.Windows.Forms.PictureBox();
-            this.pic_WordAudio = new System.Windows.Forms.PictureBox();
             this.label_WordSpelling = new System.Windows.Forms.Label();
             this.label_ViewWord = new System.Windows.Forms.Label();
             this.flow_WordType = new System.Windows.Forms.FlowLayoutPanel();
@@ -108,7 +103,55 @@ namespace Dictionary
             this.SavedWordPn = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.PnToeicWords = new System.Windows.Forms.Panel();
+            this.BtnToeicGame = new System.Windows.Forms.Button();
+            this.LbSeperatorToeic = new System.Windows.Forms.Label();
+            this.flowToeicWords = new System.Windows.Forms.FlowLayoutPanel();
+            this.LbToeicWords = new System.Windows.Forms.Label();
+            this.PnTranslateText = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.TbResultText = new System.Windows.Forms.RichTextBox();
+            this.TbTranslateText = new System.Windows.Forms.RichTextBox();
+            this.PbTranslateTextBox = new System.Windows.Forms.Panel();
+            this.PnResultTextBox = new System.Windows.Forms.Panel();
+            this.BtnTranslate = new System.Windows.Forms.Button();
+            this.BtnCopyToClipboard = new System.Windows.Forms.Button();
+            this.PnToeicGame = new System.Windows.Forms.Panel();
+            this.PbMute = new System.Windows.Forms.PictureBox();
+            this.PnCountQuest = new System.Windows.Forms.Panel();
+            this.LbIncorrectCount = new System.Windows.Forms.Label();
+            this.LbCorrectCount = new System.Windows.Forms.Label();
+            this.LbQuestCount = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.BtnNextQuest = new System.Windows.Forms.Button();
+            this.PnToeicQuest = new System.Windows.Forms.Panel();
+            this.BtnToeicExit = new System.Windows.Forms.Button();
+            this.FlowAnswerContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.PicOfWordPb = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pic_WordSave = new System.Windows.Forms.PictureBox();
+            this.pic_WordAudio = new System.Windows.Forms.PictureBox();
+            this.SearchBtn = new System.Windows.Forms.Button();
             this.PnConnectWord = new System.Windows.Forms.Panel();
+            this.panel_LevelSuccess = new System.Windows.Forms.Panel();
+            this.btn_LevelNext = new System.Windows.Forms.Panel();
+            this.btn_LevelAgain = new System.Windows.Forms.Panel();
+            this.star_3 = new System.Windows.Forms.Panel();
+            this.star_2 = new System.Windows.Forms.Panel();
+            this.label_LevelSuccessScore = new System.Windows.Forms.Label();
+            this.btn_LevelHome = new System.Windows.Forms.Panel();
+            this.star_1 = new System.Windows.Forms.Panel();
+            this.PnLetterHolder = new System.Windows.Forms.Panel();
+            this.panel_Letter4 = new System.Windows.Forms.Panel();
+            this.label_Letter4 = new System.Windows.Forms.Label();
+            this.panel_Letter2 = new System.Windows.Forms.Panel();
+            this.label_Letter2 = new System.Windows.Forms.Label();
+            this.panel_Letter1 = new System.Windows.Forms.Panel();
+            this.label_Letter1 = new System.Windows.Forms.Label();
+            this.panel_Letter3 = new System.Windows.Forms.Panel();
+            this.label_Letter3 = new System.Windows.Forms.Label();
             this.panel_ScoreCoin = new System.Windows.Forms.Panel();
             this.panel_Level = new System.Windows.Forms.Panel();
             this.btn_Level11 = new System.Windows.Forms.Panel();
@@ -145,23 +188,6 @@ namespace Dictionary
             this.label_Level1 = new System.Windows.Forms.Label();
             this.star_Level1 = new System.Windows.Forms.Panel();
             this.panel_SelectLevel = new System.Windows.Forms.Panel();
-            this.panel_LevelSuccess = new System.Windows.Forms.Panel();
-            this.btn_LevelNext = new System.Windows.Forms.Panel();
-            this.btn_LevelAgain = new System.Windows.Forms.Panel();
-            this.star_3 = new System.Windows.Forms.Panel();
-            this.star_2 = new System.Windows.Forms.Panel();
-            this.label_LevelSuccessScore = new System.Windows.Forms.Label();
-            this.btn_LevelHome = new System.Windows.Forms.Panel();
-            this.star_1 = new System.Windows.Forms.Panel();
-            this.PnLetterHolder = new System.Windows.Forms.Panel();
-            this.panel_Letter4 = new System.Windows.Forms.Panel();
-            this.label_Letter4 = new System.Windows.Forms.Label();
-            this.panel_Letter2 = new System.Windows.Forms.Panel();
-            this.label_Letter2 = new System.Windows.Forms.Label();
-            this.panel_Letter1 = new System.Windows.Forms.Panel();
-            this.label_Letter1 = new System.Windows.Forms.Label();
-            this.panel_Letter3 = new System.Windows.Forms.Panel();
-            this.label_Letter3 = new System.Windows.Forms.Label();
             this.panel_LevelTitle = new System.Windows.Forms.Panel();
             this.label_LevelTitle = new System.Windows.Forms.Label();
             this.label_GameScore = new System.Windows.Forms.Label();
@@ -198,18 +224,9 @@ namespace Dictionary
             this.btn_Letter1x1 = new System.Windows.Forms.Panel();
             this.BtnHint = new System.Windows.Forms.Panel();
             this.BtnExit = new System.Windows.Forms.Panel();
-            this.PnToeicWords = new System.Windows.Forms.Panel();
-            this.BtnToeicGame = new System.Windows.Forms.Button();
-            this.LbSeperatorToeic = new System.Windows.Forms.Label();
-            this.flowToeicWords = new System.Windows.Forms.FlowLayoutPanel();
-            this.LbToeicWords = new System.Windows.Forms.Label();
-            this.PnToeicGame = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.BtnNextQuest = new System.Windows.Forms.Button();
-            this.PnToeicQuest = new System.Windows.Forms.Panel();
-            this.BtnToeicExit = new System.Windows.Forms.Button();
-            this.FlowAnswerContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.Header.SuspendLayout();
             this.Logo.SuspendLayout();
             this.SearchBoxPn.SuspendLayout();
@@ -219,15 +236,28 @@ namespace Dictionary
             this.WodMeaningPn.SuspendLayout();
             this.WodContainerPn.SuspendLayout();
             this.NewWordPn.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicOfWordPb)).BeginInit();
             this.HomePn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SoundPlayer)).BeginInit();
             this.panel_WordDefinition.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_WordSave)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_WordAudio)).BeginInit();
             this.panel_WordNotFound.SuspendLayout();
             this.SavedWordPn.SuspendLayout();
+            this.PnToeicWords.SuspendLayout();
+            this.PnTranslateText.SuspendLayout();
+            this.PbTranslateTextBox.SuspendLayout();
+            this.PnResultTextBox.SuspendLayout();
+            this.PnToeicGame.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbMute)).BeginInit();
+            this.PnCountQuest.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicOfWordPb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_WordSave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_WordAudio)).BeginInit();
             this.PnConnectWord.SuspendLayout();
+            this.panel_LevelSuccess.SuspendLayout();
+            this.PnLetterHolder.SuspendLayout();
+            this.panel_Letter4.SuspendLayout();
+            this.panel_Letter2.SuspendLayout();
+            this.panel_Letter1.SuspendLayout();
+            this.panel_Letter3.SuspendLayout();
             this.panel_Level.SuspendLayout();
             this.btn_Level11.SuspendLayout();
             this.btn_Level6.SuspendLayout();
@@ -240,17 +270,10 @@ namespace Dictionary
             this.btn_Level3.SuspendLayout();
             this.btn_Level2.SuspendLayout();
             this.btn_Level1.SuspendLayout();
-            this.panel_LevelSuccess.SuspendLayout();
-            this.PnLetterHolder.SuspendLayout();
-            this.panel_Letter4.SuspendLayout();
-            this.panel_Letter2.SuspendLayout();
-            this.panel_Letter1.SuspendLayout();
-            this.panel_Letter3.SuspendLayout();
             this.panel_LevelTitle.SuspendLayout();
             this.panel_CrossingWord.SuspendLayout();
             this.panel_WordResult.SuspendLayout();
-            this.PnToeicWords.SuspendLayout();
-            this.PnToeicGame.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Header
@@ -366,20 +389,6 @@ namespace Dictionary
             this.SearchBoxPn.Name = "SearchBoxPn";
             this.SearchBoxPn.Size = new System.Drawing.Size(442, 62);
             this.SearchBoxPn.TabIndex = 3;
-            // 
-            // SearchBtn
-            // 
-            this.SearchBtn.BackColor = System.Drawing.Color.White;
-            this.SearchBtn.BackgroundImage = global::Dictionary.Properties.Resources.loupe;
-            this.SearchBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchBtn.Location = new System.Drawing.Point(383, -1);
-            this.SearchBtn.Margin = new System.Windows.Forms.Padding(0);
-            this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(60, 64);
-            this.SearchBtn.TabIndex = 3;
-            this.SearchBtn.UseVisualStyleBackColor = false;
-            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // SearchBox
             // 
@@ -964,19 +973,6 @@ namespace Dictionary
             this.WordOfDayPn.Size = new System.Drawing.Size(520, 290);
             this.WordOfDayPn.TabIndex = 6;
             // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::Dictionary.Properties.Resources.audio;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(243, 135);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 17;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // WodMeaningPn
             // 
             this.WodMeaningPn.Controls.Add(this.WoDMeaningLb);
@@ -1143,16 +1139,6 @@ namespace Dictionary
             this.label16.TabIndex = 12;
             this.label16.Text = "TỪ CỦA NGÀY";
             // 
-            // PicOfWordPb
-            // 
-            this.PicOfWordPb.Location = new System.Drawing.Point(8, 10);
-            this.PicOfWordPb.Margin = new System.Windows.Forms.Padding(0);
-            this.PicOfWordPb.Name = "PicOfWordPb";
-            this.PicOfWordPb.Size = new System.Drawing.Size(238, 252);
-            this.PicOfWordPb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicOfWordPb.TabIndex = 0;
-            this.PicOfWordPb.TabStop = false;
-            // 
             // HomePn
             // 
             this.HomePn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1194,44 +1180,16 @@ namespace Dictionary
             this.panel_WordDefinition.Size = new System.Drawing.Size(1264, 580);
             this.panel_WordDefinition.TabIndex = 7;
             // 
-            // pic_WordSave
-            // 
-            this.pic_WordSave.BackColor = System.Drawing.Color.Transparent;
-            this.pic_WordSave.BackgroundImage = global::Dictionary.Properties.Resources.unsaved;
-            this.pic_WordSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pic_WordSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic_WordSave.Location = new System.Drawing.Point(21, 13);
-            this.pic_WordSave.Name = "pic_WordSave";
-            this.pic_WordSave.Size = new System.Drawing.Size(25, 25);
-            this.pic_WordSave.TabIndex = 4;
-            this.pic_WordSave.TabStop = false;
-            this.pic_WordSave.Click += new System.EventHandler(this.pic_WordSave_Click);
-            this.pic_WordSave.MouseLeave += new System.EventHandler(this.pic_WordSave_MouseLeave);
-            this.pic_WordSave.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pic_WordSave_MouseMove);
-            // 
-            // pic_WordAudio
-            // 
-            this.pic_WordAudio.BackColor = System.Drawing.Color.Transparent;
-            this.pic_WordAudio.BackgroundImage = global::Dictionary.Properties.Resources.audio;
-            this.pic_WordAudio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pic_WordAudio.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic_WordAudio.Location = new System.Drawing.Point(152, 48);
-            this.pic_WordAudio.Name = "pic_WordAudio";
-            this.pic_WordAudio.Size = new System.Drawing.Size(25, 25);
-            this.pic_WordAudio.TabIndex = 3;
-            this.pic_WordAudio.TabStop = false;
-            this.pic_WordAudio.Click += new System.EventHandler(this.pic_WordAudio_Click);
-            // 
             // label_WordSpelling
             // 
             this.label_WordSpelling.AutoSize = true;
             this.label_WordSpelling.BackColor = System.Drawing.Color.Transparent;
-            this.label_WordSpelling.Font = new System.Drawing.Font("Roboto Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_WordSpelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_WordSpelling.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label_WordSpelling.Location = new System.Drawing.Point(52, 50);
             this.label_WordSpelling.Margin = new System.Windows.Forms.Padding(1);
             this.label_WordSpelling.Name = "label_WordSpelling";
-            this.label_WordSpelling.Size = new System.Drawing.Size(45, 23);
+            this.label_WordSpelling.Size = new System.Drawing.Size(46, 24);
             this.label_WordSpelling.TabIndex = 2;
             this.label_WordSpelling.Text = "Dict.";
             // 
@@ -1239,12 +1197,12 @@ namespace Dictionary
             // 
             this.label_ViewWord.AutoSize = true;
             this.label_ViewWord.BackColor = System.Drawing.Color.Transparent;
-            this.label_ViewWord.Font = new System.Drawing.Font("Roboto Condensed", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ViewWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_ViewWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(40)))), ((int)(((byte)(85)))));
             this.label_ViewWord.Location = new System.Drawing.Point(50, 9);
             this.label_ViewWord.Margin = new System.Windows.Forms.Padding(1);
             this.label_ViewWord.Name = "label_ViewWord";
-            this.label_ViewWord.Size = new System.Drawing.Size(68, 35);
+            this.label_ViewWord.Size = new System.Drawing.Size(79, 33);
             this.label_ViewWord.TabIndex = 1;
             this.label_ViewWord.Text = "Dict.";
             // 
@@ -1272,12 +1230,12 @@ namespace Dictionary
             // 
             this.label_WordNotFound.AutoSize = true;
             this.label_WordNotFound.BackColor = System.Drawing.Color.Transparent;
-            this.label_WordNotFound.Font = new System.Drawing.Font("Roboto Condensed", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_WordNotFound.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_WordNotFound.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(40)))), ((int)(((byte)(85)))));
             this.label_WordNotFound.Location = new System.Drawing.Point(50, 9);
             this.label_WordNotFound.Margin = new System.Windows.Forms.Padding(1);
             this.label_WordNotFound.Name = "label_WordNotFound";
-            this.label_WordNotFound.Size = new System.Drawing.Size(191, 35);
+            this.label_WordNotFound.Size = new System.Drawing.Size(223, 33);
             this.label_WordNotFound.TabIndex = 1;
             this.label_WordNotFound.Text = "Không tìm thấy";
             // 
@@ -1315,6 +1273,379 @@ namespace Dictionary
             this.label3.TabIndex = 0;
             this.label3.Text = "Danh sách từ mới";
             // 
+            // PnToeicWords
+            // 
+            this.PnToeicWords.AutoScroll = true;
+            this.PnToeicWords.Controls.Add(this.BtnToeicGame);
+            this.PnToeicWords.Controls.Add(this.LbSeperatorToeic);
+            this.PnToeicWords.Controls.Add(this.flowToeicWords);
+            this.PnToeicWords.Controls.Add(this.LbToeicWords);
+            this.PnToeicWords.Location = new System.Drawing.Point(0, 100);
+            this.PnToeicWords.Name = "PnToeicWords";
+            this.PnToeicWords.Size = new System.Drawing.Size(1264, 580);
+            this.PnToeicWords.TabIndex = 12;
+            // 
+            // BtnToeicGame
+            // 
+            this.BtnToeicGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(40)))), ((int)(((byte)(85)))));
+            this.BtnToeicGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnToeicGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnToeicGame.ForeColor = System.Drawing.Color.White;
+            this.BtnToeicGame.Location = new System.Drawing.Point(949, 52);
+            this.BtnToeicGame.Name = "BtnToeicGame";
+            this.BtnToeicGame.Size = new System.Drawing.Size(163, 45);
+            this.BtnToeicGame.TabIndex = 6;
+            this.BtnToeicGame.Text = "Game Học Từ";
+            this.BtnToeicGame.UseVisualStyleBackColor = false;
+            this.BtnToeicGame.Click += new System.EventHandler(this.BtnToeicGame_Click);
+            // 
+            // LbSeperatorToeic
+            // 
+            this.LbSeperatorToeic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.LbSeperatorToeic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LbSeperatorToeic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.LbSeperatorToeic.Location = new System.Drawing.Point(113, 94);
+            this.LbSeperatorToeic.Name = "LbSeperatorToeic";
+            this.LbSeperatorToeic.Size = new System.Drawing.Size(393, 2);
+            this.LbSeperatorToeic.TabIndex = 4;
+            this.LbSeperatorToeic.Text = "label5";
+            // 
+            // flowToeicWords
+            // 
+            this.flowToeicWords.AutoSize = true;
+            this.flowToeicWords.Cursor = System.Windows.Forms.Cursors.Default;
+            this.flowToeicWords.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowToeicWords.Location = new System.Drawing.Point(113, 110);
+            this.flowToeicWords.Name = "flowToeicWords";
+            this.flowToeicWords.Size = new System.Drawing.Size(999, 463);
+            this.flowToeicWords.TabIndex = 5;
+            // 
+            // LbToeicWords
+            // 
+            this.LbToeicWords.AutoSize = true;
+            this.LbToeicWords.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbToeicWords.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.LbToeicWords.Location = new System.Drawing.Point(102, 50);
+            this.LbToeicWords.Name = "LbToeicWords";
+            this.LbToeicWords.Size = new System.Drawing.Size(256, 42);
+            this.LbToeicWords.TabIndex = 3;
+            this.LbToeicWords.Text = "Từ vựng Toeic";
+            // 
+            // PnTranslateText
+            // 
+            this.PnTranslateText.Controls.Add(this.label13);
+            this.PnTranslateText.Controls.Add(this.label11);
+            this.PnTranslateText.Controls.Add(this.pictureBox1);
+            this.PnTranslateText.Controls.Add(this.BtnCopyToClipboard);
+            this.PnTranslateText.Controls.Add(this.BtnTranslate);
+            this.PnTranslateText.Controls.Add(this.PnResultTextBox);
+            this.PnTranslateText.Controls.Add(this.PbTranslateTextBox);
+            this.PnTranslateText.Controls.Add(this.label10);
+            this.PnTranslateText.Controls.Add(this.label4);
+            this.PnTranslateText.Location = new System.Drawing.Point(0, 100);
+            this.PnTranslateText.Name = "PnTranslateText";
+            this.PnTranslateText.Size = new System.Drawing.Size(1264, 580);
+            this.PnTranslateText.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.label4.Location = new System.Drawing.Point(102, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(237, 42);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Dịch văn bản";
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
+            this.label10.Location = new System.Drawing.Point(109, 99);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(300, 2);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "LbTranslateTextSeperator";
+            // 
+            // TbResultText
+            // 
+            this.TbResultText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TbResultText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TbResultText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbResultText.Location = new System.Drawing.Point(0, 0);
+            this.TbResultText.Name = "TbResultText";
+            this.TbResultText.Size = new System.Drawing.Size(496, 363);
+            this.TbResultText.TabIndex = 4;
+            this.TbResultText.Text = "";
+            // 
+            // TbTranslateText
+            // 
+            this.TbTranslateText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TbTranslateText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TbTranslateText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbTranslateText.Location = new System.Drawing.Point(0, 0);
+            this.TbTranslateText.Name = "TbTranslateText";
+            this.TbTranslateText.Size = new System.Drawing.Size(492, 363);
+            this.TbTranslateText.TabIndex = 5;
+            this.TbTranslateText.Text = "";
+            // 
+            // PbTranslateTextBox
+            // 
+            this.PbTranslateTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PbTranslateTextBox.Controls.Add(this.TbResultText);
+            this.PbTranslateTextBox.Location = new System.Drawing.Point(110, 145);
+            this.PbTranslateTextBox.Name = "PbTranslateTextBox";
+            this.PbTranslateTextBox.Size = new System.Drawing.Size(498, 365);
+            this.PbTranslateTextBox.TabIndex = 6;
+            // 
+            // PnResultTextBox
+            // 
+            this.PnResultTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PnResultTextBox.Controls.Add(this.TbTranslateText);
+            this.PnResultTextBox.Location = new System.Drawing.Point(666, 145);
+            this.PnResultTextBox.Name = "PnResultTextBox";
+            this.PnResultTextBox.Size = new System.Drawing.Size(494, 365);
+            this.PnResultTextBox.TabIndex = 7;
+            // 
+            // BtnTranslate
+            // 
+            this.BtnTranslate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(199)))), ((int)(((byte)(2)))));
+            this.BtnTranslate.FlatAppearance.BorderSize = 0;
+            this.BtnTranslate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnTranslate.Font = new System.Drawing.Font("Roboto Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnTranslate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(87)))));
+            this.BtnTranslate.Location = new System.Drawing.Point(501, 515);
+            this.BtnTranslate.Name = "BtnTranslate";
+            this.BtnTranslate.Size = new System.Drawing.Size(106, 36);
+            this.BtnTranslate.TabIndex = 8;
+            this.BtnTranslate.Text = "Dịch";
+            this.BtnTranslate.UseVisualStyleBackColor = false;
+            // 
+            // BtnCopyToClipboard
+            // 
+            this.BtnCopyToClipboard.BackColor = System.Drawing.Color.Transparent;
+            this.BtnCopyToClipboard.FlatAppearance.BorderSize = 0;
+            this.BtnCopyToClipboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCopyToClipboard.Font = new System.Drawing.Font("Roboto Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCopyToClipboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(87)))));
+            this.BtnCopyToClipboard.Location = new System.Drawing.Point(667, 515);
+            this.BtnCopyToClipboard.Name = "BtnCopyToClipboard";
+            this.BtnCopyToClipboard.Size = new System.Drawing.Size(106, 36);
+            this.BtnCopyToClipboard.TabIndex = 9;
+            this.BtnCopyToClipboard.Text = "Sao chép";
+            this.BtnCopyToClipboard.UseVisualStyleBackColor = false;
+            // 
+            // PnToeicGame
+            // 
+            this.PnToeicGame.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PnToeicGame.BackgroundImage")));
+            this.PnToeicGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PnToeicGame.Controls.Add(this.PbMute);
+            this.PnToeicGame.Controls.Add(this.PnCountQuest);
+            this.PnToeicGame.Controls.Add(this.label6);
+            this.PnToeicGame.Controls.Add(this.label5);
+            this.PnToeicGame.Controls.Add(this.BtnNextQuest);
+            this.PnToeicGame.Controls.Add(this.PnToeicQuest);
+            this.PnToeicGame.Controls.Add(this.BtnToeicExit);
+            this.PnToeicGame.Controls.Add(this.FlowAnswerContainer);
+            this.PnToeicGame.Location = new System.Drawing.Point(0, 100);
+            this.PnToeicGame.Name = "PnToeicGame";
+            this.PnToeicGame.Size = new System.Drawing.Size(1264, 580);
+            this.PnToeicGame.TabIndex = 11;
+            this.PnToeicGame.Visible = false;
+            // 
+            // PbMute
+            // 
+            this.PbMute.BackColor = System.Drawing.Color.Transparent;
+            this.PbMute.Image = global::Dictionary.Properties.Resources.audio__1_;
+            this.PbMute.Location = new System.Drawing.Point(16, 518);
+            this.PbMute.Name = "PbMute";
+            this.PbMute.Size = new System.Drawing.Size(44, 44);
+            this.PbMute.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PbMute.TabIndex = 8;
+            this.PbMute.TabStop = false;
+            this.PbMute.Tag = "Unmute";
+            this.PbMute.Click += new System.EventHandler(this.PbMute_Click);
+            // 
+            // PnCountQuest
+            // 
+            this.PnCountQuest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.PnCountQuest.Controls.Add(this.LbIncorrectCount);
+            this.PnCountQuest.Controls.Add(this.LbCorrectCount);
+            this.PnCountQuest.Controls.Add(this.LbQuestCount);
+            this.PnCountQuest.Location = new System.Drawing.Point(1013, 290);
+            this.PnCountQuest.Name = "PnCountQuest";
+            this.PnCountQuest.Size = new System.Drawing.Size(230, 118);
+            this.PnCountQuest.TabIndex = 7;
+            // 
+            // LbIncorrectCount
+            // 
+            this.LbIncorrectCount.AutoSize = true;
+            this.LbIncorrectCount.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbIncorrectCount.Location = new System.Drawing.Point(18, 77);
+            this.LbIncorrectCount.Name = "LbIncorrectCount";
+            this.LbIncorrectCount.Size = new System.Drawing.Size(87, 19);
+            this.LbIncorrectCount.TabIndex = 2;
+            this.LbIncorrectCount.Text = "Số câu sai:";
+            // 
+            // LbCorrectCount
+            // 
+            this.LbCorrectCount.AutoSize = true;
+            this.LbCorrectCount.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbCorrectCount.ForeColor = System.Drawing.Color.Black;
+            this.LbCorrectCount.Location = new System.Drawing.Point(18, 40);
+            this.LbCorrectCount.Name = "LbCorrectCount";
+            this.LbCorrectCount.Size = new System.Drawing.Size(103, 19);
+            this.LbCorrectCount.TabIndex = 1;
+            this.LbCorrectCount.Text = "Số câu đúng:";
+            // 
+            // LbQuestCount
+            // 
+            this.LbQuestCount.AutoSize = true;
+            this.LbQuestCount.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbQuestCount.Location = new System.Drawing.Point(42, 6);
+            this.LbQuestCount.Name = "LbQuestCount";
+            this.LbQuestCount.Size = new System.Drawing.Size(55, 29);
+            this.LbQuestCount.TabIndex = 0;
+            this.LbQuestCount.Text = "Câu";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(259, 6);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(134, 24);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Nghĩa của từ:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(256, 132);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 24);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Đáp Án:";
+            // 
+            // BtnNextQuest
+            // 
+            this.BtnNextQuest.BackColor = System.Drawing.Color.Green;
+            this.BtnNextQuest.FlatAppearance.BorderSize = 0;
+            this.BtnNextQuest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnNextQuest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnNextQuest.ForeColor = System.Drawing.Color.White;
+            this.BtnNextQuest.Location = new System.Drawing.Point(1131, 10);
+            this.BtnNextQuest.Name = "BtnNextQuest";
+            this.BtnNextQuest.Size = new System.Drawing.Size(118, 50);
+            this.BtnNextQuest.TabIndex = 3;
+            this.BtnNextQuest.Text = "Câu tiếp theo";
+            this.BtnNextQuest.UseVisualStyleBackColor = false;
+            this.BtnNextQuest.Click += new System.EventHandler(this.BtnNextQuest_Click);
+            // 
+            // PnToeicQuest
+            // 
+            this.PnToeicQuest.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.PnToeicQuest.Location = new System.Drawing.Point(261, 35);
+            this.PnToeicQuest.Name = "PnToeicQuest";
+            this.PnToeicQuest.Size = new System.Drawing.Size(716, 84);
+            this.PnToeicQuest.TabIndex = 1;
+            // 
+            // BtnToeicExit
+            // 
+            this.BtnToeicExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(26)))), ((int)(((byte)(42)))));
+            this.BtnToeicExit.FlatAppearance.BorderSize = 0;
+            this.BtnToeicExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnToeicExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnToeicExit.ForeColor = System.Drawing.Color.White;
+            this.BtnToeicExit.Location = new System.Drawing.Point(13, 10);
+            this.BtnToeicExit.Name = "BtnToeicExit";
+            this.BtnToeicExit.Size = new System.Drawing.Size(72, 44);
+            this.BtnToeicExit.TabIndex = 0;
+            this.BtnToeicExit.Text = "Thoát";
+            this.BtnToeicExit.UseVisualStyleBackColor = false;
+            this.BtnToeicExit.Click += new System.EventHandler(this.BtnToeicExit_Click);
+            // 
+            // FlowAnswerContainer
+            // 
+            this.FlowAnswerContainer.BackColor = System.Drawing.Color.Transparent;
+            this.FlowAnswerContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.FlowAnswerContainer.Location = new System.Drawing.Point(258, 158);
+            this.FlowAnswerContainer.Name = "FlowAnswerContainer";
+            this.FlowAnswerContainer.Size = new System.Drawing.Size(729, 403);
+            this.FlowAnswerContainer.TabIndex = 6;
+            // 
+            // PicOfWordPb
+            // 
+            this.PicOfWordPb.Location = new System.Drawing.Point(8, 10);
+            this.PicOfWordPb.Margin = new System.Windows.Forms.Padding(0);
+            this.PicOfWordPb.Name = "PicOfWordPb";
+            this.PicOfWordPb.Size = new System.Drawing.Size(238, 252);
+            this.PicOfWordPb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicOfWordPb.TabIndex = 0;
+            this.PicOfWordPb.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::Dictionary.Properties.Resources.audio;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(243, 135);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 30);
+            this.button1.TabIndex = 17;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pic_WordSave
+            // 
+            this.pic_WordSave.BackColor = System.Drawing.Color.Transparent;
+            this.pic_WordSave.BackgroundImage = global::Dictionary.Properties.Resources.unsaved;
+            this.pic_WordSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pic_WordSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pic_WordSave.Location = new System.Drawing.Point(21, 13);
+            this.pic_WordSave.Name = "pic_WordSave";
+            this.pic_WordSave.Size = new System.Drawing.Size(25, 25);
+            this.pic_WordSave.TabIndex = 4;
+            this.pic_WordSave.TabStop = false;
+            this.pic_WordSave.Click += new System.EventHandler(this.pic_WordSave_Click);
+            this.pic_WordSave.MouseLeave += new System.EventHandler(this.pic_WordSave_MouseLeave);
+            this.pic_WordSave.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pic_WordSave_MouseMove);
+            // 
+            // pic_WordAudio
+            // 
+            this.pic_WordAudio.BackColor = System.Drawing.Color.Transparent;
+            this.pic_WordAudio.BackgroundImage = global::Dictionary.Properties.Resources.audio;
+            this.pic_WordAudio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pic_WordAudio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pic_WordAudio.Location = new System.Drawing.Point(152, 48);
+            this.pic_WordAudio.Name = "pic_WordAudio";
+            this.pic_WordAudio.Size = new System.Drawing.Size(25, 25);
+            this.pic_WordAudio.TabIndex = 3;
+            this.pic_WordAudio.TabStop = false;
+            this.pic_WordAudio.Click += new System.EventHandler(this.pic_WordAudio_Click);
+            // 
+            // SearchBtn
+            // 
+            this.SearchBtn.BackColor = System.Drawing.Color.White;
+            this.SearchBtn.BackgroundImage = global::Dictionary.Properties.Resources.loupe;
+            this.SearchBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchBtn.Location = new System.Drawing.Point(383, -1);
+            this.SearchBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(60, 64);
+            this.SearchBtn.TabIndex = 3;
+            this.SearchBtn.UseVisualStyleBackColor = false;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
+            // 
             // PnConnectWord
             // 
             this.PnConnectWord.BackColor = System.Drawing.Color.Transparent;
@@ -1335,411 +1666,6 @@ namespace Dictionary
             this.PnConnectWord.Name = "PnConnectWord";
             this.PnConnectWord.Size = new System.Drawing.Size(1264, 620);
             this.PnConnectWord.TabIndex = 9;
-            // 
-            // panel_ScoreCoin
-            // 
-            this.panel_ScoreCoin.BackColor = System.Drawing.Color.Transparent;
-            this.panel_ScoreCoin.BackgroundImage = global::Dictionary.Properties.Resources.coin;
-            this.panel_ScoreCoin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel_ScoreCoin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel_ScoreCoin.Location = new System.Drawing.Point(11, 516);
-            this.panel_ScoreCoin.Name = "panel_ScoreCoin";
-            this.panel_ScoreCoin.Size = new System.Drawing.Size(36, 39);
-            this.panel_ScoreCoin.TabIndex = 16;
-            // 
-            // panel_Level
-            // 
-            this.panel_Level.BackColor = System.Drawing.Color.Transparent;
-            this.panel_Level.BackgroundImage = global::Dictionary.Properties.Resources.nen_vuong_trang;
-            this.panel_Level.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel_Level.Controls.Add(this.btn_Level11);
-            this.panel_Level.Controls.Add(this.star_Level11);
-            this.panel_Level.Controls.Add(this.btn_Level6);
-            this.panel_Level.Controls.Add(this.star_Level6);
-            this.panel_Level.Controls.Add(this.btn_Level7);
-            this.panel_Level.Controls.Add(this.star_Level7);
-            this.panel_Level.Controls.Add(this.btn_Level8);
-            this.panel_Level.Controls.Add(this.panel15);
-            this.panel_Level.Controls.Add(this.btn_Level9);
-            this.panel_Level.Controls.Add(this.star_Level9);
-            this.panel_Level.Controls.Add(this.btn_Level10);
-            this.panel_Level.Controls.Add(this.star_Level10);
-            this.panel_Level.Controls.Add(this.btn_Level5);
-            this.panel_Level.Controls.Add(this.star_Level5);
-            this.panel_Level.Controls.Add(this.btn_Level4);
-            this.panel_Level.Controls.Add(this.star_Level4);
-            this.panel_Level.Controls.Add(this.btn_Level3);
-            this.panel_Level.Controls.Add(this.star_Level3);
-            this.panel_Level.Controls.Add(this.btn_Level2);
-            this.panel_Level.Controls.Add(this.star_Level2);
-            this.panel_Level.Controls.Add(this.btn_Level1);
-            this.panel_Level.Controls.Add(this.star_Level1);
-            this.panel_Level.Controls.Add(this.panel_SelectLevel);
-            this.panel_Level.Location = new System.Drawing.Point(325, 50);
-            this.panel_Level.Name = "panel_Level";
-            this.panel_Level.Size = new System.Drawing.Size(614, 491);
-            this.panel_Level.TabIndex = 5;
-            // 
-            // btn_Level11
-            // 
-            this.btn_Level11.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
-            this.btn_Level11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Level11.Controls.Add(this.label_Level11);
-            this.btn_Level11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Level11.Location = new System.Drawing.Point(388, 328);
-            this.btn_Level11.Name = "btn_Level11";
-            this.btn_Level11.Size = new System.Drawing.Size(70, 70);
-            this.btn_Level11.TabIndex = 5;
-            // 
-            // label_Level11
-            // 
-            this.label_Level11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Level11.Font = new System.Drawing.Font("Pinguino", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Level11.ForeColor = System.Drawing.Color.White;
-            this.label_Level11.Location = new System.Drawing.Point(0, 0);
-            this.label_Level11.Name = "label_Level11";
-            this.label_Level11.Size = new System.Drawing.Size(70, 70);
-            this.label_Level11.TabIndex = 0;
-            this.label_Level11.Text = "11";
-            this.label_Level11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // star_Level11
-            // 
-            this.star_Level11.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
-            this.star_Level11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.star_Level11.Location = new System.Drawing.Point(388, 400);
-            this.star_Level11.Name = "star_Level11";
-            this.star_Level11.Size = new System.Drawing.Size(70, 26);
-            this.star_Level11.TabIndex = 6;
-            // 
-            // btn_Level6
-            // 
-            this.btn_Level6.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
-            this.btn_Level6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Level6.Controls.Add(this.label_Level6);
-            this.btn_Level6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Level6.Location = new System.Drawing.Point(213, 209);
-            this.btn_Level6.Name = "btn_Level6";
-            this.btn_Level6.Size = new System.Drawing.Size(70, 70);
-            this.btn_Level6.TabIndex = 2;
-            // 
-            // label_Level6
-            // 
-            this.label_Level6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Level6.Font = new System.Drawing.Font("Pinguino", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Level6.ForeColor = System.Drawing.Color.White;
-            this.label_Level6.Location = new System.Drawing.Point(0, 0);
-            this.label_Level6.Name = "label_Level6";
-            this.label_Level6.Size = new System.Drawing.Size(70, 70);
-            this.label_Level6.TabIndex = 0;
-            this.label_Level6.Text = "6";
-            this.label_Level6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // star_Level6
-            // 
-            this.star_Level6.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
-            this.star_Level6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.star_Level6.Location = new System.Drawing.Point(213, 281);
-            this.star_Level6.Name = "star_Level6";
-            this.star_Level6.Size = new System.Drawing.Size(70, 26);
-            this.star_Level6.TabIndex = 4;
-            // 
-            // btn_Level7
-            // 
-            this.btn_Level7.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
-            this.btn_Level7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Level7.Controls.Add(this.label_Level7);
-            this.btn_Level7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Level7.Location = new System.Drawing.Point(328, 209);
-            this.btn_Level7.Name = "btn_Level7";
-            this.btn_Level7.Size = new System.Drawing.Size(70, 70);
-            this.btn_Level7.TabIndex = 2;
-            // 
-            // label_Level7
-            // 
-            this.label_Level7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Level7.Font = new System.Drawing.Font("Pinguino", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Level7.ForeColor = System.Drawing.Color.White;
-            this.label_Level7.Location = new System.Drawing.Point(0, 0);
-            this.label_Level7.Name = "label_Level7";
-            this.label_Level7.Size = new System.Drawing.Size(70, 70);
-            this.label_Level7.TabIndex = 0;
-            this.label_Level7.Text = "7";
-            this.label_Level7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // star_Level7
-            // 
-            this.star_Level7.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
-            this.star_Level7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.star_Level7.Location = new System.Drawing.Point(328, 281);
-            this.star_Level7.Name = "star_Level7";
-            this.star_Level7.Size = new System.Drawing.Size(70, 26);
-            this.star_Level7.TabIndex = 4;
-            // 
-            // btn_Level8
-            // 
-            this.btn_Level8.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
-            this.btn_Level8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Level8.Controls.Add(this.label_Level8);
-            this.btn_Level8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Level8.Location = new System.Drawing.Point(442, 209);
-            this.btn_Level8.Name = "btn_Level8";
-            this.btn_Level8.Size = new System.Drawing.Size(70, 70);
-            this.btn_Level8.TabIndex = 2;
-            // 
-            // label_Level8
-            // 
-            this.label_Level8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Level8.Font = new System.Drawing.Font("Pinguino", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Level8.ForeColor = System.Drawing.Color.White;
-            this.label_Level8.Location = new System.Drawing.Point(0, 0);
-            this.label_Level8.Name = "label_Level8";
-            this.label_Level8.Size = new System.Drawing.Size(70, 70);
-            this.label_Level8.TabIndex = 0;
-            this.label_Level8.Text = "8";
-            this.label_Level8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel15
-            // 
-            this.panel15.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
-            this.panel15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel15.Location = new System.Drawing.Point(442, 281);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(70, 26);
-            this.panel15.TabIndex = 4;
-            // 
-            // btn_Level9
-            // 
-            this.btn_Level9.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
-            this.btn_Level9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Level9.Controls.Add(this.label_Level9);
-            this.btn_Level9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Level9.Location = new System.Drawing.Point(149, 328);
-            this.btn_Level9.Name = "btn_Level9";
-            this.btn_Level9.Size = new System.Drawing.Size(70, 70);
-            this.btn_Level9.TabIndex = 2;
-            // 
-            // label_Level9
-            // 
-            this.label_Level9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Level9.Font = new System.Drawing.Font("Pinguino", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Level9.ForeColor = System.Drawing.Color.White;
-            this.label_Level9.Location = new System.Drawing.Point(0, 0);
-            this.label_Level9.Name = "label_Level9";
-            this.label_Level9.Size = new System.Drawing.Size(70, 70);
-            this.label_Level9.TabIndex = 0;
-            this.label_Level9.Text = "9";
-            this.label_Level9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // star_Level9
-            // 
-            this.star_Level9.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
-            this.star_Level9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.star_Level9.Location = new System.Drawing.Point(149, 400);
-            this.star_Level9.Name = "star_Level9";
-            this.star_Level9.Size = new System.Drawing.Size(70, 26);
-            this.star_Level9.TabIndex = 4;
-            // 
-            // btn_Level10
-            // 
-            this.btn_Level10.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
-            this.btn_Level10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Level10.Controls.Add(this.label_Level10);
-            this.btn_Level10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Level10.Location = new System.Drawing.Point(270, 328);
-            this.btn_Level10.Name = "btn_Level10";
-            this.btn_Level10.Size = new System.Drawing.Size(70, 70);
-            this.btn_Level10.TabIndex = 2;
-            // 
-            // label_Level10
-            // 
-            this.label_Level10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Level10.Font = new System.Drawing.Font("Pinguino", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Level10.ForeColor = System.Drawing.Color.White;
-            this.label_Level10.Location = new System.Drawing.Point(0, 0);
-            this.label_Level10.Name = "label_Level10";
-            this.label_Level10.Size = new System.Drawing.Size(70, 70);
-            this.label_Level10.TabIndex = 0;
-            this.label_Level10.Text = "10";
-            this.label_Level10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // star_Level10
-            // 
-            this.star_Level10.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
-            this.star_Level10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.star_Level10.Location = new System.Drawing.Point(270, 400);
-            this.star_Level10.Name = "star_Level10";
-            this.star_Level10.Size = new System.Drawing.Size(70, 26);
-            this.star_Level10.TabIndex = 4;
-            // 
-            // btn_Level5
-            // 
-            this.btn_Level5.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
-            this.btn_Level5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Level5.Controls.Add(this.label_Level5);
-            this.btn_Level5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Level5.Location = new System.Drawing.Point(97, 209);
-            this.btn_Level5.Name = "btn_Level5";
-            this.btn_Level5.Size = new System.Drawing.Size(70, 70);
-            this.btn_Level5.TabIndex = 2;
-            // 
-            // label_Level5
-            // 
-            this.label_Level5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Level5.Font = new System.Drawing.Font("Pinguino", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Level5.ForeColor = System.Drawing.Color.White;
-            this.label_Level5.Location = new System.Drawing.Point(0, 0);
-            this.label_Level5.Name = "label_Level5";
-            this.label_Level5.Size = new System.Drawing.Size(70, 70);
-            this.label_Level5.TabIndex = 0;
-            this.label_Level5.Text = "5";
-            this.label_Level5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // star_Level5
-            // 
-            this.star_Level5.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
-            this.star_Level5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.star_Level5.Location = new System.Drawing.Point(97, 281);
-            this.star_Level5.Name = "star_Level5";
-            this.star_Level5.Size = new System.Drawing.Size(70, 26);
-            this.star_Level5.TabIndex = 4;
-            // 
-            // btn_Level4
-            // 
-            this.btn_Level4.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
-            this.btn_Level4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Level4.Controls.Add(this.label_Level4);
-            this.btn_Level4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Level4.Location = new System.Drawing.Point(441, 77);
-            this.btn_Level4.Name = "btn_Level4";
-            this.btn_Level4.Size = new System.Drawing.Size(70, 70);
-            this.btn_Level4.TabIndex = 2;
-            // 
-            // label_Level4
-            // 
-            this.label_Level4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Level4.Font = new System.Drawing.Font("Pinguino", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Level4.ForeColor = System.Drawing.Color.White;
-            this.label_Level4.Location = new System.Drawing.Point(0, 0);
-            this.label_Level4.Name = "label_Level4";
-            this.label_Level4.Size = new System.Drawing.Size(70, 70);
-            this.label_Level4.TabIndex = 0;
-            this.label_Level4.Text = "4";
-            this.label_Level4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // star_Level4
-            // 
-            this.star_Level4.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
-            this.star_Level4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.star_Level4.Location = new System.Drawing.Point(441, 149);
-            this.star_Level4.Name = "star_Level4";
-            this.star_Level4.Size = new System.Drawing.Size(70, 26);
-            this.star_Level4.TabIndex = 4;
-            // 
-            // btn_Level3
-            // 
-            this.btn_Level3.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
-            this.btn_Level3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Level3.Controls.Add(this.label_Level3);
-            this.btn_Level3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Level3.Location = new System.Drawing.Point(326, 77);
-            this.btn_Level3.Name = "btn_Level3";
-            this.btn_Level3.Size = new System.Drawing.Size(70, 70);
-            this.btn_Level3.TabIndex = 2;
-            // 
-            // label_Level3
-            // 
-            this.label_Level3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Level3.Font = new System.Drawing.Font("Pinguino", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Level3.ForeColor = System.Drawing.Color.White;
-            this.label_Level3.Location = new System.Drawing.Point(0, 0);
-            this.label_Level3.Name = "label_Level3";
-            this.label_Level3.Size = new System.Drawing.Size(70, 70);
-            this.label_Level3.TabIndex = 0;
-            this.label_Level3.Text = "3";
-            this.label_Level3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // star_Level3
-            // 
-            this.star_Level3.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
-            this.star_Level3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.star_Level3.Location = new System.Drawing.Point(326, 149);
-            this.star_Level3.Name = "star_Level3";
-            this.star_Level3.Size = new System.Drawing.Size(70, 26);
-            this.star_Level3.TabIndex = 4;
-            // 
-            // btn_Level2
-            // 
-            this.btn_Level2.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
-            this.btn_Level2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Level2.Controls.Add(this.label_Level2);
-            this.btn_Level2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Level2.Location = new System.Drawing.Point(212, 77);
-            this.btn_Level2.Name = "btn_Level2";
-            this.btn_Level2.Size = new System.Drawing.Size(70, 70);
-            this.btn_Level2.TabIndex = 2;
-            // 
-            // label_Level2
-            // 
-            this.label_Level2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Level2.Font = new System.Drawing.Font("Pinguino", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Level2.ForeColor = System.Drawing.Color.White;
-            this.label_Level2.Location = new System.Drawing.Point(0, 0);
-            this.label_Level2.Name = "label_Level2";
-            this.label_Level2.Size = new System.Drawing.Size(70, 70);
-            this.label_Level2.TabIndex = 0;
-            this.label_Level2.Text = "2";
-            this.label_Level2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // star_Level2
-            // 
-            this.star_Level2.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
-            this.star_Level2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.star_Level2.Location = new System.Drawing.Point(212, 149);
-            this.star_Level2.Name = "star_Level2";
-            this.star_Level2.Size = new System.Drawing.Size(70, 26);
-            this.star_Level2.TabIndex = 4;
-            // 
-            // btn_Level1
-            // 
-            this.btn_Level1.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
-            this.btn_Level1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Level1.Controls.Add(this.label_Level1);
-            this.btn_Level1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Level1.Location = new System.Drawing.Point(96, 77);
-            this.btn_Level1.Name = "btn_Level1";
-            this.btn_Level1.Size = new System.Drawing.Size(70, 70);
-            this.btn_Level1.TabIndex = 2;
-            // 
-            // label_Level1
-            // 
-            this.label_Level1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Level1.Font = new System.Drawing.Font("Pinguino", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Level1.ForeColor = System.Drawing.Color.White;
-            this.label_Level1.Location = new System.Drawing.Point(0, 0);
-            this.label_Level1.Name = "label_Level1";
-            this.label_Level1.Size = new System.Drawing.Size(70, 70);
-            this.label_Level1.TabIndex = 0;
-            this.label_Level1.Text = "1";
-            this.label_Level1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // star_Level1
-            // 
-            this.star_Level1.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
-            this.star_Level1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.star_Level1.Location = new System.Drawing.Point(96, 149);
-            this.star_Level1.Name = "star_Level1";
-            this.star_Level1.Size = new System.Drawing.Size(70, 26);
-            this.star_Level1.TabIndex = 4;
-            // 
-            // panel_SelectLevel
-            // 
-            this.panel_SelectLevel.BackgroundImage = global::Dictionary.Properties.Resources.select_level_2;
-            this.panel_SelectLevel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel_SelectLevel.Location = new System.Drawing.Point(206, 3);
-            this.panel_SelectLevel.Name = "panel_SelectLevel";
-            this.panel_SelectLevel.Size = new System.Drawing.Size(199, 58);
-            this.panel_SelectLevel.TabIndex = 3;
             // 
             // panel_LevelSuccess
             // 
@@ -1801,7 +1727,7 @@ namespace Dictionary
             // label_LevelSuccessScore
             // 
             this.label_LevelSuccessScore.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_LevelSuccessScore.Font = new System.Drawing.Font("Vinhan", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_LevelSuccessScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_LevelSuccessScore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(35)))), ((int)(((byte)(57)))));
             this.label_LevelSuccessScore.Location = new System.Drawing.Point(114, 159);
             this.label_LevelSuccessScore.Name = "label_LevelSuccessScore";
@@ -1856,7 +1782,7 @@ namespace Dictionary
             // label_Letter4
             // 
             this.label_Letter4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Letter4.Font = new System.Drawing.Font("Polly Rounded Bold", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Letter4.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Letter4.ForeColor = System.Drawing.Color.White;
             this.label_Letter4.Location = new System.Drawing.Point(0, 0);
             this.label_Letter4.Name = "label_Letter4";
@@ -1877,7 +1803,7 @@ namespace Dictionary
             // label_Letter2
             // 
             this.label_Letter2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Letter2.Font = new System.Drawing.Font("Polly Rounded Bold", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Letter2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Letter2.ForeColor = System.Drawing.Color.White;
             this.label_Letter2.Location = new System.Drawing.Point(0, 0);
             this.label_Letter2.Name = "label_Letter2";
@@ -1898,7 +1824,7 @@ namespace Dictionary
             // label_Letter1
             // 
             this.label_Letter1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Letter1.Font = new System.Drawing.Font("Polly Rounded Bold", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Letter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Letter1.ForeColor = System.Drawing.Color.White;
             this.label_Letter1.Location = new System.Drawing.Point(0, 0);
             this.label_Letter1.Name = "label_Letter1";
@@ -1919,13 +1845,418 @@ namespace Dictionary
             // label_Letter3
             // 
             this.label_Letter3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label_Letter3.Font = new System.Drawing.Font("Polly Rounded Bold", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Letter3.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Letter3.ForeColor = System.Drawing.Color.White;
             this.label_Letter3.Location = new System.Drawing.Point(0, 0);
             this.label_Letter3.Name = "label_Letter3";
             this.label_Letter3.Size = new System.Drawing.Size(90, 80);
             this.label_Letter3.TabIndex = 1;
             this.label_Letter3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel_ScoreCoin
+            // 
+            this.panel_ScoreCoin.BackColor = System.Drawing.Color.Transparent;
+            this.panel_ScoreCoin.BackgroundImage = global::Dictionary.Properties.Resources.coin;
+            this.panel_ScoreCoin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel_ScoreCoin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel_ScoreCoin.Location = new System.Drawing.Point(11, 516);
+            this.panel_ScoreCoin.Name = "panel_ScoreCoin";
+            this.panel_ScoreCoin.Size = new System.Drawing.Size(36, 39);
+            this.panel_ScoreCoin.TabIndex = 16;
+            // 
+            // panel_Level
+            // 
+            this.panel_Level.BackColor = System.Drawing.Color.Transparent;
+            this.panel_Level.BackgroundImage = global::Dictionary.Properties.Resources.nen_vuong_trang;
+            this.panel_Level.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel_Level.Controls.Add(this.btn_Level11);
+            this.panel_Level.Controls.Add(this.star_Level11);
+            this.panel_Level.Controls.Add(this.btn_Level6);
+            this.panel_Level.Controls.Add(this.star_Level6);
+            this.panel_Level.Controls.Add(this.btn_Level7);
+            this.panel_Level.Controls.Add(this.star_Level7);
+            this.panel_Level.Controls.Add(this.btn_Level8);
+            this.panel_Level.Controls.Add(this.panel15);
+            this.panel_Level.Controls.Add(this.btn_Level9);
+            this.panel_Level.Controls.Add(this.star_Level9);
+            this.panel_Level.Controls.Add(this.btn_Level10);
+            this.panel_Level.Controls.Add(this.star_Level10);
+            this.panel_Level.Controls.Add(this.btn_Level5);
+            this.panel_Level.Controls.Add(this.star_Level5);
+            this.panel_Level.Controls.Add(this.btn_Level4);
+            this.panel_Level.Controls.Add(this.star_Level4);
+            this.panel_Level.Controls.Add(this.btn_Level3);
+            this.panel_Level.Controls.Add(this.star_Level3);
+            this.panel_Level.Controls.Add(this.btn_Level2);
+            this.panel_Level.Controls.Add(this.star_Level2);
+            this.panel_Level.Controls.Add(this.btn_Level1);
+            this.panel_Level.Controls.Add(this.star_Level1);
+            this.panel_Level.Controls.Add(this.panel_SelectLevel);
+            this.panel_Level.Location = new System.Drawing.Point(325, 50);
+            this.panel_Level.Name = "panel_Level";
+            this.panel_Level.Size = new System.Drawing.Size(614, 491);
+            this.panel_Level.TabIndex = 5;
+            // 
+            // btn_Level11
+            // 
+            this.btn_Level11.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
+            this.btn_Level11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Level11.Controls.Add(this.label_Level11);
+            this.btn_Level11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Level11.Location = new System.Drawing.Point(388, 328);
+            this.btn_Level11.Name = "btn_Level11";
+            this.btn_Level11.Size = new System.Drawing.Size(70, 70);
+            this.btn_Level11.TabIndex = 5;
+            // 
+            // label_Level11
+            // 
+            this.label_Level11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_Level11.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Level11.ForeColor = System.Drawing.Color.White;
+            this.label_Level11.Location = new System.Drawing.Point(0, 0);
+            this.label_Level11.Name = "label_Level11";
+            this.label_Level11.Size = new System.Drawing.Size(70, 70);
+            this.label_Level11.TabIndex = 0;
+            this.label_Level11.Text = "11";
+            this.label_Level11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // star_Level11
+            // 
+            this.star_Level11.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
+            this.star_Level11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.star_Level11.Location = new System.Drawing.Point(388, 400);
+            this.star_Level11.Name = "star_Level11";
+            this.star_Level11.Size = new System.Drawing.Size(70, 26);
+            this.star_Level11.TabIndex = 6;
+            // 
+            // btn_Level6
+            // 
+            this.btn_Level6.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
+            this.btn_Level6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Level6.Controls.Add(this.label_Level6);
+            this.btn_Level6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Level6.Location = new System.Drawing.Point(213, 209);
+            this.btn_Level6.Name = "btn_Level6";
+            this.btn_Level6.Size = new System.Drawing.Size(70, 70);
+            this.btn_Level6.TabIndex = 2;
+            // 
+            // label_Level6
+            // 
+            this.label_Level6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_Level6.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Level6.ForeColor = System.Drawing.Color.White;
+            this.label_Level6.Location = new System.Drawing.Point(0, 0);
+            this.label_Level6.Name = "label_Level6";
+            this.label_Level6.Size = new System.Drawing.Size(70, 70);
+            this.label_Level6.TabIndex = 0;
+            this.label_Level6.Text = "6";
+            this.label_Level6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // star_Level6
+            // 
+            this.star_Level6.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
+            this.star_Level6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.star_Level6.Location = new System.Drawing.Point(213, 281);
+            this.star_Level6.Name = "star_Level6";
+            this.star_Level6.Size = new System.Drawing.Size(70, 26);
+            this.star_Level6.TabIndex = 4;
+            // 
+            // btn_Level7
+            // 
+            this.btn_Level7.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
+            this.btn_Level7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Level7.Controls.Add(this.label_Level7);
+            this.btn_Level7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Level7.Location = new System.Drawing.Point(328, 209);
+            this.btn_Level7.Name = "btn_Level7";
+            this.btn_Level7.Size = new System.Drawing.Size(70, 70);
+            this.btn_Level7.TabIndex = 2;
+            // 
+            // label_Level7
+            // 
+            this.label_Level7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_Level7.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Level7.ForeColor = System.Drawing.Color.White;
+            this.label_Level7.Location = new System.Drawing.Point(0, 0);
+            this.label_Level7.Name = "label_Level7";
+            this.label_Level7.Size = new System.Drawing.Size(70, 70);
+            this.label_Level7.TabIndex = 0;
+            this.label_Level7.Text = "7";
+            this.label_Level7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // star_Level7
+            // 
+            this.star_Level7.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
+            this.star_Level7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.star_Level7.Location = new System.Drawing.Point(328, 281);
+            this.star_Level7.Name = "star_Level7";
+            this.star_Level7.Size = new System.Drawing.Size(70, 26);
+            this.star_Level7.TabIndex = 4;
+            // 
+            // btn_Level8
+            // 
+            this.btn_Level8.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
+            this.btn_Level8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Level8.Controls.Add(this.label_Level8);
+            this.btn_Level8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Level8.Location = new System.Drawing.Point(442, 209);
+            this.btn_Level8.Name = "btn_Level8";
+            this.btn_Level8.Size = new System.Drawing.Size(70, 70);
+            this.btn_Level8.TabIndex = 2;
+            // 
+            // label_Level8
+            // 
+            this.label_Level8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_Level8.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Level8.ForeColor = System.Drawing.Color.White;
+            this.label_Level8.Location = new System.Drawing.Point(0, 0);
+            this.label_Level8.Name = "label_Level8";
+            this.label_Level8.Size = new System.Drawing.Size(70, 70);
+            this.label_Level8.TabIndex = 0;
+            this.label_Level8.Text = "8";
+            this.label_Level8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel15
+            // 
+            this.panel15.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
+            this.panel15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel15.Location = new System.Drawing.Point(442, 281);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(70, 26);
+            this.panel15.TabIndex = 4;
+            // 
+            // btn_Level9
+            // 
+            this.btn_Level9.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
+            this.btn_Level9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Level9.Controls.Add(this.label_Level9);
+            this.btn_Level9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Level9.Location = new System.Drawing.Point(149, 328);
+            this.btn_Level9.Name = "btn_Level9";
+            this.btn_Level9.Size = new System.Drawing.Size(70, 70);
+            this.btn_Level9.TabIndex = 2;
+            // 
+            // label_Level9
+            // 
+            this.label_Level9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_Level9.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Level9.ForeColor = System.Drawing.Color.White;
+            this.label_Level9.Location = new System.Drawing.Point(0, 0);
+            this.label_Level9.Name = "label_Level9";
+            this.label_Level9.Size = new System.Drawing.Size(70, 70);
+            this.label_Level9.TabIndex = 0;
+            this.label_Level9.Text = "9";
+            this.label_Level9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // star_Level9
+            // 
+            this.star_Level9.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
+            this.star_Level9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.star_Level9.Location = new System.Drawing.Point(149, 400);
+            this.star_Level9.Name = "star_Level9";
+            this.star_Level9.Size = new System.Drawing.Size(70, 26);
+            this.star_Level9.TabIndex = 4;
+            // 
+            // btn_Level10
+            // 
+            this.btn_Level10.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
+            this.btn_Level10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Level10.Controls.Add(this.label_Level10);
+            this.btn_Level10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Level10.Location = new System.Drawing.Point(270, 328);
+            this.btn_Level10.Name = "btn_Level10";
+            this.btn_Level10.Size = new System.Drawing.Size(70, 70);
+            this.btn_Level10.TabIndex = 2;
+            // 
+            // label_Level10
+            // 
+            this.label_Level10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_Level10.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Level10.ForeColor = System.Drawing.Color.White;
+            this.label_Level10.Location = new System.Drawing.Point(0, 0);
+            this.label_Level10.Name = "label_Level10";
+            this.label_Level10.Size = new System.Drawing.Size(70, 70);
+            this.label_Level10.TabIndex = 0;
+            this.label_Level10.Text = "10";
+            this.label_Level10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // star_Level10
+            // 
+            this.star_Level10.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
+            this.star_Level10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.star_Level10.Location = new System.Drawing.Point(270, 400);
+            this.star_Level10.Name = "star_Level10";
+            this.star_Level10.Size = new System.Drawing.Size(70, 26);
+            this.star_Level10.TabIndex = 4;
+            // 
+            // btn_Level5
+            // 
+            this.btn_Level5.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
+            this.btn_Level5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Level5.Controls.Add(this.label_Level5);
+            this.btn_Level5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Level5.Location = new System.Drawing.Point(97, 209);
+            this.btn_Level5.Name = "btn_Level5";
+            this.btn_Level5.Size = new System.Drawing.Size(70, 70);
+            this.btn_Level5.TabIndex = 2;
+            // 
+            // label_Level5
+            // 
+            this.label_Level5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_Level5.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Level5.ForeColor = System.Drawing.Color.White;
+            this.label_Level5.Location = new System.Drawing.Point(0, 0);
+            this.label_Level5.Name = "label_Level5";
+            this.label_Level5.Size = new System.Drawing.Size(70, 70);
+            this.label_Level5.TabIndex = 0;
+            this.label_Level5.Text = "5";
+            this.label_Level5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // star_Level5
+            // 
+            this.star_Level5.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
+            this.star_Level5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.star_Level5.Location = new System.Drawing.Point(97, 281);
+            this.star_Level5.Name = "star_Level5";
+            this.star_Level5.Size = new System.Drawing.Size(70, 26);
+            this.star_Level5.TabIndex = 4;
+            // 
+            // btn_Level4
+            // 
+            this.btn_Level4.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
+            this.btn_Level4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Level4.Controls.Add(this.label_Level4);
+            this.btn_Level4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Level4.Location = new System.Drawing.Point(441, 77);
+            this.btn_Level4.Name = "btn_Level4";
+            this.btn_Level4.Size = new System.Drawing.Size(70, 70);
+            this.btn_Level4.TabIndex = 2;
+            // 
+            // label_Level4
+            // 
+            this.label_Level4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_Level4.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Level4.ForeColor = System.Drawing.Color.White;
+            this.label_Level4.Location = new System.Drawing.Point(0, 0);
+            this.label_Level4.Name = "label_Level4";
+            this.label_Level4.Size = new System.Drawing.Size(70, 70);
+            this.label_Level4.TabIndex = 0;
+            this.label_Level4.Text = "4";
+            this.label_Level4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // star_Level4
+            // 
+            this.star_Level4.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
+            this.star_Level4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.star_Level4.Location = new System.Drawing.Point(441, 149);
+            this.star_Level4.Name = "star_Level4";
+            this.star_Level4.Size = new System.Drawing.Size(70, 26);
+            this.star_Level4.TabIndex = 4;
+            // 
+            // btn_Level3
+            // 
+            this.btn_Level3.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
+            this.btn_Level3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Level3.Controls.Add(this.label_Level3);
+            this.btn_Level3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Level3.Location = new System.Drawing.Point(326, 77);
+            this.btn_Level3.Name = "btn_Level3";
+            this.btn_Level3.Size = new System.Drawing.Size(70, 70);
+            this.btn_Level3.TabIndex = 2;
+            // 
+            // label_Level3
+            // 
+            this.label_Level3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_Level3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Level3.ForeColor = System.Drawing.Color.White;
+            this.label_Level3.Location = new System.Drawing.Point(0, 0);
+            this.label_Level3.Name = "label_Level3";
+            this.label_Level3.Size = new System.Drawing.Size(70, 70);
+            this.label_Level3.TabIndex = 0;
+            this.label_Level3.Text = "3";
+            this.label_Level3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // star_Level3
+            // 
+            this.star_Level3.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
+            this.star_Level3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.star_Level3.Location = new System.Drawing.Point(326, 149);
+            this.star_Level3.Name = "star_Level3";
+            this.star_Level3.Size = new System.Drawing.Size(70, 26);
+            this.star_Level3.TabIndex = 4;
+            // 
+            // btn_Level2
+            // 
+            this.btn_Level2.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
+            this.btn_Level2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Level2.Controls.Add(this.label_Level2);
+            this.btn_Level2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Level2.Location = new System.Drawing.Point(212, 77);
+            this.btn_Level2.Name = "btn_Level2";
+            this.btn_Level2.Size = new System.Drawing.Size(70, 70);
+            this.btn_Level2.TabIndex = 2;
+            // 
+            // label_Level2
+            // 
+            this.label_Level2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_Level2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Level2.ForeColor = System.Drawing.Color.White;
+            this.label_Level2.Location = new System.Drawing.Point(0, 0);
+            this.label_Level2.Name = "label_Level2";
+            this.label_Level2.Size = new System.Drawing.Size(70, 70);
+            this.label_Level2.TabIndex = 0;
+            this.label_Level2.Text = "2";
+            this.label_Level2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // star_Level2
+            // 
+            this.star_Level2.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
+            this.star_Level2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.star_Level2.Location = new System.Drawing.Point(212, 149);
+            this.star_Level2.Name = "star_Level2";
+            this.star_Level2.Size = new System.Drawing.Size(70, 26);
+            this.star_Level2.TabIndex = 4;
+            // 
+            // btn_Level1
+            // 
+            this.btn_Level1.BackgroundImage = global::Dictionary.Properties.Resources.vuong_cam_nhat;
+            this.btn_Level1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Level1.Controls.Add(this.label_Level1);
+            this.btn_Level1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Level1.Location = new System.Drawing.Point(96, 77);
+            this.btn_Level1.Name = "btn_Level1";
+            this.btn_Level1.Size = new System.Drawing.Size(70, 70);
+            this.btn_Level1.TabIndex = 2;
+            // 
+            // label_Level1
+            // 
+            this.label_Level1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label_Level1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Level1.ForeColor = System.Drawing.Color.White;
+            this.label_Level1.Location = new System.Drawing.Point(0, 0);
+            this.label_Level1.Name = "label_Level1";
+            this.label_Level1.Size = new System.Drawing.Size(70, 70);
+            this.label_Level1.TabIndex = 0;
+            this.label_Level1.Text = "1";
+            this.label_Level1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // star_Level1
+            // 
+            this.star_Level1.BackgroundImage = global::Dictionary.Properties.Resources.star_0;
+            this.star_Level1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.star_Level1.Location = new System.Drawing.Point(96, 149);
+            this.star_Level1.Name = "star_Level1";
+            this.star_Level1.Size = new System.Drawing.Size(70, 26);
+            this.star_Level1.TabIndex = 4;
+            // 
+            // panel_SelectLevel
+            // 
+            this.panel_SelectLevel.BackgroundImage = global::Dictionary.Properties.Resources.select_level_2;
+            this.panel_SelectLevel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel_SelectLevel.Location = new System.Drawing.Point(206, 3);
+            this.panel_SelectLevel.Name = "panel_SelectLevel";
+            this.panel_SelectLevel.Size = new System.Drawing.Size(199, 58);
+            this.panel_SelectLevel.TabIndex = 3;
             // 
             // panel_LevelTitle
             // 
@@ -1942,7 +2273,7 @@ namespace Dictionary
             // label_LevelTitle
             // 
             this.label_LevelTitle.BackColor = System.Drawing.Color.Transparent;
-            this.label_LevelTitle.Font = new System.Drawing.Font("Pinguino", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_LevelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_LevelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(72)))), ((int)(((byte)(49)))));
             this.label_LevelTitle.Location = new System.Drawing.Point(11, 0);
             this.label_LevelTitle.Name = "label_LevelTitle";
@@ -1954,7 +2285,7 @@ namespace Dictionary
             // label_GameScore
             // 
             this.label_GameScore.BackColor = System.Drawing.Color.Transparent;
-            this.label_GameScore.Font = new System.Drawing.Font("Pinguino", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_GameScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_GameScore.Location = new System.Drawing.Point(48, 502);
             this.label_GameScore.Name = "label_GameScore";
             this.label_GameScore.Size = new System.Drawing.Size(129, 70);
@@ -1976,7 +2307,7 @@ namespace Dictionary
             // label_CrossingWord
             // 
             this.label_CrossingWord.BackColor = System.Drawing.Color.Transparent;
-            this.label_CrossingWord.Font = new System.Drawing.Font("VnDomCasual", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_CrossingWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_CrossingWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(35)))), ((int)(((byte)(57)))));
             this.label_CrossingWord.Location = new System.Drawing.Point(14, 0);
             this.label_CrossingWord.Name = "label_CrossingWord";
@@ -2353,150 +2684,36 @@ namespace Dictionary
             this.BtnExit.TabIndex = 6;
             this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
-            // PnToeicWords
+            // pictureBox1
             // 
-            this.PnToeicWords.AutoScroll = true;
-            this.PnToeicWords.Controls.Add(this.BtnToeicGame);
-            this.PnToeicWords.Controls.Add(this.LbSeperatorToeic);
-            this.PnToeicWords.Controls.Add(this.flowToeicWords);
-            this.PnToeicWords.Controls.Add(this.LbToeicWords);
-            this.PnToeicWords.Location = new System.Drawing.Point(0, 100);
-            this.PnToeicWords.Name = "PnToeicWords";
-            this.PnToeicWords.Size = new System.Drawing.Size(1264, 580);
-            this.PnToeicWords.TabIndex = 12;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::Dictionary.Properties.Resources._switch;
+            this.pictureBox1.Location = new System.Drawing.Point(611, 299);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
-            // BtnToeicGame
+            // label11
             // 
-            this.BtnToeicGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(40)))), ((int)(((byte)(85)))));
-            this.BtnToeicGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnToeicGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnToeicGame.ForeColor = System.Drawing.Color.White;
-            this.BtnToeicGame.Location = new System.Drawing.Point(949, 52);
-            this.BtnToeicGame.Name = "BtnToeicGame";
-            this.BtnToeicGame.Size = new System.Drawing.Size(163, 45);
-            this.BtnToeicGame.TabIndex = 6;
-            this.BtnToeicGame.Text = "Game Học Từ";
-            this.BtnToeicGame.UseVisualStyleBackColor = false;
-            this.BtnToeicGame.Click += new System.EventHandler(this.BtnToeicGame_Click);
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(109, 119);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(132, 19);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Văn bản cần dịch";
             // 
-            // LbSeperatorToeic
+            // label13
             // 
-            this.LbSeperatorToeic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
-            this.LbSeperatorToeic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LbSeperatorToeic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
-            this.LbSeperatorToeic.Location = new System.Drawing.Point(113, 94);
-            this.LbSeperatorToeic.Name = "LbSeperatorToeic";
-            this.LbSeperatorToeic.Size = new System.Drawing.Size(393, 2);
-            this.LbSeperatorToeic.TabIndex = 4;
-            this.LbSeperatorToeic.Text = "label5";
-            // 
-            // flowToeicWords
-            // 
-            this.flowToeicWords.AutoSize = true;
-            this.flowToeicWords.Cursor = System.Windows.Forms.Cursors.Default;
-            this.flowToeicWords.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowToeicWords.Location = new System.Drawing.Point(113, 110);
-            this.flowToeicWords.Name = "flowToeicWords";
-            this.flowToeicWords.Size = new System.Drawing.Size(999, 463);
-            this.flowToeicWords.TabIndex = 5;
-            // 
-            // LbToeicWords
-            // 
-            this.LbToeicWords.AutoSize = true;
-            this.LbToeicWords.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbToeicWords.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(59)))));
-            this.LbToeicWords.Location = new System.Drawing.Point(102, 50);
-            this.LbToeicWords.Name = "LbToeicWords";
-            this.LbToeicWords.Size = new System.Drawing.Size(256, 42);
-            this.LbToeicWords.TabIndex = 3;
-            this.LbToeicWords.Text = "Từ vựng Toeic";
-            // 
-            // PnToeicGame
-            // 
-            this.PnToeicGame.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PnToeicGame.BackgroundImage")));
-            this.PnToeicGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PnToeicGame.Controls.Add(this.label6);
-            this.PnToeicGame.Controls.Add(this.label5);
-            this.PnToeicGame.Controls.Add(this.BtnNextQuest);
-            this.PnToeicGame.Controls.Add(this.PnToeicQuest);
-            this.PnToeicGame.Controls.Add(this.BtnToeicExit);
-            this.PnToeicGame.Controls.Add(this.FlowAnswerContainer);
-            this.PnToeicGame.Location = new System.Drawing.Point(0, 100);
-            this.PnToeicGame.Name = "PnToeicGame";
-            this.PnToeicGame.Size = new System.Drawing.Size(1258, 577);
-            this.PnToeicGame.TabIndex = 11;
-            this.PnToeicGame.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(259, 6);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 24);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Nghĩa của từ:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(256, 132);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 24);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Đáp Án:";
-            // 
-            // BtnNextQuest
-            // 
-            this.BtnNextQuest.BackColor = System.Drawing.Color.Green;
-            this.BtnNextQuest.FlatAppearance.BorderSize = 0;
-            this.BtnNextQuest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnNextQuest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNextQuest.ForeColor = System.Drawing.Color.White;
-            this.BtnNextQuest.Location = new System.Drawing.Point(1131, 10);
-            this.BtnNextQuest.Name = "BtnNextQuest";
-            this.BtnNextQuest.Size = new System.Drawing.Size(118, 50);
-            this.BtnNextQuest.TabIndex = 3;
-            this.BtnNextQuest.Text = "Câu tiếp theo";
-            this.BtnNextQuest.UseVisualStyleBackColor = false;
-            this.BtnNextQuest.Click += new System.EventHandler(this.BtnNextQuest_Click);
-            // 
-            // PnToeicQuest
-            // 
-            this.PnToeicQuest.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.PnToeicQuest.Location = new System.Drawing.Point(261, 35);
-            this.PnToeicQuest.Name = "PnToeicQuest";
-            this.PnToeicQuest.Size = new System.Drawing.Size(716, 84);
-            this.PnToeicQuest.TabIndex = 1;
-            // 
-            // BtnToeicExit
-            // 
-            this.BtnToeicExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(26)))), ((int)(((byte)(42)))));
-            this.BtnToeicExit.FlatAppearance.BorderSize = 0;
-            this.BtnToeicExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnToeicExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnToeicExit.ForeColor = System.Drawing.Color.White;
-            this.BtnToeicExit.Location = new System.Drawing.Point(13, 10);
-            this.BtnToeicExit.Name = "BtnToeicExit";
-            this.BtnToeicExit.Size = new System.Drawing.Size(72, 44);
-            this.BtnToeicExit.TabIndex = 0;
-            this.BtnToeicExit.Text = "Thoát";
-            this.BtnToeicExit.UseVisualStyleBackColor = false;
-            this.BtnToeicExit.Click += new System.EventHandler(this.BtnToeicExit_Click);
-            // 
-            // FlowAnswerContainer
-            // 
-            this.FlowAnswerContainer.BackColor = System.Drawing.Color.Transparent;
-            this.FlowAnswerContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.FlowAnswerContainer.Location = new System.Drawing.Point(258, 158);
-            this.FlowAnswerContainer.Name = "FlowAnswerContainer";
-            this.FlowAnswerContainer.Size = new System.Drawing.Size(729, 403);
-            this.FlowAnswerContainer.TabIndex = 6;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(665, 119);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(63, 19);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "Kết quả";
             // 
             // Dictionary
             // 
@@ -2504,7 +2721,7 @@ namespace Dictionary
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.PnConnectWord);
+            this.Controls.Add(this.PnTranslateText);
             this.Controls.Add(this.PnToeicGame);
             this.Controls.Add(this.PnToeicWords);
             this.Controls.Add(this.SavedWordPn);
@@ -2513,6 +2730,7 @@ namespace Dictionary
             this.Controls.Add(this.panel_WordNotFound);
             this.Controls.Add(this.ListCharacterPn);
             this.Controls.Add(this.Header);
+            this.Controls.Add(this.PnConnectWord);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Dictionary";
@@ -2534,18 +2752,35 @@ namespace Dictionary
             this.WodContainerPn.ResumeLayout(false);
             this.NewWordPn.ResumeLayout(false);
             this.NewWordPn.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicOfWordPb)).EndInit();
             this.HomePn.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SoundPlayer)).EndInit();
             this.panel_WordDefinition.ResumeLayout(false);
             this.panel_WordDefinition.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_WordSave)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_WordAudio)).EndInit();
             this.panel_WordNotFound.ResumeLayout(false);
             this.panel_WordNotFound.PerformLayout();
             this.SavedWordPn.ResumeLayout(false);
             this.SavedWordPn.PerformLayout();
+            this.PnToeicWords.ResumeLayout(false);
+            this.PnToeicWords.PerformLayout();
+            this.PnTranslateText.ResumeLayout(false);
+            this.PnTranslateText.PerformLayout();
+            this.PbTranslateTextBox.ResumeLayout(false);
+            this.PnResultTextBox.ResumeLayout(false);
+            this.PnToeicGame.ResumeLayout(false);
+            this.PnToeicGame.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbMute)).EndInit();
+            this.PnCountQuest.ResumeLayout(false);
+            this.PnCountQuest.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicOfWordPb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_WordSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_WordAudio)).EndInit();
             this.PnConnectWord.ResumeLayout(false);
+            this.panel_LevelSuccess.ResumeLayout(false);
+            this.PnLetterHolder.ResumeLayout(false);
+            this.panel_Letter4.ResumeLayout(false);
+            this.panel_Letter2.ResumeLayout(false);
+            this.panel_Letter1.ResumeLayout(false);
+            this.panel_Letter3.ResumeLayout(false);
             this.panel_Level.ResumeLayout(false);
             this.btn_Level11.ResumeLayout(false);
             this.btn_Level6.ResumeLayout(false);
@@ -2558,19 +2793,10 @@ namespace Dictionary
             this.btn_Level3.ResumeLayout(false);
             this.btn_Level2.ResumeLayout(false);
             this.btn_Level1.ResumeLayout(false);
-            this.panel_LevelSuccess.ResumeLayout(false);
-            this.PnLetterHolder.ResumeLayout(false);
-            this.panel_Letter4.ResumeLayout(false);
-            this.panel_Letter2.ResumeLayout(false);
-            this.panel_Letter1.ResumeLayout(false);
-            this.panel_Letter3.ResumeLayout(false);
             this.panel_LevelTitle.ResumeLayout(false);
             this.panel_CrossingWord.ResumeLayout(false);
             this.panel_WordResult.ResumeLayout(false);
-            this.PnToeicWords.ResumeLayout(false);
-            this.PnToeicWords.PerformLayout();
-            this.PnToeicGame.ResumeLayout(false);
-            this.PnToeicGame.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2757,6 +2983,23 @@ namespace Dictionary
         private System.Windows.Forms.FlowLayoutPanel flowToeicWords;
         private System.Windows.Forms.Label LbToeicWords;
         private System.Windows.Forms.Panel panel_ScoreCoin;
+        private System.Windows.Forms.Panel PnCountQuest;
+        private System.Windows.Forms.Label LbIncorrectCount;
+        private System.Windows.Forms.Label LbCorrectCount;
+        private System.Windows.Forms.Label LbQuestCount;
+        private System.Windows.Forms.PictureBox PbMute;
+        private System.Windows.Forms.Panel PnTranslateText;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel PnResultTextBox;
+        private System.Windows.Forms.RichTextBox TbTranslateText;
+        private System.Windows.Forms.Panel PbTranslateTextBox;
+        private System.Windows.Forms.RichTextBox TbResultText;
+        private System.Windows.Forms.Button BtnCopyToClipboard;
+        private System.Windows.Forms.Button BtnTranslate;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

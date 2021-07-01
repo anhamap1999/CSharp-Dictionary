@@ -1975,8 +1975,16 @@ namespace Dictionary
             PnToeicGame.Visible = true;
             PnToeicGame.BringToFront();
             PnToeicWords.AutoScroll = false;
+            QuestCount = 0;
+            CorrectCount = 0;
+            LbQuestCount.Text = "Đã trả lời 0 câu";
+            LbCorrectCount.Text = "Số câu đúng: ";
+            LbIncorrectCount.Text = "Số câu sai: ";
             ToeicGame_CreateQuestion();
         }
+
+        int QuestCount = 0;
+        int CorrectCount = 0;
 
         void ToeicGame_CreateQuestion()
         {
@@ -2035,17 +2043,22 @@ namespace Dictionary
                 }
                 else AnswerText.Tag = "false";
                 AnswerText.Click += Handle_Answer_Click;
-                PnAnswer.Controls.Add(AnswerText);
+                PnAnswer.Controls.Add(AnswerText);                                    
             }
         }
         void Handle_Answer_Click(object sender, EventArgs e)
         {
+            QuestCount++;
             Label label = (Label)sender;
             if (label.Tag.ToString() == "true")
             {
-                Stream str = global::Dictionary.Properties.Resources.Ding_Sound_Effect;
-                SoundPlayer snd = new SoundPlayer(str);
-                snd.Play();
+                CorrectCount++;
+                if(PbMute.Tag.ToString() == "Unmute")
+                {
+                    Stream str = global::Dictionary.Properties.Resources.Ding_Sound_Effect;
+                    SoundPlayer snd = new SoundPlayer(str);
+                    snd.Play();
+                }
                 label.Parent.BackColor = Color.FromArgb(0, 139, 41);
                 label.ForeColor = Color.White;
 
@@ -2059,9 +2072,12 @@ namespace Dictionary
             {
                 label.Parent.BackColor = Color.FromArgb(209, 26, 42);
                 label.ForeColor = Color.White;
-                Stream str = global::Dictionary.Properties.Resources.incorrect_sound_effect;
-                SoundPlayer snd = new SoundPlayer(str);
-                snd.Play();
+                if (PbMute.Tag.ToString() == "Unmute")
+                {
+                    Stream str = global::Dictionary.Properties.Resources.incorrect_sound_effect;
+                    SoundPlayer snd = new SoundPlayer(str);
+                    snd.Play();
+                }
                 foreach (Panel c in FlowAnswerContainer.Controls.OfType<Panel>())
                 {
                     if (c.Tag.ToString() == "true")
@@ -2074,6 +2090,9 @@ namespace Dictionary
                     L.Click -= Handle_Answer_Click;
                 }
             }
+            LbQuestCount.Text = "Đã trả lời " + QuestCount.ToString() + " câu";
+            LbCorrectCount.Text = "Số câu đúng: " + CorrectCount.ToString();
+            LbIncorrectCount.Text = "Số câu sai: " + (QuestCount - CorrectCount).ToString();
         }
         private void BtnNextQuest_Click(object sender, EventArgs e)
         {
@@ -2083,8 +2102,25 @@ namespace Dictionary
         private void BtnToeicExit_Click(object sender, EventArgs e)
         {
             PnToeicGame.Visible = false;
+            QuestCount = 0;
+            CorrectCount = 0;
             PnToeicWords.BringToFront();
             PnToeicWords.AutoScroll = true;
+        }
+
+
+        private void PbMute_Click(object sender, EventArgs e)
+        {
+            if(PbMute.Tag.ToString() =="Mute")
+            {
+                PbMute.Tag = "Unmute";
+                PbMute.Image = global::Dictionary.Properties.Resources.audio__1_;
+            }
+            else
+            {
+                PbMute.Tag = "Mute";
+                PbMute.Image = global::Dictionary.Properties.Resources.mute;
+            }
         }
     }
 }
