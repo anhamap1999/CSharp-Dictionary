@@ -303,5 +303,38 @@
   <ItemGroup>
     <None Include="Resources\texture-cross-2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\music-on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\music-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mute.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\translate-source.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\translate-des.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\volume-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\volume-purple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy-purple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

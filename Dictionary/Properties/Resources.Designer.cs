@@ -133,6 +133,16 @@ namespace Dictionary.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clear {
+            get {
+                object obj = ResourceManager.GetObject("clear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_box_red {
             get {
                 object obj = ResourceManager.GetObject("close_box_red", resourceCulture);
@@ -166,6 +176,26 @@ namespace Dictionary.Properties {
         internal static System.Drawing.Bitmap coin {
             get {
                 object obj = ResourceManager.GetObject("coin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap copy_purple {
+            get {
+                object obj = ResourceManager.GetObject("copy-purple", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap copy_white {
+            get {
+                object obj = ResourceManager.GetObject("copy-white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -264,6 +294,36 @@ namespace Dictionary.Properties {
         internal static System.Drawing.Bitmap loupe {
             get {
                 object obj = ResourceManager.GetObject("loupe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap music_off {
+            get {
+                object obj = ResourceManager.GetObject("music-off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap music_on {
+            get {
+                object obj = ResourceManager.GetObject("music-on", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mute {
+            get {
+                object obj = ResourceManager.GetObject("mute", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -476,6 +536,16 @@ namespace Dictionary.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap switch_button {
+            get {
+                object obj = ResourceManager.GetObject("switch_button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap texture_cross {
             get {
                 object obj = ResourceManager.GetObject("texture_cross", resourceCulture);
@@ -489,6 +559,26 @@ namespace Dictionary.Properties {
         internal static System.Drawing.Bitmap texture_cross_2 {
             get {
                 object obj = ResourceManager.GetObject("texture_cross_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap translate_des {
+            get {
+                object obj = ResourceManager.GetObject("translate-des", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap translate_source {
+            get {
+                object obj = ResourceManager.GetObject("translate_source", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -529,6 +619,26 @@ namespace Dictionary.Properties {
         internal static System.Drawing.Bitmap unsaved {
             get {
                 object obj = ResourceManager.GetObject("unsaved", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap volume_purple {
+            get {
+                object obj = ResourceManager.GetObject("volume-purple", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap volume_white {
+            get {
+                object obj = ResourceManager.GetObject("volume-white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

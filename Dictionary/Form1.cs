@@ -44,6 +44,19 @@ namespace Dictionary
             //WordConnet_load();
             Initialize_Game_Screen();
             PnToeicWords_Load();
+            //Async_Load();
+        }
+
+        void Async_Load()
+        {
+            Task loadDictionary = new Task(Load_Dictionary);
+            loadDictionary.Start();
+            Task generateLetterButtons = new Task(Generate_Letter_Buttons);
+            generateLetterButtons.Start();
+            Task initializeGame = new Task(Initialize_Game_Screen);
+            initializeGame.Start();
+            Task loadToeic = new Task(PnToeicWords_Load);
+            loadToeic.Start();
         }
 
         DataTable tableWord = new DataTable();
@@ -65,6 +78,13 @@ namespace Dictionary
         Panel startLetter = new Panel();
 
         List<string> ToeicWordsList = new List<string>();
+
+        bool gameMusic = true;
+
+        string srcLang = "en";
+        string desLang = "vi";
+        string srcAudioUrl = "";
+        string desAudioUrl = "";
 
         void Load_Data()
         {
@@ -300,6 +320,8 @@ namespace Dictionary
             //Loading loading = new Loading();
             //loading.Location = new Point((this.Width - loading.Width) / 2, (this.Height - loading.Height) / 2);
             //loading.Show();
+
+            this.KeyPreview = false;
             char c = s[0];
             if (letterButtons.FirstOrDefault(x => x.Key == c).Value != null)
             {
@@ -858,6 +880,7 @@ namespace Dictionary
         private void GameBtn_Click(object sender, EventArgs e)
         {
             PnConnectWord.BringToFront();
+            this.KeyPreview = true;
 
             //Timer levelTimer = new Timer();
             //levelTimer.Interval = 10;
@@ -929,7 +952,6 @@ namespace Dictionary
 
         void Initialize_Game_Screen()
         {
-            this.KeyPreview = true;
             tableLevel.Columns.Add("level", typeof(string));
             tableLevel.Columns.Add("letters", typeof(string));
             tableLevel.Columns.Add("words", typeof(string[]));
@@ -1022,6 +1044,24 @@ namespace Dictionary
                     BtnHint.Location = new Point(BtnHint.Location.X + 4, BtnHint.Location.Y + 4);
                 }
             };
+            BtnMusic.MouseMove += delegate
+            {
+                if (BtnMusic.Width == 55)
+                {
+                    BtnMusic.Width = 63;
+                    BtnMusic.Height = 63;
+                    BtnMusic.Location = new Point(BtnMusic.Location.X - 4, BtnMusic.Location.Y - 4);
+                }
+            };
+            BtnMusic.MouseLeave += delegate
+            {
+                if (BtnMusic.Width == 63)
+                {
+                    BtnMusic.Width = 55;
+                    BtnMusic.Height = 55;
+                    BtnMusic.Location = new Point(BtnMusic.Location.X + 4, BtnMusic.Location.Y + 4);
+                }
+            };
 
             PnLetterHolder.Visible = false;
             BtnExit.Visible = false;
@@ -1085,9 +1125,12 @@ namespace Dictionary
                     break;
                 case "click":
                     {
-                        Stream str = global::Dictionary.Properties.Resources.sound_button_click;
-                        SoundPlayer snd = new SoundPlayer(str);
-                        snd.Play();
+                        if (gameMusic)
+                        {
+                            Stream str = global::Dictionary.Properties.Resources.sound_button_click;
+                            SoundPlayer snd = new SoundPlayer(str);
+                            snd.Play();
+                        }
                         Render_Game_Level(level);
 
                         break;
@@ -1297,13 +1340,17 @@ namespace Dictionary
         private void SavedWordBtn_Click(object sender, EventArgs e)
         {
             PnSaveWord_Load();
+            this.KeyPreview = false;
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
         {
-            Stream str = global::Dictionary.Properties.Resources.sound_button_click;
-            SoundPlayer snd = new SoundPlayer(str);
-            snd.Play();
+            if (gameMusic)
+            {
+                Stream str = global::Dictionary.Properties.Resources.sound_button_click;
+                SoundPlayer snd = new SoundPlayer(str);
+                snd.Play();
+            }
             Render_Game_Home();
         }
 
@@ -1404,9 +1451,12 @@ namespace Dictionary
                             else
                             {
                                 Graphics g = PnLetterHolder.CreateGraphics();
-                                Stream str = global::Dictionary.Properties.Resources.sound_cross;
-                                SoundPlayer snd = new SoundPlayer(str);
-                                snd.Play();
+                                if (gameMusic)
+                                {
+                                    Stream str = global::Dictionary.Properties.Resources.sound_cross;
+                                    SoundPlayer snd = new SoundPlayer(str);
+                                    snd.Play();
+                                }
                                 //TextureBrush texttureBrush = new TextureBrush(global::Dictionary.Properties.Resources.texture_cross_2, System.Drawing.Drawing2D.WrapMode.TileFlipY);
                                 Pen pen = new Pen(Color.FromArgb(0, 115, 100), 10);
                                 if (startLetter != null && startLetter != panel)
@@ -1619,9 +1669,12 @@ namespace Dictionary
                         flyTimer.Interval = 50;
                         int delay = 0;
                         int loopCount = 0;
-                        Stream str = global::Dictionary.Properties.Resources.sound_score_plus;
-                        SoundPlayer snd = new SoundPlayer(str);
-                        snd.Play();
+                        if (gameMusic)
+                        {
+                            Stream str = global::Dictionary.Properties.Resources.sound_score_plus;
+                            SoundPlayer snd = new SoundPlayer(str);
+                            snd.Play();
+                        }
                         Stream strFly = global::Dictionary.Properties.Resources.sound_word_fly;
                         SoundPlayer sndFly = new SoundPlayer(strFly);
                         flyTimer.Tick += delegate
@@ -1653,9 +1706,12 @@ namespace Dictionary
                                         starTimer.Interval = 300;
                                         int stars = 1;
                                         int starDelay = 0;
-                                        Stream strFinish = global::Dictionary.Properties.Resources.sound_level_finish;
-                                        SoundPlayer sndFinish = new SoundPlayer(strFinish);
-                                        sndFinish.Play();
+                                        if (gameMusic)
+                                        {
+                                            Stream strFinish = global::Dictionary.Properties.Resources.sound_level_finish;
+                                            SoundPlayer sndFinish = new SoundPlayer(strFinish);
+                                            sndFinish.Play();
+                                        }
                                         starTimer.Tick += delegate
                                         {
                                             if (starDelay < 3)
@@ -1717,9 +1773,12 @@ namespace Dictionary
                     timer.Interval = 100;
                     int count = 3;
                     bool isRed = false;
-                    Stream str = global::Dictionary.Properties.Resources.incorrect_sound_effect;
-                    SoundPlayer snd = new SoundPlayer(str);
-                    snd.Play();
+                    if (gameMusic)
+                    {
+                        Stream str = global::Dictionary.Properties.Resources.incorrect_sound_effect;
+                        SoundPlayer snd = new SoundPlayer(str);
+                        snd.Play();
+                    }
                     timer.Tick += delegate
                     {
                         if (count > 0)
@@ -1755,9 +1814,12 @@ namespace Dictionary
 
         private void BtnHint_Click(object sender, EventArgs e)
         {
-            Stream str = global::Dictionary.Properties.Resources.sound_button_click;
-            SoundPlayer snd = new SoundPlayer(str);
-            snd.Play();
+            if (gameMusic)
+            {
+                Stream str = global::Dictionary.Properties.Resources.sound_button_click;
+                SoundPlayer snd = new SoundPlayer(str);
+                snd.Play();
+            }
             DataRow row = tableLevel.Rows[currentLevel - 1];
             string[] words = (string[])row["words"];
             if (words.Length > crossedWords.Count)
@@ -1876,26 +1938,35 @@ namespace Dictionary
 
         private void btn_LevelHome_Click(object sender, EventArgs e)
         {
-            Stream str = global::Dictionary.Properties.Resources.sound_button_click;
-            SoundPlayer snd = new SoundPlayer(str);
-            snd.Play();
+            if (gameMusic)
+            {
+                Stream str = global::Dictionary.Properties.Resources.sound_button_click;
+                SoundPlayer snd = new SoundPlayer(str);
+                snd.Play();
+            }
             Render_Game_Home();
         }
 
         private void btn_LevelAgain_Click(object sender, EventArgs e)
         {
-            Stream str = global::Dictionary.Properties.Resources.sound_button_click;
-            SoundPlayer snd = new SoundPlayer(str);
-            snd.Play();
+            if (gameMusic)
+            {
+                Stream str = global::Dictionary.Properties.Resources.sound_button_click;
+                SoundPlayer snd = new SoundPlayer(str);
+                snd.Play();
+            }
             Render_Game_Level(currentLevel);
             panel_LevelSuccess.Visible = false;
         }
 
         private void btn_LevelNext_Click(object sender, EventArgs e)
         {
-            Stream str = global::Dictionary.Properties.Resources.sound_button_click;
-            SoundPlayer snd = new SoundPlayer(str);
-            snd.Play();
+            if (gameMusic)
+            {
+                Stream str = global::Dictionary.Properties.Resources.sound_button_click;
+                SoundPlayer snd = new SoundPlayer(str);
+                snd.Play();
+            }
             if (currentLevel == 11)
             {
                 Render_Game_Home();
@@ -1914,6 +1985,7 @@ namespace Dictionary
             PnToeicWords.BringToFront();
             PnToeicGame.Visible = false;
             PnToeicWords.AutoScroll = true;
+            this.KeyPreview = false;
         }
 
         void PnToeicWords_Load()
@@ -1968,6 +2040,7 @@ namespace Dictionary
         private void DictionaryBtn_Click(object sender, EventArgs e)
         {
             HomePn.BringToFront();
+            this.KeyPreview = false;
         }
 
         private void BtnToeicGame_Click(object sender, EventArgs e)
@@ -1975,8 +2048,16 @@ namespace Dictionary
             PnToeicGame.Visible = true;
             PnToeicGame.BringToFront();
             PnToeicWords.AutoScroll = false;
+            QuestCount = 0;
+            CorrectCount = 0;
+            LbQuestCount.Text = "Đã trả lời 0 câu";
+            LbCorrectCount.Text = "Số câu đúng: ";
+            LbIncorrectCount.Text = "Số câu sai: ";
             ToeicGame_CreateQuestion();
         }
+
+        int QuestCount = 0;
+        int CorrectCount = 0;
 
         void ToeicGame_CreateQuestion()
         {
@@ -2040,12 +2121,17 @@ namespace Dictionary
         }
         void Handle_Answer_Click(object sender, EventArgs e)
         {
+            QuestCount++;
             Label label = (Label)sender;
             if (label.Tag.ToString() == "true")
             {
-                Stream str = global::Dictionary.Properties.Resources.Ding_Sound_Effect;
-                SoundPlayer snd = new SoundPlayer(str);
-                snd.Play();
+                CorrectCount++;
+                if (PbMute.Tag.ToString() == "Unmute")
+                {
+                    Stream str = global::Dictionary.Properties.Resources.Ding_Sound_Effect;
+                    SoundPlayer snd = new SoundPlayer(str);
+                    snd.Play();
+                }
                 label.Parent.BackColor = Color.FromArgb(0, 139, 41);
                 label.ForeColor = Color.White;
 
@@ -2059,9 +2145,12 @@ namespace Dictionary
             {
                 label.Parent.BackColor = Color.FromArgb(209, 26, 42);
                 label.ForeColor = Color.White;
-                Stream str = global::Dictionary.Properties.Resources.incorrect_sound_effect;
-                SoundPlayer snd = new SoundPlayer(str);
-                snd.Play();
+                if (PbMute.Tag.ToString() == "Unmute")
+                {
+                    Stream str = global::Dictionary.Properties.Resources.incorrect_sound_effect;
+                    SoundPlayer snd = new SoundPlayer(str);
+                    snd.Play();
+                }
                 foreach (Panel c in FlowAnswerContainer.Controls.OfType<Panel>())
                 {
                     if (c.Tag.ToString() == "true")
@@ -2074,6 +2163,9 @@ namespace Dictionary
                     L.Click -= Handle_Answer_Click;
                 }
             }
+            LbQuestCount.Text = "Đã trả lời " + QuestCount.ToString() + " câu";
+            LbCorrectCount.Text = "Số câu đúng: " + CorrectCount.ToString();
+            LbIncorrectCount.Text = "Số câu sai: " + (QuestCount - CorrectCount).ToString();
         }
         private void BtnNextQuest_Click(object sender, EventArgs e)
         {
@@ -2083,8 +2175,211 @@ namespace Dictionary
         private void BtnToeicExit_Click(object sender, EventArgs e)
         {
             PnToeicGame.Visible = false;
+            QuestCount = 0;
+            CorrectCount = 0;
             PnToeicWords.BringToFront();
             PnToeicWords.AutoScroll = true;
+        }
+
+        private void PbMute_Click(object sender, EventArgs e)
+        {
+            if (PbMute.Tag.ToString() == "Mute")
+            {
+                PbMute.Tag = "Unmute";
+                PbMute.Image = global::Dictionary.Properties.Resources.audio__1_;
+            }
+            else
+            {
+                PbMute.Tag = "Mute";
+                PbMute.Image = global::Dictionary.Properties.Resources.mute;
+            }
+        }
+
+        public string Translate(string text, string fromLanguage = "en", string toLanguage = "vi")
+        {
+            var url = $"https://translate.googleapis.com/translate_a/single?client=gtx&sl={fromLanguage}&tl={toLanguage}&dt=t&q={text}";
+            var webClient = new WebClient
+            {
+                Encoding = System.Text.Encoding.UTF8
+            };
+            var result = webClient.DownloadString(url);
+            try
+            {
+                result = result.Substring(4, result.IndexOf("\"", 4, StringComparison.Ordinal) - 4);
+                return result;
+            }
+            catch
+            {
+                return "Error";
+            }
+        }
+
+        //voice: en-US | vi-VN
+        string Get_Audio_Link(string text, string voice = "vi-VN")
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://api.soundoftext.com/sounds");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                var data = new Dictionary<string, string>
+            {
+                { "text", text },
+                { "voice", voice}
+            };
+                var values = new Dictionary<string, string>
+            {
+                { "data", data.ToString() },
+                { "engine", "Google" }
+            };
+                string json = "{\"data\":{\"text\":\"" + text + "\"," +
+                  "\"voice\":\"" + voice + "\"}," +
+                  "\"engine\":\"Google\"}";
+
+                streamWriter.Write(json);
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                string link = "https://storage.soundoftext.com/" + result.Substring(result.IndexOf("id")).Replace("id\":\"", "").Replace("\"}", "") + ".mp3";
+                return link;
+            }
+        }
+
+        private void BtnMusic_Click(object sender, EventArgs e)
+        {
+            if (gameMusic)
+            {
+                Stream str = global::Dictionary.Properties.Resources.sound_button_click;
+                SoundPlayer snd = new SoundPlayer(str);
+                snd.Play();
+            }
+            if (gameMusic)
+            {
+                BtnMusic.BackgroundImage = global::Dictionary.Properties.Resources.music_off;
+            } else
+            {
+                BtnMusic.BackgroundImage = global::Dictionary.Properties.Resources.music_on;
+            }
+            gameMusic = !gameMusic;
+        }
+
+        private void TranslateBtn_Click(object sender, EventArgs e)
+        {
+            PnTranslateText.BringToFront();
+            this.KeyPreview = false;
+        }
+
+
+
+        private async void btn_TranslateSrcText_TextChanged(object sender, EventArgs e)
+      {
+            async Task<bool> UserKeepsTyping()
+            {
+                string txt = txt_TranslateSrc.Text;
+                if (!string.IsNullOrWhiteSpace(txt))
+                {
+                    await Task.Delay(1000);
+                }
+                else
+                {
+                    await Task.Delay(0);
+                }
+                return txt != txt_TranslateSrc.Text;
+            }
+            if (await UserKeepsTyping()) return;
+            if (!string.IsNullOrWhiteSpace(txt_TranslateSrc.Text) && txt_TranslateSrc.Text != "Nhập văn bản")
+            {
+                pic_TranslateClear.Visible = true;
+                string translatedText = Translate(txt_TranslateSrc.Text, srcLang, desLang);
+                srcAudioUrl = Get_Audio_Link(txt_TranslateSrc.Text, srcLang == "vi" ? "vi-VN" : "en-US");
+                desAudioUrl = Get_Audio_Link(translatedText, desLang == "vi" ? "vi-VN" : "en-US");
+                txt_TranslateDes.Text = translatedText;
+            } else
+            {
+                txt_TranslateDes.Text = "Bản dịch";
+                srcAudioUrl = "";
+                desAudioUrl = "";
+                pic_TranslateClear.Visible = false;
+            }
+        }
+
+        private void btn_TranslateSrcText_Leave(object sender, EventArgs e)
+        {
+            if (txt_TranslateSrc.Text == "")
+            {
+                txt_TranslateSrc.Text = "Nhập văn bản";
+            }
+        }
+
+        private void txt_TranslateSrc_Click(object sender, EventArgs e)
+        {
+            if (txt_TranslateSrc.Text == "Nhập văn bản")
+            {
+                txt_TranslateSrc.Text = "";
+            }
+        }
+
+        private void pic_TranslateClear_Click(object sender, EventArgs e)
+        {
+            txt_TranslateSrc.Text = "Nhập văn bản";
+            txt_TranslateDes.Text = "Bản dịch";
+            srcAudioUrl = "";
+            desAudioUrl = "";
+            pic_TranslateClear.Visible = false;
+        }
+
+        private void btn_TranslateSrcAudio_Click(object sender, EventArgs e)
+        {
+            SoundPlayer.URL = srcAudioUrl;
+        }
+
+        private void btn_TranslateDesAudio_Click(object sender, EventArgs e)
+        {
+            SoundPlayer.URL = desAudioUrl;
+        }
+
+        private async void btn_TranslateSrcCopy_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txt_TranslateSrc.Text) && txt_TranslateSrc.Text != "Nhập văn bản")
+            {
+                System.Windows.Forms.Clipboard.SetText(txt_TranslateSrc.Text);
+                label_MessageCopied.Visible = true;
+                await Task.Delay(1000);
+                label_MessageCopied.Visible = false;
+            }
+        }
+
+        private async void btn_TranslateDesCopy_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txt_TranslateDes.Text) && txt_TranslateDes.Text != "Bản dịch")
+            {
+                System.Windows.Forms.Clipboard.SetText(txt_TranslateDes.Text);
+                label_MessageCopied.Visible = true;
+                await Task.Delay(1000);
+                label_MessageCopied.Visible = false;
+            }
+        }
+
+        private void btn_TranslateSwitch_Click(object sender, EventArgs e)
+        {
+            string tmp = "";
+
+            tmp = label_TranslateSrcLang.Text;
+            label_TranslateSrcLang.Text = label_TranslateDesLang.Text;
+            label_TranslateDesLang.Text = tmp;
+
+            tmp = srcLang;
+            srcLang = desLang;
+            desLang = tmp;
+
+            if (!string.IsNullOrWhiteSpace(txt_TranslateSrc.Text) && txt_TranslateSrc.Text!= "Nhập văn bản")
+            {
+                txt_TranslateSrc.Text = txt_TranslateDes.Text;
+            }
         }
     }
 }
