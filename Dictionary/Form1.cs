@@ -518,34 +518,34 @@ namespace Dictionary
             //    SearchBox.Text = "";
             //    SearchBox.ForeColor = Color.Black;
             //}
-            if (SearchBox.Text != "Search some word...")
-            {
-                if (!string.IsNullOrWhiteSpace(SearchBox.Text))
-                {
-                    if (selectedChar != SearchBox.Text.ToLower()[0])
-                    {
-                        if (letterButtons.FirstOrDefault(x => x.Key == selectedChar).Value != null)
-                        {
-                            letterButtons[selectedChar].BackColor = ColorTranslator.FromHtml("#303A63");
-                        }
-                        if (letterButtons.FirstOrDefault(x => x.Key == SearchBox.Text.ToLower()[0]).Value != null)
-                        {
-                            letterButtons[SearchBox.Text.ToLower()[0]].BackColor = ColorTranslator.FromHtml("#8E83A6");
-                        }
+            //if (SearchBox.Text != "Search some word...")
+            //{
+            //    if (!string.IsNullOrWhiteSpace(SearchBox.Text))
+            //    {
+            //        if (selectedChar != SearchBox.Text.ToLower()[0])
+            //        {
+            //            if (letterButtons.FirstOrDefault(x => x.Key == selectedChar).Value != null)
+            //            {
+            //                letterButtons[selectedChar].BackColor = ColorTranslator.FromHtml("#303A63");
+            //            }
+            //            if (letterButtons.FirstOrDefault(x => x.Key == SearchBox.Text.ToLower()[0]).Value != null)
+            //            {
+            //                letterButtons[SearchBox.Text.ToLower()[0]].BackColor = ColorTranslator.FromHtml("#8E83A6");
+            //            }
 
-                        Render_Word_List_By_Letter(SearchBox.Text.ToLower());
-                        //selectedChar = SearchBox.Text.ToLower()[0];
-                    }
+            //            Render_Word_List_By_Letter(SearchBox.Text.ToLower());
+            //            //selectedChar = SearchBox.Text.ToLower()[0];
+            //        }
 
-                    panel_WordDefinition.BringToFront();
-                    Render_Word_Click(SearchBox.Text.ToLower());
-                }
-                else
-                {
-                    Render_Word_List_By_Letter(selectedChar.ToString());
-                }
-            }
-            searchText = SearchBox.Text;
+            //        panel_WordDefinition.BringToFront();
+            //        Render_Word_Click(SearchBox.Text.ToLower());
+            //    }
+            //    else
+            //    {
+            //        Render_Word_List_By_Letter(selectedChar.ToString());
+            //    }
+            //}
+            //searchText = SearchBox.Text;
         }
 
         void handle_Word_Event(object sender, string type)
