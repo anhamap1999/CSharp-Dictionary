@@ -1299,7 +1299,7 @@ namespace Dictionary
             SavedWordPn.BringToFront();
             SavedWordPn.Controls.Clear();
             Label Title = new Label();
-            Title.Text = "Danh sách từ mới";
+            Title.Text = "Danh sách từ đã lưu";
             Title.ForeColor = Color.FromArgb(15, 23, 59);
             Title.Location = new Point(102, 50);
             Title.Font = new Font("Roboto", 28);
@@ -2239,13 +2239,21 @@ namespace Dictionary
 
                 streamWriter.Write(json);
             }
-
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            try
             {
-                var result = streamReader.ReadToEnd();
-                string link = "https://storage.soundoftext.com/" + result.Substring(result.IndexOf("id")).Replace("id\":\"", "").Replace("\"}", "") + ".mp3";
-                return link;
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    string link = "https://storage.soundoftext.com/" + result.Substring(result.IndexOf("id")).Replace("id\":\"", "").Replace("\"}", "") + ".mp3";
+                    return link;
+                }
+            }
+            catch (Exception)
+            {
+
+                return "";
+                throw;
             }
         }
 
